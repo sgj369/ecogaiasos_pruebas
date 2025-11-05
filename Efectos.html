@@ -5,52 +5,45 @@
     body {
         margin: 0;
         height: 100vh;
-        background: #2c2c2c; /* Fondo oscuro */
+        /* Un fondo oscuro para el espacio */
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
         overflow: hidden;
     }
 
     /* --- EL CÓDIGO DEL EFECTO --- */
-    
-    /* El contenedor de las partículas */
-    .bokeh-wrapper {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
+
+    /* Animación que mueve las estrellas */
+    @keyframes move-twink-back {
+        from {background-position:0 0;}
+        to {background-position:-10000px 5000px;}
     }
 
-    /* Estilo de cada partícula */
-    .bokeh-dot {
-        position: absolute;
-        bottom: -50px; /* Empieza fuera de la pantalla */
-        background: rgba(0, 119, 182, 0.3); /* Color azul de tu paleta */
-        border-radius: 50%;
-        
-        /* La animación 'float-up' */
-        animation: float-up 20s linear infinite;
-        
-        /* El efecto borroso */
-        filter: blur(5px);
+    /* Contenedor para ambas capas de estrellas */
+    .stars, .twinkling {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      width:100%;
+      height:100%;
+      display:block;
     }
-    
-    /* Tamaños y posiciones aleatorias */
-    .bokeh-dot:nth-child(1) { left: 15%; width: 40px; height: 40px; animation-duration: 15s; animation-delay: 1s; }
-    .bokeh-dot:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 5s; background: rgba(153, 51, 204, 0.3); } /* Morado */
-    .bokeh-dot:nth-child(3) { left: 35%; width: 50px; height: 50px; animation-duration: 20s; animation-delay: 0s; }
-    .bokeh-dot:nth-child(4) { left: 50%; width: 60px; height: 60px; animation-duration: 18s; animation-delay: 3s; background: rgba(255, 215, 0, 0.3); } /* Dorado */
-    .bokeh-dot:nth-child(5) { left: 65%; width: 30px; height: 30px; animation-duration: 14s; animation-delay: 7s; }
-    .bokeh-dot:nth-child(6) { left: 80%; width: 45px; height: 45px; animation-duration: 22s; animation-delay: 2s; background: rgba(153, 51, 204, 0.3); } /* Morado */
-    .bokeh-dot:nth-child(7) { left: 90%; width: 25px; height: 25px; animation-duration: 17s; animation-delay: 4s; }
 
-    /* La animación que las hace flotar hacia arriba */
-    @keyframes float-up {
-        0% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-110vh); /* Sube hasta desaparecer */
-            opacity: 0;
-        }
+    /* Capa 1: Estrellas estáticas (imagen de fondo) */
+    .stars {
+      background:#000 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX////MzMw46qqDAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVR4nO3WMU4DQQxEUcIAECEkJOQ4nBQQEgo7J2AhETmOoIQQEAMSbKxFtqUXX6p/MMlq9X2fN6sFwB8A/AHwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8APAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8APAHwB8AfAHwA8AfAHwB8AfAHwB8AfAHwB8AfAHwA8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwA8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8APAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwA8AfAHwB8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwA8AfAHwB8AfADwB8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfADwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfADwB8AfADwB8AfAHwA8AfAHwB8AfADwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfAHwA8AfAHwA8AfAHwA8AfAHwA8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfADwB8AfADwB8AfAHwA8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfADwB8AfAHwA8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwA8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwB8AfAHwBAN+bA4wf59+cAAAAASUVORK5CYII=) repeat top left;
+      z-index: 0;
+    }
+
+    /* Capa 2: Estrellas que parpadean y se mueven */
+    .twinkling {
+      /* Esta imagen tiene "agujeros" transparentes */
+      background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAABlBMVEX////MzMw46qqDAAAACXBIWXMAAAsTAAALEwEAmpwYAAACMUlEQVR4nO3bwa7bMBQA4DMg7Ef7QY+UnbOTbB4gJ7BAKfwfCEUIgAIBFGIAo5TEnTxPD810P7T31An4R+CPwD8C/wP8Efg/4R+B/wj8E/g/4R+B/wD8Efg/4E/g/wR+B/wD8Efg/4R+B/wD8Efg/wE/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/wR+B/wj8E/g/R+B/wT+CPxH4P+EfwT+E/g/4P8f+B/gfwT+D/wP8H/g/wD/B/4P8P8E/g/8f+B/gP8T+D/A/wH+D/x/4P8A/wT+D/x/4P8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wP8H/j/wP8A/wf+P/A/wP+B/wgDQPs5Psz1KQAAAABJRU5ErkJggg==) repeat top left;
+      z-index: 1;
+      
+      /* Esta capa se mueve más rápido */
+      animation: move-twink-back 200s linear infinite;
     }
     
     /* Para el demo */
@@ -60,21 +53,15 @@
         text-align: center;
         padding-top: 40vh;
         font-size: 2em;
-        position: relative;
+        position: relative; /* Asegura que esté sobre las estrellas */
         z-index: 10;
     }
 </style>
 </head>
 <body>
-    <div class="bokeh-wrapper">
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-        <div class="bokeh-dot"></div>
-    </div>
-    <div class="content">Partículas "Bokeh" Flotantes</div>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <div class="content">Campo de Estrellas (Corregido)</div>
 </body>
 </html>
