@@ -43,7 +43,7 @@ body, html {
 
 /* ****** CAMBIO: TAMAÑO DEL LOGO EN NAV AUMENTADO ****** */
 .nav-brand-logo {
-    height: 60px; /* Más grande que antes */
+    height: 80px; /* Más grande que antes */
     width: auto;
 }
 
@@ -111,7 +111,7 @@ body, html {
 .hero-logo {
     max-width: 100%;
     height: auto;
-    max-height: 350px; /* Mucho más grande */
+    max-height: 550px; /* Mucho más grande */
     margin-bottom: 1.5rem;
 }
 
