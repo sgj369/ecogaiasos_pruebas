@@ -1,96 +1,143 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
 <head>
-<style>
-    :root {
-      --accent-blue: #0077b6; /* Tu azul de acento */
-      --fg: #eef1f0; /* Tu blanco de frente */
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <title>Demo Fondo de Burbujas (con particles.js)</title>
+  
+  <style>
+    /* 1. VARIABLES DE COLOR */
+    :root{
       --bg-uniform: #333; /* Tu color de fondo base */
+      --fg: #eef1f0;
     }
 
-    body {
+    /* 2. ESTILOS BASE */
+    html, body {
         margin: 0;
-        height: 100vh;
-        background-color: var(--bg-uniform); /* Fondo oscuro base */
+        padding: 0;
+        height: 100%;
+        background-color: var(--bg-uniform);
         overflow: hidden; /* Oculta cualquier cosa que se salga */
     }
 
-    /* --- EL CÓDIGO DEL EFECTO --- */
-    
-    .bubbles {
+    /* 3. CONTENEDOR DE PARTÍCULAS */
+    /* Esto es lo que reemplaza tu fondo actual */
+    #particles-js {
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden; /* Asegura que las burbujas no se salgan del body */
+        top: 0;
+        left: 0;
+        z-index: 0; /* Lo ponemos detrás del contenido */
     }
 
-    .bubble {
-        position: absolute;
-        bottom: -100px; /* Las burbujas empiezan por debajo de la pantalla */
-        width: 80px;
-        height: 80px;
-        background-color: rgba(var(--accent-blue), 0.15); /* Burbujas azules semi-transparentes */
-        border-radius: 50%;
-        animation: bubble-up 15s linear infinite; /* Animación de flotar */
-        box-shadow: 0 0 10px rgba(var(--accent-blue), 0.3), inset 0 0 5px rgba(var(--fg), 0.5); /* Efecto de brillo */
-    }
-
-    /* Variaciones para las burbujas */
-    .bubble:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; background-color: rgba(var(--fg), 0.1); }
-    .bubble:nth-child(2) { left: 20%; width: 60px; height: 60px; animation-duration: 15s; animation-delay: 2s; }
-    .bubble:nth-child(3) { left: 25%; width: 100px; height: 100px; animation-duration: 10s; background-color: rgba(var(--fg), 0.15); }
-    .bubble:nth-child(4) { left: 40%; width: 50px; height: 50px; animation-duration: 18s; animation-delay: 1s; }
-    .bubble:nth-child(5) { left: 45%; width: 70px; height: 70px; animation-duration: 13s; background-color: rgba(var(--fg), 0.1); }
-    .bubble:nth-child(6) { left: 50%; width: 90px; height: 90px; animation-duration: 16s; animation-delay: 3s; }
-    .bubble:nth-child(7) { left: 60%; width: 30px; height: 30px; animation-duration: 11s; }
-    .bubble:nth-child(8) { left: 70%; width: 80px; height: 80px; animation-duration: 14s; animation-delay: 2.5s; background-color: rgba(var(--fg), 0.15); }
-    .bubble:nth-child(9) { left: 80%; width: 50px; height: 50px; animation-duration: 17s; }
-    .bubble:nth-child(10) { left: 90%; width: 110px; height: 110px; animation-duration: 9s; animation-delay: 4s; background-color: rgba(var(--accent-blue), 0.1); }
-
-
-    @keyframes bubble-up {
-        0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-        50% {
-            transform: translateY(-50vh) scale(1.1); /* Ligeramente más grandes a la mitad */
-            opacity: 0.8;
-        }
-        100% {
-            transform: translateY(-120vh) scale(0.8); /* Se encogen y suben */
-            opacity: 0;
-        }
-    }
-
-    /* Para el demo */
+    /* 4. CONTENIDO (Para el demo) */
     .content {
-        color: white;
-        font-family: sans-serif;
+        position: relative; /* Asegura que esté sobre las partículas */
+        z-index: 1;
+        color: var(--fg);
+        font-family: Inter, system-ui, sans-serif;
         text-align: center;
         padding-top: 40vh;
         font-size: 2em;
-        position: relative; /* Para que el texto esté por encima */
-        z-index: 10;
     }
-</style>
+  </style>
 </head>
+
 <body>
-    <div class="bubbles">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-    </div>
-    
-    <div class="content">Burbujas Flotantes (Azul y Blanco)</div>
+  
+  <!-- El div que usará particles.js -->
+  <div id="particles-js"></div>
+  
+  <!-- Contenido de ejemplo para que veas el fondo -->
+  <div class="content">
+    Fondo de Burbujas (con particles.js)
+  </div>
+  
+
+  <!-- 1. Carga la librería particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <!-- 2. Tu script con la NUEVA configuración de burbujas -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 50, /* Menos partículas, pero más grandes */
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          /* Tus colores: azul y blanco */
+          "value": ["#0077b6", "#eef1f0"] 
+        },
+        "shape": {
+          "type": "circle", /* Forma de círculo */
+        },
+        "opacity": {
+          "value": 0.4, /* Semi-transparentes */
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 0.5,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 20, /* Tamaño base grande */
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 2,
+            "size_min": 5,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": false /* ¡IMPORTANTE! Quitamos las líneas */
+        },
+        "move": {
+          "enable": true,
+          "speed": 2, /* Velocidad de movimiento */
+          "direction": "top", /* Se mueven hacia ARRIBA */
+          "random": true,
+          "straight": false,
+          "out_mode": "out", /* Desaparecen al salir por arriba */
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse" /* Siguen "explotando" al pasar el mouse */
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "repulse": {
+            "distance": 150,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
 </body>
 </html>
+
