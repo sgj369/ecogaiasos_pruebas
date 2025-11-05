@@ -36,6 +36,14 @@ body, html {
     font-weight: 700;
     color: #2a3d34;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* ****** NUEVO: TAMAÑO DEL LOGO EN LA BARRA DE NAVEGACIÓN ****** */
+.nav-brand-logo {
+    height: 50px; /* Tamaño pequeño para la barra */
+    width: auto;
 }
 
 .nav-menu {
@@ -58,37 +66,7 @@ body, html {
     padding: 10px 5px;
     transition: color 0.3s ease;
 }
-
-.nav-menu li a:hover {
-    color: #007bff;
-}
-
-/* Menú desplegable (El que ya no usamos, pero por si acaso) */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: -15px;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
-    min-width: 200px;
-    z-index: 1001;
-}
-
-.dropdown-menu li { margin: 0; }
-.dropdown-menu li a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-}
-.dropdown-menu li a:hover { background-color: #f4f4f4; }
-.dropdown:hover .dropdown-menu { display: block; }
-
+.nav-menu li a:hover { color: #007bff; }
 
 /*
  ****************************************
@@ -98,9 +76,9 @@ body, html {
 
 .hero-section#particles-js {
     position: relative;
-    height: auto; /* Altura automática */
-    min-height: 70vh; /* Altura mínima */
-    padding: 3rem 2rem; /* Más padding */
+    height: auto;
+    min-height: 70vh;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -123,16 +101,16 @@ body, html {
 
 
 .hero-content {
-    max-width: 700px; /* Un poco más ancho para los nuevos botones */
+    max-width: 700px;
     position: relative;
     z-index: 1;
 }
 
-/* ****** ESTILO PARA EL LOGO GIF ****** */
+/* ****** CAMBIO: TAMAÑO DEL LOGO PRINCIPAL AUMENTADO ****** */
 .hero-logo {
     max-width: 100%;
     height: auto;
-    max-height: 150px; /* Ajusta esto según el tamaño de tu GIF */
+    max-height: 280px; /* Mucho más grande */
     margin-bottom: 1.5rem;
 }
 
@@ -168,7 +146,7 @@ body, html {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem; /* Espacio antes de los botones de nivel */
+    margin-bottom: 2rem;
 }
 
 .btn {
@@ -208,8 +186,12 @@ body, html {
     position: relative; /* Contenedor para el menú */
 }
 
+/* ****** CORRECCIÓN: Z-INDEX EN HOVER ****** */
+.level-dropdown:hover {
+    z-index: 10; /* Se pone al frente cuando se pasa el mouse */
+}
+
 .level-btn {
-    background-color: #0056b3; /* Azul como en tus imágenes */
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -223,9 +205,16 @@ body, html {
     gap: 0.5rem;
 }
 
-.level-btn:hover {
-    background-color: #004494;
-}
+/* ****** NUEVO: COLORES DE BOTONES ****** */
+.level-btn-colibri { background-color: #2a9d8f; } /* Verde */
+.level-btn-colibri:hover { background-color: #268a7f; }
+
+.level-btn-ajolote { background-color: #0056b3; } /* Azul */
+.level-btn-ajolote:hover { background-color: #004494; }
+
+.level-btn-lobo { background-color: #6a00a8; } /* Morado */
+.level-btn-lobo:hover { background-color: #58008c; }
+
 
 .level-btn .fa-chevron-down {
     font-size: 0.8rem;
@@ -235,7 +224,7 @@ body, html {
 .level-dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Abajo del botón */
+    top: 100%;
     left: 0;
     background-color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -260,7 +249,6 @@ body, html {
     background-color: #f4f4f4;
 }
 
-/* Mostrar el menú al hacer hover */
 .level-dropdown:hover .level-dropdown-menu {
     display: block;
 }
@@ -280,7 +268,6 @@ body, html {
     z-index: 1;
 }
 
-/* Toggle Switch (Eventos/Lugares) */
 .toggle-container {
     display: flex;
     justify-content: center;
@@ -326,10 +313,8 @@ body, html {
     transform: translateX(26px);
 }
 
-/* Grid de Tarjetas */
 .card-grid-container {
     display: grid;
-    /* ****** AJUSTE PARA CENTRAR: auto-fit ****** */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
@@ -378,27 +363,24 @@ body, html {
 
 /*
  ****************************************
- * ****** NUEVO: AJUSTES PARA MÓVIL ******
+ * AJUSTES PARA MÓVIL
  ****************************************
  */
 @media (max-width: 768px) {
-    /* Ocultar menú de escritorio en móvil */
     .nav-menu {
         display: none;
     }
-
-    /* Centrar la marca en móvil */
     .nav-container {
         justify-content: center;
     }
-
     .hero-section#particles-js {
-        padding: 2rem 1rem; /* Menos padding lateral */
-        min-height: 90vh; /* Ocupar casi toda la pantalla */
+        padding: 2rem 1rem;
+        min-height: 90vh;
     }
 
+    /* Ajuste del logo principal en móvil */
     .hero-logo {
-        max-height: 100px; /* Logo más pequeño */
+        max-height: 180px; /* Un poco más grande en móvil */
     }
 
     .search-bar-container input {
@@ -409,18 +391,16 @@ body, html {
         left: 1.2rem;
     }
 
-    /* Apilar botones de acción */
     .action-buttons {
         flex-direction: column;
         width: 100%;
         gap: 0.5rem;
     }
-
-    /* Apilar botones de nivel */
+    
     .level-buttons-container {
         flex-direction: column;
         gap: 0.5rem;
-        align-items: stretch; /* Estirar botones */
+        align-items: stretch;
     }
 
     .level-btn {
@@ -430,17 +410,15 @@ body, html {
     }
     
     .level-dropdown-menu {
-        min-width: 100%; /* Ocupar todo el ancho */
+        min-width: 100%;
         left: 0;
     }
 
-    /* Apilar el toggle */
     .toggle-container {
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    /* Tarjetas en una sola columna */
     .card-grid-container {
         grid-template-columns: 1fr;
     }
