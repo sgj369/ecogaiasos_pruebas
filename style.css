@@ -28,7 +28,8 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    /* ****** CAMBIO: Barra de navegación más alta ****** */
+    height: 80px; 
 }
 
 .nav-brand {
@@ -40,9 +41,9 @@ body, html {
     align-items: center;
 }
 
-/* ****** NUEVO: TAMAÑO DEL LOGO EN LA BARRA DE NAVEGACIÓN ****** */
+/* ****** CAMBIO: TAMAÑO DEL LOGO EN NAV AUMENTADO ****** */
 .nav-brand-logo {
-    height: 50px; /* Tamaño pequeño para la barra */
+    height: 60px; /* Más grande que antes */
     width: auto;
 }
 
@@ -110,7 +111,7 @@ body, html {
 .hero-logo {
     max-width: 100%;
     height: auto;
-    max-height: 280px; /* Mucho más grande */
+    max-height: 350px; /* Mucho más grande */
     margin-bottom: 1.5rem;
 }
 
@@ -173,7 +174,7 @@ body, html {
 .btn-secondary:hover { background-color: #e0e0e0; }
 .btn .fa-solid { margin-right: 0.5rem; }
 
-/* ****** NUEVO: ESTILOS PARA BOTONES DE NIVEL ****** */
+/* ESTILOS PARA BOTONES DE NIVEL */
 .level-buttons-container {
     display: flex;
     justify-content: center;
@@ -183,12 +184,11 @@ body, html {
 }
 
 .level-dropdown {
-    position: relative; /* Contenedor para el menú */
+    position: relative;
 }
 
-/* ****** CORRECCIÓN: Z-INDEX EN HOVER ****** */
 .level-dropdown:hover {
-    z-index: 10; /* Se pone al frente cuando se pasa el mouse */
+    z-index: 10;
 }
 
 .level-btn {
@@ -205,14 +205,13 @@ body, html {
     gap: 0.5rem;
 }
 
-/* ****** NUEVO: COLORES DE BOTONES ****** */
-.level-btn-colibri { background-color: #2a9d8f; } /* Verde */
+.level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
 
-.level-btn-ajolote { background-color: #0056b3; } /* Azul */
+.level-btn-ajolote { background-color: #0056b3; }
 .level-btn-ajolote:hover { background-color: #004494; }
 
-.level-btn-lobo { background-color: #6a00a8; } /* Morado */
+.level-btn-lobo { background-color: #6a00a8; }
 .level-btn-lobo:hover { background-color: #58008c; }
 
 
@@ -378,9 +377,8 @@ body, html {
         min-height: 90vh;
     }
 
-    /* Ajuste del logo principal en móvil */
     .hero-logo {
-        max-height: 180px; /* Un poco más grande en móvil */
+        max-height: 180px;
     }
 
     .search-bar-container input {
