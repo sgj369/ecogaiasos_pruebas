@@ -2,18 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- ****** AJUSTE PARA MÓVIL ****** -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
     
-    <!-- 
-      ¡IMPORTANTE! 
-      Esta línea es la que carga tus estilos.
-      Asegúrate de que tu archivo CSS se llame EXACTAMENTE 'style.css'
-      y esté en la MISMA CARPETA que este 'index.html'
-    -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -30,19 +23,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Proyectos</a></li>
-                
-                <!-- MENÚ DESPLEGABLE 'NIVELES' -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        Niveles de Acción <i class="fa-solid fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Colibrí (Básico)</a></li>
-                        <li><a href="#">Ajolote (Intermedio)</a></li>
-                        <li><a href="#">Lobo (Avanzado)</a></li>
-                    </ul>
-                </li>
-                
+                <!-- "Niveles de Acción" se movió al Hero -->
                 <li><a href="#">Contacto</a></li>
             </ul>
         </div>
@@ -50,16 +31,16 @@
 
     <!--
       ****************************************
-      PARTE A: HERO PRINCIPAL (CON FONDO PARTICLES)
+      PARTE A: HERO PRINCIPAL (CON GIF Y NIVELES)
       ****************************************
     -->
-    <!-- Este header tiene el ID 'particles-js' -->
     <header class="hero-section" id="particles-js">
 
         <div class="hero-content">
-            <h1>ECO GAIA SOS</h1>
-            <p class="motto">Mapeando el cambio: Tu directorio de sostenibilidad en agua, huertos, residuos y más.</p>
             
+            <!-- ****** CAMBIO: GIF EN LUGAR DE TÍTULO ****** -->
+            <img src="images/EGS.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+
             <!-- Barra de Búsqueda Principal -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -68,13 +49,57 @@
 
             <!-- Botones de Acción -->
             <div class="action-buttons">
-                <!-- Botón 'Búsqueda Avanzada' sin acción por ahora -->
                 <button class="btn btn-secondary">Búsqueda Avanzada</button>
                 <button class="btn btn-primary">
                     <i class="fa-solid fa-location-dot"></i>
                     Eventos cerca de mí
                 </button>
             </div>
+
+            <!-- ****** NUEVO: BOTONES DE NIVELES (COLIBRÍ, AJOLOTE, LOBO) ****** -->
+            <div class="level-buttons-container">
+                
+                <!-- Nivel Colibrí -->
+                <div class="level-dropdown">
+                    <button class="level-btn">
+                        <i class="fa-solid fa-dove"></i> Colibrí (Básico) <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="level-dropdown-menu">
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Ecotecnias</a></li>
+                        <li><a href="#">Firmas</a></li>
+                        <li><a href="#">Lecturas y bibliografía</a></li>
+                        <li><a href="#">Vídeos y documentales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Nivel Ajolote -->
+                <div class="level-dropdown">
+                    <button class="level-btn">
+                        <i class="fa-solid fa-frog"></i> Ajolote (Intermedio) <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="level-dropdown-menu">
+                        <li><a href="#">Agentes de cambio</a></li>
+                        <li><a href="#">Convocatorias</a></li>
+                        <li><a href="#">Eventos y voluntariados</a></li>
+                        <li><a href="#">Voluntariados convocatoria larga</a></li>
+                    </ul>
+                </div>
+
+                <!-- Nivel Lobo -->
+                <div class="level-dropdown">
+                    <button class="level-btn">
+                        <i class="fa-solid fa-dog"></i> Lobo (Avanzado) <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <ul class="level-dropdown-menu">
+                        <li><a href="#">Fondos</a></li>
+                        <li><a href="#">Normativa</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- ****** FIN DE BOTONES DE NIVELES ****** -->
+
         </div>
     </header>
 
@@ -100,11 +125,6 @@
             <!-- Tarjeta de Ejemplo 1 (Evento) -->
             <div class="card evento">
                 <div class="card-image">
-                    <!-- 
-                      ¡IMPORTANTE! 
-                      Asegúrate de tener una carpeta llamada 'images'
-                      y que 'kpop.jpg' esté dentro de ella.
-                    -->
                     <img src="images/kpop.jpg" alt="Imagen de Evento">
                 </div>
                 <div class="card-content">
@@ -186,7 +206,7 @@
     
     <!-- Configuración de Particles.js (tu código) -->
     <script>
-        particlesJS("particles-js", { // Se aplica al ID del <header>
+        particlesJS("particles-js", {
           "particles": {
             "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
             "color": { "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] },
