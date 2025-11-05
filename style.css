@@ -28,7 +28,6 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* ****** CAMBIO: Barra de navegación más alta ****** */
     height: 80px; 
 }
 
@@ -41,9 +40,8 @@ body, html {
     align-items: center;
 }
 
-/* ****** CAMBIO: TAMAÑO DEL LOGO EN NAV AUMENTADO ****** */
 .nav-brand-logo {
-    height: 80px; /* Más grande que antes */
+    height: 60px;
     width: auto;
 }
 
@@ -54,12 +52,10 @@ body, html {
     display: flex;
     align-items: center;
 }
-
 .nav-menu li {
     position: relative;
     margin-left: 1.5rem;
 }
-
 .nav-menu li a {
     text-decoration: none;
     color: #333;
@@ -89,6 +85,8 @@ body, html {
     overflow: hidden;
     background-color: #f9f9f9;
     box-sizing: border-box;
+    /* ARREGLO: z-index para que los menús floten sobre el contenido */
+    z-index: 2; 
 }
 
 .hero-section#particles-js > .particles-js-canvas-el {
@@ -107,11 +105,11 @@ body, html {
     z-index: 1;
 }
 
-/* ****** CAMBIO: TAMAÑO DEL LOGO PRINCIPAL AUMENTADO ****** */
+/* ARREGLO: Ajuste de tamaño del GIF principal */
 .hero-logo {
-    max-width: 100%;
-    height: auto;
-    max-height: 550px; /* Mucho más grande */
+    width: 100%; /* Ocupará el 100% del contenedor (hasta 700px) */
+    max-width: 700px; /* Límite explícito */
+    height: auto; /* El alto se ajustará automáticamente */
     margin-bottom: 1.5rem;
 }
 
@@ -159,13 +157,11 @@ body, html {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .btn-primary {
     background-color: #b71c1c;
     color: white;
 }
 .btn-primary:hover { background-color: #a31818; }
-
 .btn-secondary {
     background-color: #f0f0f0;
     color: #333;
@@ -187,10 +183,6 @@ body, html {
     position: relative;
 }
 
-.level-dropdown:hover {
-    z-index: 10;
-}
-
 .level-btn {
     color: white;
     font-size: 1rem;
@@ -205,6 +197,7 @@ body, html {
     gap: 0.5rem;
 }
 
+/* COLORES DE BOTONES */
 .level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
 
@@ -243,12 +236,13 @@ body, html {
     text-decoration: none;
     font-weight: 500;
 }
-
 .level-dropdown-menu li a:hover {
     background-color: #f4f4f4;
 }
 
-.level-dropdown:hover .level-dropdown-menu {
+/* ARREGLO: Mostrar con hover (escritorio) O con la clase (móvil/clic) */
+.level-dropdown:hover .level-dropdown-menu,
+.level-dropdown--active .level-dropdown-menu {
     display: block;
 }
 
@@ -264,6 +258,7 @@ body, html {
     margin: 2rem auto;
     padding: 0 1rem;
     position: relative;
+    /* ARREGLO: z-index para que esté detrás del hero */
     z-index: 1;
 }
 
