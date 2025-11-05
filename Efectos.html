@@ -2,61 +2,34 @@
 <html>
 <head>
 <style>
-    /* Función SASS/SCSS para crear las estrellas (CSS lo procesa) */
-    /* No necesitas tocar esto, solo es para generar los box-shadow */
-    @function multiple-box-shadow ($n) {
-      $value: '#{random(2000)}px #{random(2000)}px #FFF';
-      @for $i from 2 through $n {
-        $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        
+        /* --- EL CÓDIGO DEL EFECTO --- */
+        background-color: #333; /* Tu color de fondo */
+        
+        /* Crea dos gradientes: uno para líneas verticales, uno para horizontales */
+        background-image: 
+            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+        
+        /* Define el tamaño de cada "cuadro" de la rejilla */
+        background-size: 40px 40px; 
+        
+        /* Aplica la animación */
+        animation: grid-scroll 3s linear infinite;
+    }
+
+    @keyframes grid-scroll {
+      from {
+        background-position: 0 0;
       }
-      @return unquote($value);
-    }
-    $shadows-small:  multiple-box-shadow(700);
-    $shadows-medium: multiple-box-shadow(200);
-    $shadows-big:    multiple-box-shadow(100);
-    
-    html {
-      height: 100%;
-      background: #000; /* Fondo negro para el espacio */
-      overflow: hidden;
-    }
-    
-    /* --- EL CÓDIGO DEL EFECTO --- */
-    
-    /* Capa 1: Estrellas lejanas (pequeñas, lentas) */
-    .stars1 {
-      width: 1px; height: 1px;
-      background: transparent;
-      box-shadow: $shadows-small;
-      animation: animStar 50s linear infinite;
-    }
-    
-    /* Capa 2: Estrellas medias */
-    .stars2 {
-      width: 2px; height: 2px;
-      background: transparent;
-      box-shadow: $shadows-medium;
-      animation: animStar 100s linear infinite;
-    }
-
-    /* Capa 3: Estrellas cercanas (grandes, rápidas) */
-    .stars3 {
-      width: 3px; height: 3px;
-      background: transparent;
-      box-shadow: $shadows-big;
-      animation: animStar 150s linear infinite;
-    }
-    
-    .stars1, .stars2, .stars3 {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    /* Animación que mueve las estrellas */
-    @keyframes animStar {
-      from { transform: translateY(0px); }
-      to   { transform: translateY(-2000px); } /* Mueve hacia arriba */
+      to {
+        /* Mueve el fondo en diagonal (misma cantidad en X y Y) */
+        background-position: 40px 40px;
+      }
     }
     
     /* Para el demo */
@@ -66,15 +39,10 @@
         text-align: center;
         padding-top: 40vh;
         font-size: 2em;
-        position: relative; /* Asegura que esté sobre las estrellas */
-        z-index: 10;
     }
 </style>
 </head>
 <body>
-    <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="content">Campo de Estrellas (Parallax)</div>
+    <div class="content">Rejilla "Blueprint" Animada</div>
 </body>
 </html>
