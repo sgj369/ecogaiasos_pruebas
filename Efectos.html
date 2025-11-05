@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        /* --- EL CÓDIGO DEL EFECTO --- */
+        
+        /* Define tu gradiente. Usa colores oscuros de tu paleta */
+        background: linear-gradient(-45deg, 
+            #000000, /* Negro */
+            #072d16, /* Tu verde oscuro (de theme-color) */
+            #333333, /* Tu gris de fondo */
+            #002244  /* Un azul oscuro */
+        );
+        
+        /* Haz el fondo GIGANTE para que el movimiento sea sutil */
+        background-size: 400% 400%;
+        
+        /* Aplica la animación */
+        animation: gradient-flow 15s ease-in-out infinite;
+    }
+
+    @keyframes gradient-flow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    /* Para el demo */
+    .content {
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 40vh;
+        font-size: 2em;
+    }
+</style>
+</head>
+<body>
+    <div class="content">Gradiente Animado Sutil</div>
+</body>
+</html>
