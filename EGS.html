@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- ****** AJUSTE PARA MÓVIL ****** -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
     
@@ -18,12 +17,14 @@
     -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-brand">ECO GAIA SOS</a>
+            <!-- ****** CAMBIO: GIF EN LUGAR DE TEXTO ****** -->
+            <a href="index.html" class="nav-brand">
+                <img src="images/EGS.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+            </a>
             
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Proyectos</a></li>
-                <!-- "Niveles de Acción" se movió al Hero -->
                 <li><a href="#">Contacto</a></li>
             </ul>
         </div>
@@ -38,8 +39,8 @@
 
         <div class="hero-content">
             
-            <!-- ****** CAMBIO: GIF EN LUGAR DE TÍTULO ****** -->
-            <img src="EGS.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <!-- ****** CAMBIO: GIF AHORA ES MÁS GRANDE ****** -->
+            <img src="images/EGS.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda Principal -->
             <div class="search-bar-container">
@@ -56,12 +57,13 @@
                 </button>
             </div>
 
-            <!-- ****** NUEVO: BOTONES DE NIVELES (COLIBRÍ, AJOLOTE, LOBO) ****** -->
+            <!-- ****** NUEVO: BOTONES DE NIVELES CON COLORES ****** -->
             <div class="level-buttons-container">
                 
-                <!-- Nivel Colibrí -->
+                <!-- Nivel Colibrí (VERDE) -->
                 <div class="level-dropdown">
-                    <button class="level-btn">
+                    <!-- ****** CAMBIO: Clase 'level-btn-colibri' añadida ****** -->
+                    <button class="level-btn level-btn-colibri">
                         <i class="fa-solid fa-dove"></i> Colibrí (Básico) <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <ul class="level-dropdown-menu">
@@ -73,9 +75,10 @@
                     </ul>
                 </div>
 
-                <!-- Nivel Ajolote -->
+                <!-- Nivel Ajolote (AZUL) -->
                 <div class="level-dropdown">
-                    <button class="level-btn">
+                    <!-- ****** CAMBIO: Clase 'level-btn-ajolote' añadida ****** -->
+                    <button class="level-btn level-btn-ajolote">
                         <i class="fa-solid fa-frog"></i> Ajolote (Intermedio) <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <ul class="level-dropdown-menu">
@@ -86,9 +89,10 @@
                     </ul>
                 </div>
 
-                <!-- Nivel Lobo -->
+                <!-- Nivel Lobo (MORADO) -->
                 <div class="level-dropdown">
-                    <button class="level-btn">
+                    <!-- ****** CAMBIO: Clase 'level-btn-lobo' añadida ****** -->
+                    <button class="level-btn level-btn-lobo">
                         <i class="fa-solid fa-dog"></i> Lobo (Avanzado) <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <ul class="level-dropdown-menu">
@@ -98,7 +102,6 @@
                 </div>
 
             </div>
-            <!-- ****** FIN DE BOTONES DE NIVELES ****** -->
 
         </div>
     </header>
@@ -125,7 +128,7 @@
             <!-- Tarjeta de Ejemplo 1 (Evento) -->
             <div class="card evento">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Evento">
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
@@ -137,7 +140,7 @@
             <!-- Tarjeta de Ejemplo 2 (Evento) -->
             <div class="card evento">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Evento">
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
@@ -149,7 +152,7 @@
             <!-- Tarjeta de Ejemplo 3 (Lugar - Oculta por defecto) -->
             <div class="card lugar" style="display: none;">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Lugar">
+                    <img src="images/kpop.jpg" alt="Imagen de Lugar">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
@@ -166,8 +169,6 @@
       SCRIPTS
       ****************************************
     -->
-
-    <!-- JavaScript Básico para el Toggle -->
     <script>
         const toggle = document.querySelector('.toggle-switch');
         const labels = document.querySelectorAll('.toggle-label');
@@ -200,11 +201,7 @@
             });
         });
     </script>
-
-    <!-- Librería Particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <!-- Configuración de Particles.js (tu código) -->
     <script>
         particlesJS("particles-js", {
           "particles": {
