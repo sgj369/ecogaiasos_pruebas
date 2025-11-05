@@ -82,11 +82,11 @@ body, html {
     align-items: center;
     text-align: center;
     color: #333;
-    overflow: hidden;
     background-color: #f9f9f9;
     box-sizing: border-box;
-    /* ARREGLO: z-index para que los menús floten sobre el contenido */
     z-index: 2; 
+    /* ****** ARREGLO: Se eliminó 'overflow: hidden;' ****** */
+    /* Esta línea estaba cortando los menús. ¡Ya no! */
 }
 
 .hero-section#particles-js > .particles-js-canvas-el {
@@ -105,11 +105,10 @@ body, html {
     z-index: 1;
 }
 
-/* ARREGLO: Ajuste de tamaño del GIF principal */
 .hero-logo {
-    width: 100%; /* Ocupará el 100% del contenedor (hasta 700px) */
-    max-width: 700px; /* Límite explícito */
-    height: auto; /* El alto se ajustará automáticamente */
+    width: 100%;
+    max-width: 700px; 
+    height: auto; 
     margin-bottom: 1.5rem;
 }
 
@@ -258,7 +257,6 @@ body, html {
     margin: 2rem auto;
     padding: 0 1rem;
     position: relative;
-    /* ARREGLO: z-index para que esté detrás del hero */
     z-index: 1;
 }
 
