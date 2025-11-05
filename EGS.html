@@ -4,46 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
+    
+    <!-- 
+      ¡IMPORTANTE! 
+      Esta línea es la que carga tus estilos.
+      Asegúrate de que tu archivo CSS se llame EXACTAMENTE 'style.css'
+      y esté en la MISMA CARPETA que este 'index.html'
+    -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <nav class="main-nav">
-    <div class="nav-container">
-        <a href="index.html" class="nav-brand">ECO GAIA SOS</a>
-        
-        <ul class="nav-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="#">Proyectos</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                    Niveles de Acción <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Colibrí (Básico)</a></li>
-                    <li><a href="#">Ajolote (Intermedio)</a></li>
-                    <li><a href="#">Lobo (Avanzado)</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </div>
-</nav>
 
-    <header class="hero-section">
-        <div class="animated-background"></div>
+    <!--
+      ****************************************
+      BARRA DE NAVEGACIÓN SUPERIOR
+      ****************************************
+    -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">ECO GAIA SOS</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Proyectos</a></li>
+                
+                <!-- MENÚ DESPLEGABLE 'NIVELES' -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Niveles de Acción <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Colibrí (Básico)</a></li>
+                        <li><a href="#">Ajolote (Intermedio)</a></li>
+                        <li><a href="#">Lobo (Avanzado)</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--
+      ****************************************
+      PARTE A: HERO PRINCIPAL (CON FONDO PARTICLES)
+      ****************************************
+    -->
+    <!-- Este header tiene el ID 'particles-js' -->
+    <header class="hero-section" id="particles-js">
 
         <div class="hero-content">
             <h1>ECO GAIA SOS</h1>
-            <p class="motto">Conectando actores del desarrollo sostenible en el Valle de México.</p>
+            <p class="motto">Mapeando el cambio: Tu directorio de sostenibilidad en agua, huertos, residuos y más.</p>
             
+            <!-- Barra de Búsqueda Principal -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Busca un proyecto, actor o tema...">
             </div>
 
+            <!-- Botones de Acción -->
             <div class="action-buttons">
+                <!-- Botón 'Búsqueda Avanzada' sin acción por ahora -->
                 <button class="btn btn-secondary">Búsqueda Avanzada</button>
                 <button class="btn btn-primary">
                     <i class="fa-solid fa-location-dot"></i>
@@ -53,8 +78,14 @@
         </div>
     </header>
 
+    <!--
+      ****************************************
+      PARTE B: SELECTOR Y TARJETAS
+      ****************************************
+    -->
     <main class="content-section">
         
+        <!-- Selector (Toggle) de Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-target="eventos">Eventos</span>
             <div class="toggle-switch">
@@ -63,11 +94,18 @@
             <span class="toggle-label" data-target="lugares">Lugares</span>
         </div>
 
+        <!-- Contenedor de Tarjetas (Grid) -->
         <div class="card-grid-container">
             
+            <!-- Tarjeta de Ejemplo 1 (Evento) -->
             <div class="card evento">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Kpop">
+                    <!-- 
+                      ¡IMPORTANTE! 
+                      Asegúrate de tener una carpeta llamada 'images'
+                      y que 'kpop.jpg' esté dentro de ella.
+                    -->
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
@@ -76,9 +114,10 @@
                 </div>
             </div>
 
+            <!-- Tarjeta de Ejemplo 2 (Evento) -->
             <div class="card evento">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Kpop">
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
@@ -87,9 +126,10 @@
                 </div>
             </div>
 
+            <!-- Tarjeta de Ejemplo 3 (Lugar - Oculta por defecto) -->
             <div class="card lugar" style="display: none;">
                 <div class="card-image">
-                    <img src="kpop.jpg" alt="Imagen de Kpop">
+                    <img src="images/kpop.jpg" alt="Imagen de Lugar">
                 </div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
@@ -97,10 +137,17 @@
                     <p class="card-location">Jalapa 234, Roma Sur</p>
                 </div>
             </div>
-            
-            </div>
+
+        </div>
     </main>
 
+    <!--
+      ****************************************
+      SCRIPTS
+      ****************************************
+    -->
+
+    <!-- JavaScript Básico para el Toggle -->
     <script>
         const toggle = document.querySelector('.toggle-switch');
         const labels = document.querySelectorAll('.toggle-label');
@@ -111,13 +158,11 @@
             toggle.classList.toggle('active');
             
             if (toggle.classList.contains('active')) {
-                // Mostrar Lugares
                 labels[0].classList.remove('active');
                 labels[1].classList.add('active');
                 cardsEventos.forEach(card => card.style.display = 'none');
-                cardsLugares.forEach(card => card.style.display = 'block'); // 'block' o 'flex' según tu layout
+                cardsLugares.forEach(card => card.style.display = 'block');
             } else {
-                // Mostrar Eventos
                 labels[0].classList.add('active');
                 labels[1].classList.remove('active');
                 cardsEventos.forEach(card => card.style.display = 'block');
@@ -125,7 +170,6 @@
             }
         });
 
-        // Simular clic en etiquetas para activar el toggle
         labels.forEach(label => {
             label.addEventListener('click', () => {
                 const target = label.getAttribute('data-target');
@@ -137,5 +181,35 @@
         });
     </script>
 
+    <!-- Librería Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Configuración de Particles.js (tu código) -->
+    <script>
+        particlesJS("particles-js", { // Se aplica al ID del <header>
+          "particles": {
+            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] },
+            "shape": { "type": "circle" },
+            "opacity": {
+              "value": 0.6, "random": true,
+              "anim": { "enable": true, "speed": 0.5, "opacity_min": 0, "sync": false }
+            },
+            "size": { "value": 8, "random": true },
+            "line_linked": { "enable": true, "distance": 180, "color": "#cccccc", "opacity": 0.4, "width": 1 },
+            "move": {
+              "enable": true, "speed": 3.5, "direction": "out", "random": true, "straight": false, "out_mode": "out", "bounce": false
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
+          },
+          "retina_detect": true
+        });
+    </script>
+
 </body>
 </html>
+
+
