@@ -1,143 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  
-  <title>Demo Fondo de Burbujas (con particles.js)</title>
-  
-  <style>
-    /* 1. VARIABLES DE COLOR */
-    :root{
-      --bg-uniform: #333; /* Tu color de fondo base */
-      --fg: #eef1f0;
-    }
-
-    /* 2. ESTILOS BASE */
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background-color: var(--bg-uniform);
-        overflow: hidden; /* Oculta cualquier cosa que se salga */
-    }
-
-    /* 3. CONTENEDOR DE PARTÍCULAS */
-    /* Esto es lo que reemplaza tu fondo actual */
-    #particles-js {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0; /* Lo ponemos detrás del contenido */
-    }
-
-    /* 4. CONTENIDO (Para el demo) */
-    .content {
-        position: relative; /* Asegura que esté sobre las partículas */
-        z-index: 1;
-        color: var(--fg);
-        font-family: Inter, system-ui, sans-serif;
-        text-align: center;
-        padding-top: 40vh;
-        font-size: 2em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECO GAIA SOS - Pruebas</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-  
-  <!-- El div que usará particles.js -->
-  <div id="particles-js"></div>
-  
-  <!-- Contenido de ejemplo para que veas el fondo -->
-  <div class="content">
-    Fondo de Burbujas (con particles.js)
-  </div>
-  
 
-  <!-- 1. Carga la librería particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  
-  <!-- 2. Tu script con la NUEVA configuración de burbujas -->
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 50, /* Menos partículas, pero más grandes */
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          /* Tus colores: azul y blanco */
-          "value": ["#0077b6", "#eef1f0"] 
-        },
-        "shape": {
-          "type": "circle", /* Forma de círculo */
-        },
-        "opacity": {
-          "value": 0.4, /* Semi-transparentes */
-          "random": true,
-          "anim": {
-            "enable": true,
-            "speed": 0.5,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 20, /* Tamaño base grande */
-          "random": true,
-          "anim": {
-            "enable": true,
-            "speed": 2,
-            "size_min": 5,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": false /* ¡IMPORTANTE! Quitamos las líneas */
-        },
-        "move": {
-          "enable": true,
-          "speed": 2, /* Velocidad de movimiento */
-          "direction": "top", /* Se mueven hacia ARRIBA */
-          "random": true,
-          "straight": false,
-          "out_mode": "out", /* Desaparecen al salir por arriba */
-          "bounce": false
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse" /* Siguen "explotando" al pasar el mouse */
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">ECO GAIA SOS</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Proyectos</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Niveles de Acción <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Colibrí (Básico)</a></li>
+                        <li><a href="#">Ajolote (Intermedio)</a></li>
+                        <li><a href="#">Lobo (Avanzado)</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section" id="particles-js">
+
+        <div class="hero-content">
+            <h1>ECO GAIA SOS</h1>
+            <p class="motto">Mapeando el cambio: Tu directorio de sostenibilidad en agua, huertos, residuos y más.</p>
+            
+            <div class="search-bar-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Busca un proyecto, actor o tema...">
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary">Búsqueda Avanzada</button>
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Eventos cerca de mí
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-section">
+        
+        <div class="toggle-container">
+            <span class="toggle-label active" data-target="eventos">Eventos</span>
+            <div class="toggle-switch">
+                <div class="toggle-handle"></div>
+            </div>
+            <span class="toggle-label" data-target="lugares">Lugares</span>
+        </div>
+
+        <div class="card-grid-container">
+            
+            <div class="card evento">
+                <div class="card-image">
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">Voluntariado</span>
+                    <h3 class="card-title">Restauración de Hábitat</h3>
+                    <p class="card-location">Bosque de Chapultepec</p>
+                </div>
+            </div>
+
+            <div class="card evento">
+                <div class="card-image">
+                    <img src="images/kpop.jpg" alt="Imagen de Evento">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">Taller</span>
+                    <h3 class="card-title">Creación de Huertos Urbanos</h3>
+                    <p class="card-location">Huerto Roma Verde</p>
+                </div>
+            </div>
+
+            <div class="card lugar" style="display: none;">
+                <div class="card-image">
+                    <img src="images/kpop.jpg" alt="Imagen de Lugar">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">Punto de Encuentro</span>
+                    <h3 class="card-title">Huerto Roma Verde</h3>
+                    <p class="card-location">Jalapa 234, Roma Sur</p>
+                </div>
+            </div>
+            
+            </div>
+    </main>
+
+    <script>
+        const toggle = document.querySelector('.toggle-switch');
+        const labels = document.querySelectorAll('.toggle-label');
+        const cardsEventos = document.querySelectorAll('.card.evento');
+        const cardsLugares = document.querySelectorAll('.card.lugar');
+
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                // Mostrar Lugares
+                labels[0].classList.remove('active');
+                labels[1].classList.add('active');
+                cardsEventos.forEach(card => card.style.display = 'none');
+                cardsLugares.forEach(card => card.style.display = 'block');
+            } else {
+                // Mostrar Eventos
+                labels[0].classList.add('active');
+                labels[1].classList.remove('active');
+                cardsEventos.forEach(card => card.style.display = 'block');
+                cardsLugares.forEach(card => card.style.display = 'none');
+            }
+        });
+
+        // Simular clic en etiquetas para activar el toggle
+        labels.forEach(label => {
+            label.addEventListener('click', () => {
+                const target = label.getAttribute('data-target');
+                if ((target === 'eventos' && toggle.classList.contains('active')) ||
+                    (target === 'lugares' && !toggle.classList.contains('active'))) {
+                    toggle.click();
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        particlesJS("particles-js", { // Se aplica al ID del <header>
+          "particles": {
+            "number": {
+              "value": 60, 
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              // Colores de tu logo
+              "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] 
+            },
+            "shape": {
+              "type": "circle",
+            },
+            "opacity": {
+              "value": 0.6, 
+              "random": true,
+              "anim": { 
+                "enable": true,
+                "speed": 0.5,
+                "opacity_min": 0,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 8, 
+              "random": true
+            },
+            "line_linked": {
+              "enable": true, 
+              "distance": 180, 
+              "color": "#cccccc", // Líneas grises claras
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 3.5,
+              "direction": "out", 
+              "random": true,
+              "straight": false,
+              "out_mode": "out", 
+              "bounce": false
+            }
           },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
+          "interactivity": {
+            "detect_on": "canvas", // Detecta en el canvas de partículas
+            "events": {
+              "onhover": { "enable": false },
+              "onclick": { "enable": false },
+              "resize": true
+            }
           },
-          "resize": true
-        },
-        "modes": {
-          "repulse": {
-            "distance": 150,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
+          "retina_detect": true
+        });
+    </script>
 
 </body>
 </html>
-
