@@ -221,23 +221,30 @@
         });
     </script>
 
-    <!-- SCRIPT PARA MENÚS EN MÓVIL (Click) -->
+    <!-- ****** SCRIPT DE MENÚS CORREGIDO ****** -->
     <script>
         document.querySelectorAll('.level-btn').forEach(button => {
             button.addEventListener('click', (event) => {
-                event.stopPropagation(); 
+                event.stopPropagation();
                 const dropdown = button.closest('.level-dropdown');
                 
+                // Comprueba si este menú ya estaba activo ANTES de cerrar todos
+                const wasActive = dropdown.classList.contains('level-dropdown--active');
+
+                // Cierra TODOS los menús
                 document.querySelectorAll('.level-dropdown').forEach(item => {
-                    if (item !== dropdown) {
-                        item.classList.remove('level-dropdown--active');
-                    }
+                    item.classList.remove('level-dropdown--active');
                 });
-                
-                dropdown.classList.toggle('level-dropdown--active');
+
+                // Si NO estaba activo, ábrelo.
+                // Si SÍ estaba activo, el bucle anterior ya lo cerró.
+                if (!wasActive) {
+                    dropdown.classList.add('level-dropdown--active');
+                }
             });
         });
 
+        // Cierra los menús si se hace clic en cualquier otro lugar
         document.addEventListener('click', () => {
             document.querySelectorAll('.level-dropdown').forEach(item => {
                 item.classList.remove('level-dropdown--active');
@@ -247,5 +254,3 @@
 
 </body>
 </html>
-
-
