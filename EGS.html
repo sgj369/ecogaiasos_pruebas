@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale1.0">
     <title>ECO GAIA SOS - Pruebas</title>
     
     <link rel="stylesheet" href="style.css">
@@ -18,7 +18,7 @@
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <img src="EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="images/EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             
             <ul class="nav-menu">
@@ -31,14 +31,15 @@
 
     <!--
       ****************************************
-      PARTE A: HERO PRINCIPAL (CON GIF Y NIVELES)
+      PARTE A: HERO PRINCIPAL
       ****************************************
     -->
+    <!-- **** NOTA: EL ID "particles-js" SE QUEDA, AUNQUE EL SCRIPT ESTÉ APAGADO **** -->
     <header class="hero-section" id="particles-js">
 
         <div class="hero-content">
             
-            <img src="EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="images/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda Principal -->
             <div class="search-bar-container">
@@ -111,6 +112,8 @@
     -->
     <main class="content-section">
         
+        <!-- ... (Tu contenido de tarjetas y toggle sigue aquí igual) ... -->
+        
         <!-- Selector (Toggle) de Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-target="eventos">Eventos</span>
@@ -124,8 +127,7 @@
         <div class="card-grid-container">
             
             <div class="card evento">
-                 <!-- Imagen kpop.jpg -->
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
                     <h3 class="card-title">Restauración de Hábitat</h3>
@@ -134,8 +136,7 @@
             </div>
 
             <div class="card evento">
-                 <!-- Imagen kpop.jpg -->
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
                     <h3 class="card-title">Creación de Huertos Urbanos</h3>
@@ -144,8 +145,7 @@
             </div>
 
             <div class="card lugar" style="display: none;">
-                 <!-- Imagen kpop.jpg -->
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Lugar"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Lugar"></div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
                     <h3 class="card-title">Huerto Roma Verde</h3>
@@ -162,7 +162,7 @@
       ****************************************
     -->
     <script>
-        // Script para el toggle Eventos/Lugares
+        // Script para el toggle Eventos/Lugares (Este está bien)
         const toggle = document.querySelector('.toggle-switch');
         const labels = document.querySelectorAll('.toggle-label');
         const cardsEventos = document.querySelectorAll('.card.evento');
@@ -195,7 +195,11 @@
         });
     </script>
     
-    <!-- Script para Particles.js -->
+    <!-- 
+    //  ****************************************
+    //  SCRIPT DE PARTICLES (TEMPORALMENTE DESACTIVADO)
+    //  ****************************************
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
@@ -219,32 +223,28 @@
           },
           "retina_detect": true
         });
-    </script>
+    </script> 
+    -->
 
-    <!-- ****** SCRIPT DE MENÚS CORREGIDO ****** -->
+    <!-- SCRIPT DE MENÚS (Este es el que queremos probar) -->
     <script>
         document.querySelectorAll('.level-btn').forEach(button => {
             button.addEventListener('click', (event) => {
                 event.stopPropagation();
                 const dropdown = button.closest('.level-dropdown');
                 
-                // Comprueba si este menú ya estaba activo ANTES de cerrar todos
                 const wasActive = dropdown.classList.contains('level-dropdown--active');
 
-                // Cierra TODOS los menús
                 document.querySelectorAll('.level-dropdown').forEach(item => {
                     item.classList.remove('level-dropdown--active');
                 });
 
-                // Si NO estaba activo, ábrelo.
-                // Si SÍ estaba activo, el bucle anterior ya lo cerró.
                 if (!wasActive) {
                     dropdown.classList.add('level-dropdown--active');
                 }
             });
         });
 
-        // Cierra los menús si se hace clic en cualquier otro lugar
         document.addEventListener('click', () => {
             document.querySelectorAll('.level-dropdown').forEach(item => {
                 item.classList.remove('level-dropdown--active');
