@@ -338,7 +338,7 @@ body, html {
     color: #ffffff;
     text-align: center;
     /* Usamos Kpop.jpg como placeholder para todas */
-    background-image: url('images/kpop.jpg'); 
+    background-image: url('kpop.jpg'); 
 }
 /* Superposición oscura para legibilidad */
 .nivel-section::before {
