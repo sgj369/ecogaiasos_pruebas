@@ -1,6 +1,5 @@
 /* --- Reseteo Básico y Fuentes --- */
 html {
-    /* ****** NUEVO: Scroll suave ****** */
     scroll-behavior: smooth;
 }
 body, html {
@@ -12,7 +11,7 @@ body, html {
 
 /*
  ****************************************
- * NUEVO: PANTALLA DE CARGA
+ * PANTALLA DE CARGA
  ****************************************
  */
 #loader {
@@ -21,15 +20,15 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease; /* Transición de desvanecimiento */
+    transition: opacity 0.5s ease;
 }
 #loader img {
-    width: 200px; /* Ajusta el tamaño de tu GIF de carga */
+    width: 200px;
 }
 
 
@@ -90,7 +89,7 @@ body, html {
 
 /*
  ****************************************
- * PARTE A: HERO PRINCIPAL (CON PARTICLES)
+ * PARTE A: HERO PRINCIPAL
  ****************************************
  */
 .hero-section#particles-js {
@@ -184,7 +183,7 @@ body, html {
 
 /*
  ****************************************
- * ESTILOS PARA BOTONES DE NIVEL (ACTUALIZADOS)
+ * BOTONES DE NIVEL (HERO)
  ****************************************
  */
 .level-buttons-container {
@@ -194,8 +193,6 @@ body, html {
     flex-wrap: wrap;
     width: 100%;
 }
-
-/* ****** CAMBIO: Ahora es un <a> pero se ve como botón ****** */
 .level-btn {
     color: white;
     font-size: 1rem;
@@ -208,13 +205,11 @@ body, html {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    text-decoration: none; /* Quita el subrayado del enlace */
+    text-decoration: none;
 }
 .level-btn:hover {
-    transform: translateY(-3px); /* Pequeño salto al pasar el mouse */
+    transform: translateY(-3px);
 }
-
-/* COLORES DE BOTONES (Se mantienen) */
 .level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
 
@@ -224,12 +219,10 @@ body, html {
 .level-btn-lobo { background-color: #6a00a8; }
 .level-btn-lobo:hover { background-color: #58008c; }
 
-/* ****** ELIMINADO: Todos los estilos de .level-dropdown y .level-dropdown-menu ****** */
-
 
 /*
  ****************************************
- * PARTE B: SELECTOR Y TARJETAS (Se mantiene)
+ * PARTE B: SELECTOR Y TARJETAS (Eventos/Lugares)
  ****************************************
  */
 .content-section {
@@ -326,7 +319,7 @@ body, html {
 
 /*
  ****************************************
- * NUEVO: SECCIONES DE NIVELES
+ * PARTE C: SECCIONES DE NIVELES (Actualizado)
  ****************************************
  */
 .nivel-section {
@@ -337,8 +330,6 @@ body, html {
     background-attachment: fixed; /* Efecto Parallax */
     color: #ffffff;
     text-align: center;
-    /* Usamos Kpop.jpg como placeholder para todas */
-    background-image: url('kpop.jpg'); 
 }
 /* Superposición oscura para legibilidad */
 .nivel-section::before {
@@ -351,9 +342,22 @@ body, html {
     background-color: rgba(0, 0, 0, 0.7); /* Filtro oscuro */
     z-index: 1;
 }
+
+/* ****** CAMBIO: Fondos de imagen específicos ****** */
+#seccion-colibri {
+    background-image: url('colibrí.jpg');
+}
+#seccion-ajolote {
+    background-image: url('ajolote.jpg');
+}
+#seccion-lobo {
+    background-image: url('lobo.jpg');
+}
+
+
 .nivel-content {
     position: relative;
-    z-index: 2; /* Contenido por encima del filtro */
+    z-index: 2;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -373,61 +377,41 @@ body, html {
 }
 .nivel-btn-grid {
     display: grid;
-    /* Columnas automáticas que se ajustan */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
 }
+
+/* ****** CAMBIO: Estilo de "Tarjeta Ovalada" ****** */
 .nivel-btn-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo más visible */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #ffffff;
-    padding: 1.25rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 24px; /* Más redondeado */
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    
-    /* Para el tooltip */
-    position: relative;
+    text-align: left; /* Alinea el texto a la izquierda */
+    display: flex;
+    flex-direction: column; /* Apila el título y la descripción */
+    gap: 0.5rem; /* Espacio entre título y descripción */
 }
 .nivel-btn-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-5px);
 }
 
-/*
- ****************************************
- * NUEVO: ESTILOS PARA TOOLTIP
- ****************************************
- */
-.nivel-btn-item[data-tooltip] {
-    position: relative; /* Contenedor para el tooltip */
+/* ****** CAMBIO: Nuevos estilos para el texto interno ****** */
+.nivel-btn-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
 }
-/* El tooltip en sí (oculto por defecto) */
-.nivel-btn-item[data-tooltip]::after {
-    content: attr(data-tooltip); /* Toma el texto del atributo */
-    position: absolute;
-    bottom: 110%; /* Arriba del botón */
-    left: 50%;
-    transform: translateX(-50%); /* Centrado */
-    
-    background-color: #333;
-    color: #fff;
-    padding: 0.5rem 0.75rem;
-    border-radius: 4px;
+.nivel-btn-desc {
     font-size: 0.9rem;
-    font-weight: 400;
-    white-space: nowrap; /* Evita que el texto se rompa */
-    
-    opacity: 0; /* Oculto */
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-}
-/* Mostrar al pasar el mouse */
-.nivel-btn-item[data-tooltip]:hover::after {
-    opacity: 1;
-    visibility: visible;
+    font-weight: 300;
+    color: #eeeeee; /* Un poco más suave que el blanco puro */
+    margin: 0;
+    line-height: 1.4;
 }
 
 
@@ -485,16 +469,12 @@ body, html {
     /* Ajustes móviles para nuevas secciones */
     .nivel-section {
         padding: 3rem 1rem;
-        background-attachment: scroll; /* Parallax no funciona bien en móvil */
+        background-attachment: scroll;
     }
     .nivel-section h2 {
         font-size: 2rem;
     }
     .nivel-btn-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
-    }
-    /* Desactivar tooltips en móvil (no hay hover) */
-    .nivel-btn-item[data-tooltip]::after {
-        display: none;
+        grid-template-columns: 1fr;
     }
 }
