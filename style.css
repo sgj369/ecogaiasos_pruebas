@@ -1,276 +1,500 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECO GAIA SOS - Pruebas</title>
+/* --- Reseteo Básico y Fuentes --- */
+html {
+    /* ****** NUEVO: Scroll suave ****** */
+    scroll-behavior: smooth;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/*
+ ****************************************
+ * NUEVO: PANTALLA DE CARGA
+ ****************************************
+ */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff; /* Fondo blanco */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease; /* Transición de desvanecimiento */
+}
+#loader img {
+    width: 200px; /* Ajusta el tamaño de tu GIF de carga */
+}
+
+
+/*
+ ****************************************
+ * BARRA DE NAVEGACIÓN SUPERIOR
+ ****************************************
+ */
+.main-nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px; 
+}
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2a3d34;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.nav-brand-logo {
+    height: 60px;
+    width: auto;
+}
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.nav-menu li {
+    position: relative;
+    margin-left: 1.5rem;
+}
+.nav-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 10px 5px;
+    transition: color 0.3s ease;
+}
+.nav-menu li a:hover { color: #007bff; }
+
+/*
+ ****************************************
+ * PARTE A: HERO PRINCIPAL (CON PARTICLES)
+ ****************************************
+ */
+.hero-section#particles-js {
+    position: relative;
+    height: auto;
+    min-height: 70vh;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+.hero-section#particles-js > .particles-js-canvas-el {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+}
+.hero-logo {
+    width: 100%;
+    max-width: 700px; 
+    height: auto; 
+    margin-bottom: 1.5rem;
+}
+
+/* Barra de Búsqueda */
+.search-bar-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.search-bar-container input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+.search-bar-container .fa-magnifying-glass {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+/* Botones de Acción */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    background-color: #b71c1c;
+    color: white;
+}
+.btn-primary:hover { background-color: #a31818; }
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+.btn-secondary:hover { background-color: #e0e0e0; }
+.btn .fa-solid { margin-right: 0.5rem; }
+
+/*
+ ****************************************
+ * ESTILOS PARA BOTONES DE NIVEL (ACTUALIZADOS)
+ ****************************************
+ */
+.level-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* ****** CAMBIO: Ahora es un <a> pero se ve como botón ****** */
+.level-btn {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
+.level-btn:hover {
+    transform: translateY(-3px); /* Pequeño salto al pasar el mouse */
+}
+
+/* COLORES DE BOTONES (Se mantienen) */
+.level-btn-colibri { background-color: #2a9d8f; }
+.level-btn-colibri:hover { background-color: #268a7f; }
+
+.level-btn-ajolote { background-color: #0056b3; }
+.level-btn-ajolote:hover { background-color: #004494; }
+
+.level-btn-lobo { background-color: #6a00a8; }
+.level-btn-lobo:hover { background-color: #58008c; }
+
+/* ****** ELIMINADO: Todos los estilos de .level-dropdown y .level-dropdown-menu ****** */
+
+
+/*
+ ****************************************
+ * PARTE B: SELECTOR Y TARJETAS (Se mantiene)
+ ****************************************
+ */
+.content-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+.toggle-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.toggle-label.active { color: #111; }
+.toggle-switch {
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    margin: 0 1rem;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.toggle-switch .toggle-handle {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.toggle-switch.active {
+    background-color: #D4AF37; 
+}
+.toggle-switch.active .toggle-handle {
+    transform: translateX(26px);
+}
+.card-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    background-color: #2a3d34; 
+    color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-5px); }
+.card-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; 
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-content { padding: 1.25rem; }
+.card-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #a0d8b3;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+}
+.card-location {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin: 0;
+}
+
+/*
+ ****************************************
+ * NUEVO: SECCIONES DE NIVELES
+ ****************************************
+ */
+.nivel-section {
+    position: relative;
+    padding: 4rem 2rem;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Efecto Parallax */
+    color: #ffffff;
+    text-align: center;
+    /* Usamos Kpop.jpg como placeholder para todas */
+    background-image: url('images/kpop.jpg'); 
+}
+/* Superposición oscura para legibilidad */
+.nivel-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Filtro oscuro */
+    z-index: 1;
+}
+.nivel-content {
+    position: relative;
+    z-index: 2; /* Contenido por encima del filtro */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.nivel-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.nivel-description {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nivel-btn-grid {
+    display: grid;
+    /* Columnas automáticas que se ajustan */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.nivel-btn-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
+    /* Para el tooltip */
+    position: relative;
+}
+.nivel-btn-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
 
-    <!--
-      ****************************************
-      PANTALLA DE CARGA (NUEVO)
-      ****************************************
-    -->
-    <div id="loader">
-        <img src="images/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
-    </div>
-
-    <!--
-      ****************************************
-      BARRA DE NAVEGACIÓN SUPERIOR
-      ****************************************
-    -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand">
-                <img src="images/EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!--
-      ****************************************
-      PARTE A: HERO PRINCIPAL
-      ****************************************
-    -->
-    <header class="hero-section" id="particles-js">
-
-        <div class="hero-content">
-            
-            <img src="images/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
-
-            <!-- Barra de Búsqueda (Se mantiene) -->
-            <div class="search-bar-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Busca un proyecto, actor o tema...">
-            </div>
-
-            <!-- Botones de Acción (Se mantienen) -->
-            <div class="action-buttons">
-                <button class="btn btn-secondary">Búsqueda Avanzada</button>
-                <button class="btn btn-primary">
-                    <i class="fa-solid fa-location-dot"></i>
-                    Eventos cerca de mí
-                </button>
-            </div>
-
-            <!--
-              ****************************************
-              BOTONES DE NIVELES (ACTUALIZADOS)
-              ****************************************
-              - Ya no son desplegables.
-              - Son enlaces <a href> que llevan a las secciones de abajo.
-            -->
-            <div class="level-buttons-container">
-                
-                <!-- Nivel Colibrí (VERDE) -->
-                <a href="#seccion-colibri" class="level-btn level-btn-colibri">
-                    <i class="fa-solid fa-dove"></i> Colibrí (Básico)
-                </a>
-
-                <!-- Nivel Ajolote (AZUL) -->
-                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote">
-                    <i class="fa-solid fa-frog"></i> Ajolote (Intermedio)
-                </a>
-
-                <!-- Nivel Lobo (MORADO) -->
-                <a href="#seccion-lobo" class="level-btn level-btn-lobo">
-                    <i class="fa-solid fa-dog"></i> Lobo (Avanzado)
-                </a>
-
-            </div>
-
-        </div>
-    </header>
-
-    <!--
-      ****************************************
-      PARTE B: SELECTOR Y TARJETAS (Se mantiene)
-      ****************************************
-    -->
-    <main class="content-section">
-        
-        <!-- Selector (Toggle) de Eventos/Lugares -->
-        <div class="toggle-container">
-            <span class="toggle-label active" data-target="eventos">Eventos</span>
-            <div class="toggle-switch">
-                <div class="toggle-handle"></div>
-            </div>
-            <span class="toggle-label" data-target="lugares">Lugares</span>
-        </div>
-
-        <!-- Contenedor de Tarjetas (Grid) -->
-        <div class="card-grid-container">
-            
-            <div class="card evento">
-                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
-                <div class="card-content">
-                    <span class="card-category">Voluntariado</span>
-                    <h3 class="card-title">Restauración de Hábitat</h3>
-                    <p class="card-location">Bosque de Chapultepec</p>
-                </div>
-            </div>
-
-            <div class="card evento">
-                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
-                <div class="card-content">
-                    <span class="card-category">Taller</span>
-                    <h3 class="card-title">Creación de Huertos Urbanos</h3>
-                    <p class="card-location">Huerto Roma Verde</p>
-                </div>
-            </div>
-
-            <div class="card lugar" style="display: none;">
-                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Lugar"></div>
-                <div class="card-content">
-                    <span class="card-category">Punto de Encuentro</span>
-                    <h3 class="card-title">Huerto Roma Verde</h3>
-                    <p class="card-location">Jalapa 234, Roma Sur</p>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!--
-      ****************************************
-      PARTE C: NUEVAS SECCIONES DE NIVELES
-      ****************************************
-    -->
-
-    <!-- SECCIÓN COLIBRÍ -->
-    <section id="seccion-colibri" class="nivel-section">
-        <div class="nivel-content">
-            <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
-            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
-            <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Explora cursos y talleres para aprender nuevas habilidades.">🎓 Cursos</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Descubre tecnologías sostenibles que puedes aplicar en casa.">💡 Ecotecnias</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Apoya causas y peticiones importantes con tu firma.">✍️ Firmas</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra artículos, guías y libros recomendados.">📚 Lecturas y bibliografía</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Inspírate con documentales y videos educativos.">🎬 Vídeos y documentales</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN AJOLOTE -->
-    <section id="seccion-ajolote" class="nivel-section">
-        <div class="nivel-content">
-            <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
-            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
-            <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Conoce a las personas y organizaciones que están liderando el cambio.">👥 Agentes de cambio</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra oportunidades para presentar tus proyectos o unirte a otros.">📣 Convocatorias</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Únete a eventos y jornadas de voluntariado cerca de ti.">🤝 Eventos y voluntariados</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Comprométete con voluntariados a largo plazo y genera un impacto duradero.">🗓️ Voluntariados convocatoria larga</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN LOBO -->
-    <section id="seccion-lobo" class="nivel-section">
-        <div class="nivel-content">
-            <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
-            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
-            <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Descubre fuentes de financiamiento y fondos para tus proyectos.">💰 Fondos</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Consulta las leyes y normativas vigentes en materia ambiental.">⚖️ Normativa</a>
-            </div>
-        </div>
-    </section>
-
-
-    <!--
-      ****************************************
-      SCRIPTS
-      ****************************************
-    -->
-    <script>
-        // Script para el toggle Eventos/Lugares
-        const toggle = document.querySelector('.toggle-switch');
-        const labels = document.querySelectorAll('.toggle-label');
-        const cardsEventos = document.querySelectorAll('.card.evento');
-        const cardsLugares = document.querySelectorAll('.card.lugar');
-
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            
-            if (toggle.classList.contains('active')) {
-                labels[0].classList.remove('active');
-                labels[1].classList.add('active');
-                cardsEventos.forEach(card => card.style.display = 'none');
-                cardsLugares.forEach(card => card.style.display = 'block');
-            } else {
-                labels[0].classList.add('active');
-                labels[1].classList.remove('active');
-                cardsEventos.forEach(card => card.style.display = 'block');
-                cardsLugares.forEach(card => card.style.display = 'none');
-            }
-        });
-
-        labels.forEach(label => {
-            label.addEventListener('click', () => {
-                const target = label.getAttribute('data-target');
-                if ((target === 'eventos' && toggle.classList.contains('active')) ||
-                    (target === 'lugares' && !toggle.classList.contains('active'))) {
-                    toggle.click();
-                }
-            });
-        });
-    </script>
+/*
+ ****************************************
+ * NUEVO: ESTILOS PARA TOOLTIP
+ ****************************************
+ */
+.nivel-btn-item[data-tooltip] {
+    position: relative; /* Contenedor para el tooltip */
+}
+/* El tooltip en sí (oculto por defecto) */
+.nivel-btn-item[data-tooltip]::after {
+    content: attr(data-tooltip); /* Toma el texto del atributo */
+    position: absolute;
+    bottom: 110%; /* Arriba del botón */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado */
     
-    <!-- Script para Particles.js (Se mantiene) -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-          "particles": {
-            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] },
-            "shape": { "type": "circle" },
-            "opacity": {
-              "value": 0.6, "random": true,
-              "anim": { "enable": true, "speed": 0.5, "opacity_min": 0, "sync": false }
-            },
-            "size": { "value": 8, "random": true },
-            "line_linked": { "enable": true, "distance": 180, "color": "#cccccc", "opacity": 0.4, "width": 1 },
-            "move": {
-              "enable": true, "speed": 3.5, "direction": "out", "random": true, "straight": false, "out_mode": "out", "bounce": false
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-          },
-          "retina_detect": true
-        });
-    </script>
-
-    <!-- ****** NUEVO SCRIPT PARA LA PANTALLA DE CARGA ****** -->
-    <script>
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            // Opcional: añade un pequeño retraso para que se vea el GIF
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                // Oculta el loader después de la transición
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500); // 500ms = 0.5s (debe coincidir con la transición en CSS)
-            }, 500); // 500ms de retraso mínimo
-        });
-    </script>
-
-</body>
-</html>
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    white-space: nowrap; /* Evita que el texto se rompa */
+    
+    opacity: 0; /* Oculto */
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+/* Mostrar al pasar el mouse */
+.nivel-btn-item[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
 
 
+/*
+ ****************************************
+ * AJUSTES PARA MÓVIL
+ ****************************************
+ */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    .nav-container {
+        justify-content: center;
+    }
+    .hero-section#particles-js {
+        padding: 2rem 1rem;
+        min-height: 90vh;
+    }
+    .hero-logo {
+        max-height: 180px;
+    }
+    .search-bar-container input {
+        font-size: 1rem;
+        padding: 0.8rem 0.8rem 0.8rem 3rem;
+    }
+    .search-bar-container .fa-magnifying-glass {
+        left: 1.2rem;
+    }
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .level-buttons-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    .level-btn {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+
+    .toggle-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .card-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ajustes móviles para nuevas secciones */
+    .nivel-section {
+        padding: 3rem 1rem;
+        background-attachment: scroll; /* Parallax no funciona bien en móvil */
+    }
+    .nivel-section h2 {
+        font-size: 2rem;
+    }
+    .nivel-btn-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+    /* Desactivar tooltips en móvil (no hay hover) */
+    .nivel-btn-item[data-tooltip]::after {
+        display: none;
+    }
+}
