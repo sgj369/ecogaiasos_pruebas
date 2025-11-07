@@ -6,6 +6,7 @@
     <title>ECO GAIA SOS - Pruebas</title>
     
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome (incluye íconos de marcas como fa-brands) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -16,7 +17,6 @@
       ****************************************
     -->
     <div id="loader">
-        <!-- ****** CAMBIO DE RUTA ****** -->
         <img src="EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
@@ -28,7 +28,6 @@
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <!-- ****** CAMBIO DE RUTA ****** -->
                 <img src="EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             
@@ -42,13 +41,13 @@
 
     <!--
       ****************************************
-      PARTE A: HERO PRINCIPAL
+      PARTE A: HERO PRINCIPAL (ID para ancla)
       ****************************************
     -->
     <header class="hero-section" id="particles-js">
 
         <div class="hero-content">
-            <!-- ****** CAMBIO DE RUTA ****** -->
+            
             <img src="EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda (Se mantiene) -->
@@ -113,7 +112,6 @@
         <div class="card-grid-container">
             
             <div class="card evento">
-                <!-- ****** CAMBIO DE RUTA ****** -->
                 <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
@@ -123,7 +121,6 @@
             </div>
 
             <div class="card evento">
-                <!-- ****** CAMBIO DE RUTA ****** -->
                 <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
@@ -133,7 +130,6 @@
             </div>
 
             <div class="card lugar" style="display: none;">
-                <!-- ****** CAMBIO DE RUTA ****** -->
                 <div class="card-image"><img src="kpop.jpg" alt="Imagen de Lugar"></div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
@@ -147,7 +143,7 @@
 
     <!--
       ****************************************
-      PARTE C: NUEVAS SECCIONES DE NIVELES (Actualizado)
+      PARTE C: NUEVAS SECCIONES DE NIVELES
       ****************************************
     -->
 
@@ -180,15 +176,15 @@
                 </a>
             </div>
 
-            <!-- ****** NUEVO: Botones de Navegación de Sección ****** -->
+            <!-- ****** CAMBIO: Botón de Navegación de Sección ****** -->
             <div class="section-nav">
-                <a href="#seccion-ajolote" class="section-nav-btn">Ir a Ajolote <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#seccion-lobo" class="section-nav-btn">Ir a Lobo <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#particles-js" class="btn-back-to-top">
+                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ****** NUEVO: Divisor para arreglar parallax ****** -->
     <div class="section-divider"></div>
 
     <!-- SECCIÓN AJOLOTE -->
@@ -216,15 +212,15 @@
                 </a>
             </div>
 
-            <!-- ****** NUEVO: Botones de Navegación de Sección ****** -->
+            <!-- ****** CAMBIO: Botón de Navegación de Sección ****** -->
             <div class="section-nav">
-                <a href="#seccion-colibri" class="section-nav-btn"><i class="fa-solid fa-arrow-left"></i> Ir a Colibrí</a>
-                <a href="#seccion-lobo" class="section-nav-btn">Ir a Lobo <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#particles-js" class="btn-back-to-top">
+                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ****** NUEVO: Divisor para arreglar parallax ****** -->
     <div class="section-divider"></div>
 
     <!-- SECCIÓN LOBO -->
@@ -244,13 +240,47 @@
                 </a>
             </div>
 
-            <!-- ****** NUEVO: Botones de Navegación de Sección ****** -->
+            <!-- ****** CAMBIO: Botón de Navegación de Sección ****** -->
             <div class="section-nav">
-                <a href="#seccion-colibri" class="section-nav-btn"><i class="fa-solid fa-arrow-left"></i> Ir a Colibrí</a>
-                <a href="#seccion-ajolote" class="section-nav-btn"><i class="fa-solid fa-arrow-left"></i> Ir a Ajolote</a>
+                <a href="#particles-js" class="btn-back-to-top">
+                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+                </a>
             </div>
         </div>
     </section>
+
+    <!--
+      ****************************************
+      NUEVO: FOOTER (PIE DE PÁGINA)
+      ****************************************
+    -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="EGS2.gif" alt="Logo ECO GAIA SOS">
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <a href="#particles-js">Inicio</a>
+                <a href="#">Proyectos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="footer-social">
+                <h4>Redes</h4>
+                <!-- Asegúrate de tener Font Awesome 6 para los íconos de marcas -->
+                <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            </div>
+            <div class="footer-info">
+                <h4>ECO GAIA SOS</h4>
+                <p>Mapeando el cambio en la CDMX y alrededores.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ECO GAIA SOS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
 
     <!--
