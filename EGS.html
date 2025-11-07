@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
     
     <link rel="stylesheet" href="style.css">
@@ -12,13 +12,22 @@
 
     <!--
       ****************************************
+      PANTALLA DE CARGA (NUEVO)
+      ****************************************
+    -->
+    <div id="loader">
+        <img src="images/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
+    </div>
+
+    <!--
+      ****************************************
       BARRA DE NAVEGACIÓN SUPERIOR
       ****************************************
     -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <img src="EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="images/EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             
             <ul class="nav-menu">
@@ -34,20 +43,19 @@
       PARTE A: HERO PRINCIPAL
       ****************************************
     -->
-    <!-- **** NOTA: EL ID "particles-js" SE QUEDA, AUNQUE EL SCRIPT ESTÉ APAGADO **** -->
     <header class="hero-section" id="particles-js">
 
         <div class="hero-content">
             
-            <img src="EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="images/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
-            <!-- Barra de Búsqueda Principal -->
+            <!-- Barra de Búsqueda (Se mantiene) -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Busca un proyecto, actor o tema...">
             </div>
 
-            <!-- Botones de Acción -->
+            <!-- Botones de Acción (Se mantienen) -->
             <div class="action-buttons">
                 <button class="btn btn-secondary">Búsqueda Avanzada</button>
                 <button class="btn btn-primary">
@@ -56,49 +64,29 @@
                 </button>
             </div>
 
-            <!-- BOTONES DE NIVELES CON COLORES -->
+            <!--
+              ****************************************
+              BOTONES DE NIVELES (ACTUALIZADOS)
+              ****************************************
+              - Ya no son desplegables.
+              - Son enlaces <a href> que llevan a las secciones de abajo.
+            -->
             <div class="level-buttons-container">
                 
                 <!-- Nivel Colibrí (VERDE) -->
-                <div class="level-dropdown">
-                    <button class="level-btn level-btn-colibri">
-                        <i class="fa-solid fa-dove"></i> Colibrí (Básico) <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <!-- EMOJIS AÑADIDOS -->
-                    <ul class="level-dropdown-menu">
-                        <li><a href="#">🎓 Cursos</a></li>
-                        <li><a href="#">💡 Ecotecnias</a></li>
-                        <li><a href="#">✍️ Firmas</a></li>
-                        <li><a href="#">📚 Lecturas y bibliografía</a></li>
-                        <li><a href="#">🎬 Vídeos y documentales</a></li>
-                    </ul>
-                </div>
+                <a href="#seccion-colibri" class="level-btn level-btn-colibri">
+                    <i class="fa-solid fa-dove"></i> Colibrí (Básico)
+                </a>
 
                 <!-- Nivel Ajolote (AZUL) -->
-                <div class="level-dropdown">
-                    <button class="level-btn level-btn-ajolote">
-                        <i class="fa-solid fa-frog"></i> Ajolote (Intermedio) <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <!-- EMOJIS AÑADIDOS -->
-                    <ul class="level-dropdown-menu">
-                        <li><a href="#">👥 Agentes de cambio</a></li>
-                        <li><a href="#">📣 Convocatorias</a></li>
-                        <li><a href="#">🤝 Eventos y voluntariados</a></li>
-                        <li><a href="#">🗓️ Voluntariados convocatoria larga</a></li>
-                    </ul>
-                </div>
+                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote">
+                    <i class="fa-solid fa-frog"></i> Ajolote (Intermedio)
+                </a>
 
                 <!-- Nivel Lobo (MORADO) -->
-                <div class="level-dropdown">
-                    <button class="level-btn level-btn-lobo">
-                        <i class="fa-solid fa-dog"></i> Lobo (Avanzado) <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <!-- EMOJIS AÑADIDOS -->
-                    <ul class="level-dropdown-menu">
-                        <li><a href="#">💰 Fondos</a></li>
-                        <li><a href="#">⚖️ Normativa</a></li>
-                    </ul>
-                </div>
+                <a href="#seccion-lobo" class="level-btn level-btn-lobo">
+                    <i class="fa-solid fa-dog"></i> Lobo (Avanzado)
+                </a>
 
             </div>
 
@@ -107,12 +95,10 @@
 
     <!--
       ****************************************
-      PARTE B: SELECTOR Y TARJETAS
+      PARTE B: SELECTOR Y TARJETAS (Se mantiene)
       ****************************************
     -->
     <main class="content-section">
-        
-        <!-- ... (Tu contenido de tarjetas y toggle sigue aquí igual) ... -->
         
         <!-- Selector (Toggle) de Eventos/Lugares -->
         <div class="toggle-container">
@@ -127,7 +113,7 @@
         <div class="card-grid-container">
             
             <div class="card evento">
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
                     <h3 class="card-title">Restauración de Hábitat</h3>
@@ -136,7 +122,7 @@
             </div>
 
             <div class="card evento">
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
                     <h3 class="card-title">Creación de Huertos Urbanos</h3>
@@ -145,7 +131,7 @@
             </div>
 
             <div class="card lugar" style="display: none;">
-                <div class="card-image"><img src="kpop.jpg" alt="Imagen de Lugar"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Lugar"></div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
                     <h3 class="card-title">Huerto Roma Verde</h3>
@@ -158,11 +144,59 @@
 
     <!--
       ****************************************
+      PARTE C: NUEVAS SECCIONES DE NIVELES
+      ****************************************
+    -->
+
+    <!-- SECCIÓN COLIBRÍ -->
+    <section id="seccion-colibri" class="nivel-section">
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
+            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item" data-tooltip="Explora cursos y talleres para aprender nuevas habilidades.">🎓 Cursos</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Descubre tecnologías sostenibles que puedes aplicar en casa.">💡 Ecotecnias</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Apoya causas y peticiones importantes con tu firma.">✍️ Firmas</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra artículos, guías y libros recomendados.">📚 Lecturas y bibliografía</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Inspírate con documentales y videos educativos.">🎬 Vídeos y documentales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN AJOLOTE -->
+    <section id="seccion-ajolote" class="nivel-section">
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
+            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item" data-tooltip="Conoce a las personas y organizaciones que están liderando el cambio.">👥 Agentes de cambio</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra oportunidades para presentar tus proyectos o unirte a otros.">📣 Convocatorias</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Únete a eventos y jornadas de voluntariado cerca de ti.">🤝 Eventos y voluntariados</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Comprométete con voluntariados a largo plazo y genera un impacto duradero.">🗓️ Voluntariados convocatoria larga</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN LOBO -->
+    <section id="seccion-lobo" class="nivel-section">
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
+            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item" data-tooltip="Descubre fuentes de financiamiento y fondos para tus proyectos.">💰 Fondos</a>
+                <a href="#" class="nivel-btn-item" data-tooltip="Consulta las leyes y normativas vigentes en materia ambiental.">⚖️ Normativa</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!--
+      ****************************************
       SCRIPTS
       ****************************************
     -->
     <script>
-        // Script para el toggle Eventos/Lugares (Este está bien)
+        // Script para el toggle Eventos/Lugares
         const toggle = document.querySelector('.toggle-switch');
         const labels = document.querySelectorAll('.toggle-label');
         const cardsEventos = document.querySelectorAll('.card.evento');
@@ -195,11 +229,7 @@
         });
     </script>
     
-    <!-- 
-    //  ****************************************
-    //  SCRIPT DE PARTICLES (TEMPORALMENTE DESACTIVADO)
-    //  ****************************************
-    
+    <!-- Script para Particles.js (Se mantiene) -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
@@ -223,34 +253,24 @@
           },
           "retina_detect": true
         });
-    </script> 
-    -->
+    </script>
 
-    <!-- SCRIPT DE MENÚS (Este es el que queremos probar) -->
+    <!-- ****** NUEVO SCRIPT PARA LA PANTALLA DE CARGA ****** -->
     <script>
-        document.querySelectorAll('.level-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const dropdown = button.closest('.level-dropdown');
-                
-                const wasActive = dropdown.classList.contains('level-dropdown--active');
-
-                document.querySelectorAll('.level-dropdown').forEach(item => {
-                    item.classList.remove('level-dropdown--active');
-                });
-
-                if (!wasActive) {
-                    dropdown.classList.add('level-dropdown--active');
-                }
-            });
-        });
-
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.level-dropdown').forEach(item => {
-                item.classList.remove('level-dropdown--active');
-            });
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            // Opcional: añade un pequeño retraso para que se vea el GIF
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                // Oculta el loader después de la transición
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500); // 500ms = 0.5s (debe coincidir con la transición en CSS)
+            }, 500); // 500ms de retraso mínimo
         });
     </script>
 
 </body>
 </html>
+
+
