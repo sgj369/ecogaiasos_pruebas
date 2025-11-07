@@ -322,11 +322,9 @@ body, html {
  * PARTE C: SECCIONES DE NIVELES (Actualizado)
  ****************************************
  */
-
-/* ****** NUEVO: Divisor para arreglar Parallax ****** */
 .section-divider {
-    height: 20px; /* Un pequeño espacio */
-    background-color: #f0f2f5; /* Mismo color que el fondo del body */
+    height: 20px;
+    background-color: #f0f2f5;
 }
 
 .nivel-section {
@@ -349,7 +347,6 @@ body, html {
     z-index: 1;
 }
 
-/* ****** CAMBIO: Rutas de imagen corregidas (sin tilde) ****** */
 #seccion-colibri {
     background-image: url('colibri.jpg');
 }
@@ -418,7 +415,7 @@ body, html {
     line-height: 1.4;
 }
 
-/* ****** NUEVO: Botones de Navegación de Sección ****** */
+/* ****** CAMBIO: Botones de Navegación de Sección ****** */
 .section-nav {
     margin-top: 3rem;
     display: flex;
@@ -426,22 +423,85 @@ body, html {
     gap: 1rem;
     flex-wrap: wrap;
 }
-.section-nav-btn {
+.btn-back-to-top {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: #ffffff;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 1rem;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
-.section-nav-btn:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+.btn-back-to-top:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
-.section-nav-btn .fa-solid {
-    font-size: 0.8rem;
+.btn-back-to-top .fa-solid {
+    font-size: 0.9rem;
+}
+
+
+/*
+ ****************************************
+ * NUEVO: ESTILOS DE FOOTER
+ ****************************************
+ */
+.main-footer {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    color: #333;
+    border-top: 1px solid #ddd;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+.footer-logo img {
+    max-width: 150px;
+    height: auto;
+}
+.footer-links h4,
+.footer-social h4,
+.footer-info h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #111;
+}
+.footer-links a,
+.footer-social a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #007bff;
+}
+.footer-social a i {
+    margin-right: 0.5rem;
+    width: 20px;
+}
+.footer-info p {
+    margin: 0;
+    line-height: 1.5;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #777;
 }
 
 
@@ -499,7 +559,7 @@ body, html {
     /* Ajustes móviles para nuevas secciones */
     .nivel-section {
         padding: 3rem 1rem;
-        background-attachment: scroll; /* Parallax se desactiva en móvil */
+        background-attachment: scroll;
     }
     .nivel-section h2 {
         font-size: 2rem;
@@ -508,7 +568,7 @@ body, html {
         grid-template-columns: 1fr;
     }
 
-    /* ****** NUEVO: Ajuste de posición de fondos en móvil ****** */
+    /* ****** CAMBIO: Ajuste de posición de fondos en móvil ****** */
     #seccion-colibri {
         /* 70% desde la izquierda = lado derecho */
         background-position: 70% 50%;
@@ -520,5 +580,13 @@ body, html {
     #seccion-lobo {
         /* Se mantiene centrado, dijiste que estaba bien */
         background-position: center center;
+    }
+
+    /* Ajustes móviles para el footer */
+    .footer-container {
+        text-align: center;
+    }
+    .footer-logo {
+        margin: 0 auto;
     }
 }
