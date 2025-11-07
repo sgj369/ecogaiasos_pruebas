@@ -12,11 +12,11 @@
 
     <!--
       ****************************************
-      PANTALLA DE CARGA (NUEVO)
+      PANTALLA DE CARGA (Loader)
       ****************************************
     -->
     <div id="loader">
-        <img src="EGSlg.gif" alt="Cargando ECO GAIA SOS...">
+        <img src="images/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!--
@@ -27,7 +27,7 @@
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <img src="EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="images/EGS2.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             
             <ul class="nav-menu">
@@ -47,7 +47,7 @@
 
         <div class="hero-content">
             
-            <img src="EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="images/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda (Se mantiene) -->
             <div class="search-bar-container">
@@ -66,10 +66,8 @@
 
             <!--
               ****************************************
-              BOTONES DE NIVELES (ACTUALIZADOS)
+              BOTONES DE NIVELES (Enlaces de anclaje)
               ****************************************
-              - Ya no son desplegables.
-              - Son enlaces <a href> que llevan a las secciones de abajo.
             -->
             <div class="level-buttons-container">
                 
@@ -113,7 +111,7 @@
         <div class="card-grid-container">
             
             <div class="card evento">
-                <div class="card-image"><img src="kpop." alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Voluntariado</span>
                     <h3 class="card-title">Restauración de Hábitat</h3>
@@ -122,7 +120,7 @@
             </div>
 
             <div class="card evento">
-                <div class="card-image"><img src="kpop." alt="Imagen de Evento"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Evento"></div>
                 <div class="card-content">
                     <span class="card-category">Taller</span>
                     <h3 class="card-title">Creación de Huertos Urbanos</h3>
@@ -131,7 +129,7 @@
             </div>
 
             <div class="card lugar" style="display: none;">
-                <div class="card-image"><img src="kpop." alt="Imagen de Lugar"></div>
+                <div class="card-image"><img src="images/kpop.jpg" alt="Imagen de Lugar"></div>
                 <div class="card-content">
                     <span class="card-category">Punto de Encuentro</span>
                     <h3 class="card-title">Huerto Roma Verde</h3>
@@ -144,7 +142,7 @@
 
     <!--
       ****************************************
-      PARTE C: NUEVAS SECCIONES DE NIVELES
+      PARTE C: NUEVAS SECCIONES DE NIVELES (Actualizado)
       ****************************************
     -->
 
@@ -153,12 +151,29 @@
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
             <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
+            
+            <!-- ****** CAMBIO: Nueva estructura de "tarjeta ovalada" ****** -->
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Explora cursos y talleres para aprender nuevas habilidades.">🎓 Cursos</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Descubre tecnologías sostenibles que puedes aplicar en casa.">💡 Ecotecnias</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Apoya causas y peticiones importantes con tu firma.">✍️ Firmas</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra artículos, guías y libros recomendados.">📚 Lecturas y bibliografía</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Inspírate con documentales y videos educativos.">🎬 Vídeos y documentales</a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎓 Cursos</span>
+                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💡 Ecotecnias</span>
+                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">✍️ Firmas</span>
+                    <p class="nivel-btn-desc">Apoya causas y peticiones importantes con tu firma.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📚 Lecturas y bibliografía</span>
+                    <p class="nivel-btn-desc">Encuentra artículos, guías y libros recomendados por la comunidad.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎬 Vídeos y documentales</span>
+                    <p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -168,11 +183,25 @@
         <div class="nivel-content">
             <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
             <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
+            
+            <!-- ****** CAMBIO: Nueva estructura de "tarjeta ovalada" ****** -->
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Conoce a las personas y organizaciones que están liderando el cambio.">👥 Agentes de cambio</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Encuentra oportunidades para presentar tus proyectos o unirte a otros.">📣 Convocatorias</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Únete a eventos y jornadas de voluntariado cerca de ti.">🤝 Eventos y voluntariados</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Comprométete con voluntariados a largo plazo y genera un impacto duradero.">🗓️ Voluntariados convocatoria larga</a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">👥 Agentes de cambio</span>
+                    <p class="nivel-btn-desc">Conoce a las personas y organizaciones que están liderando el cambio.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📣 Convocatorias</span>
+                    <p class="nivel-btn-desc">Encuentra oportunidades para presentar tus proyectos o unirte a otros.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🤝 Eventos y voluntariados</span>
+                    <p class="nivel-btn-desc">Únete a eventos y jornadas de voluntariado cerca de ti.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span>
+                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -182,9 +211,17 @@
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
             <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
+            
+            <!-- ****** CAMBIO: Nueva estructura de "tarjeta ovalada" ****** -->
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item" data-tooltip="Descubre fuentes de financiamiento y fondos para tus proyectos.">💰 Fondos</a>
-                <a href="#" class="nivel-btn-item" data-tooltip="Consulta las leyes y normativas vigentes en materia ambiental.">⚖️ Normativa</a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💰 Fondos</span>
+                    <p class="nivel-btn-desc">Descubre fuentes de financiamiento y fondos para tus proyectos.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">⚖️ Normativa</span>
+                    <p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -255,7 +292,7 @@
         });
     </script>
 
-    <!-- ****** NUEVO SCRIPT PARA LA PANTALLA DE CARGA ****** -->
+    <!-- Script para la pantalla de carga (Se mantiene) -->
     <script>
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
@@ -272,5 +309,3 @@
 
 </body>
 </html>
-
-
