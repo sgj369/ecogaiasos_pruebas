@@ -320,10 +320,10 @@ body, html {
     z-index: 1;
 }
 
-#seccion-colibri { background-image: url('colibri.jpg'); }
-#seccion-ajolote { background-image: url('ajolote.jpg'); }
+#seccion-colibri { background-image: url('img/colibri.jpg'); }
+#seccion-ajolote { background-image: url('img/ajolote.jpg'); }
 #seccion-lobo {
-    background-image: url('lobo.jpg');
+    background-image: url('img/lobo.jpg');
     background-position: center 25%; 
 }
 .nivel-content {
