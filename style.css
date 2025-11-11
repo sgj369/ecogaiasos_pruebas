@@ -9,11 +9,7 @@ body, html {
     background-color: #f0f2f5;
 }
 
-/*
- ****************************************
- * PANTALLA DE CARGA
- ****************************************
- */
+/* PANTALLA DE CARGA */
 #loader {
     position: fixed;
     top: 0;
@@ -31,12 +27,7 @@ body, html {
     width: 200px;
 }
 
-
-/*
- ****************************************
- * BARRA DE NAVEGACIÓN SUPERIOR
- ****************************************
- */
+/* BARRA DE NAVEGACIÓN SUPERIOR */
 .main-nav {
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -87,11 +78,7 @@ body, html {
 }
 .nav-menu li a:hover { color: #007bff; }
 
-/*
- ****************************************
- * PARTE A: HERO PRINCIPAL
- ****************************************
- */
+/* PARTE A: HERO PRINCIPAL */
 .hero-section#particles-js {
     position: relative;
     height: auto;
@@ -181,11 +168,7 @@ body, html {
 .btn-secondary:hover { background-color: #e0e0e0; }
 .btn .fa-solid { margin-right: 0.5rem; }
 
-/*
- ****************************************
- * BOTONES DE NIVEL (HERO)
- ****************************************
- */
+/* BOTONES DE NIVEL (HERO) */
 .level-buttons-container {
     display: flex;
     justify-content: center;
@@ -212,19 +195,12 @@ body, html {
 }
 .level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
-
 .level-btn-ajolote { background-color: #0056b3; }
 .level-btn-ajolote:hover { background-color: #004494; }
-
 .level-btn-lobo { background-color: #6a00a8; }
 .level-btn-lobo:hover { background-color: #58008c; }
 
-
-/*
- ****************************************
- * PARTE B: SELECTOR Y TARJETAS (Eventos/Lugares)
- ****************************************
- */
+/* PARTE B: SELECTOR Y TARJETAS */
 .content-section {
     max-width: 1200px;
     margin: 2rem auto;
@@ -317,11 +293,7 @@ body, html {
     margin: 0;
 }
 
-/*
- ****************************************
- * PARTE C: SECCIONES DE NIVELES (Actualizado)
- ****************************************
- */
+/* PARTE C: SECCIONES DE NIVELES */
 .section-divider {
     height: 20px;
     background-color: #f0f2f5;
@@ -332,7 +304,8 @@ body, html {
     padding: 4rem 2rem;
     background-size: cover;
     background-position: center center;
-    background-attachment: fixed;
+    /* ****** CAMBIO: Scroll en vez de fixed ****** */
+    background-attachment: scroll; 
     color: #ffffff;
     text-align: center;
 }
@@ -347,16 +320,9 @@ body, html {
     z-index: 1;
 }
 
-#seccion-colibri {
-    background-image: url('colibri.jpg');
-}
-#seccion-ajolote {
-    background-image: url('ajolote.jpg');
-}
-#seccion-lobo {
-    background-image: url('lobo.jpg');
-}
-
+#seccion-colibri { background-image: url('colibri.jpg'); }
+#seccion-ajolote { background-image: url('ajolote.jpg'); }
+#seccion-lobo { background-image: url('lobo.jpg'); }
 
 .nivel-content {
     position: relative;
@@ -401,7 +367,6 @@ body, html {
     background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-5px);
 }
-
 .nivel-btn-title {
     font-size: 1.2rem;
     font-weight: 700;
@@ -415,7 +380,6 @@ body, html {
     line-height: 1.4;
 }
 
-/* ****** CAMBIO: Botones de Navegación de Sección ****** */
 .section-nav {
     margin-top: 3rem;
     display: flex;
@@ -444,12 +408,7 @@ body, html {
     font-size: 0.9rem;
 }
 
-
-/*
- ****************************************
- * NUEVO: ESTILOS DE FOOTER
- ****************************************
- */
+/* ESTILOS DE FOOTER */
 .main-footer {
     background-color: #ffffff;
     padding: 3rem 2rem;
@@ -467,24 +426,20 @@ body, html {
     max-width: 150px;
     height: auto;
 }
-.footer-links h4,
-.footer-social h4,
-.footer-info h4 {
+.footer-links h4, .footer-social h4, .footer-info h4 {
     margin-top: 0;
     margin-bottom: 1rem;
     font-weight: 700;
     color: #111;
 }
-.footer-links a,
-.footer-social a {
+.footer-links a, .footer-social a {
     display: block;
     text-decoration: none;
     color: #555;
     margin-bottom: 0.75rem;
     transition: color 0.3s ease;
 }
-.footer-links a:hover,
-.footer-social a:hover {
+.footer-links a:hover, .footer-social a:hover {
     color: #007bff;
 }
 .footer-social a i {
@@ -504,89 +459,34 @@ body, html {
     color: #777;
 }
 
-
-/*
- ****************************************
- * AJUSTES PARA MÓVIL
- ****************************************
- */
+/* AJUSTES PARA MÓVIL */
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    .nav-container {
-        justify-content: center;
-    }
-    .hero-section#particles-js {
-        padding: 2rem 1rem;
-        min-height: 90vh;
-    }
-    .hero-logo {
-        max-height: 180px;
-    }
-    .search-bar-container input {
-        font-size: 1rem;
-        padding: 0.8rem 0.8rem 0.8rem 3rem;
-    }
-    .search-bar-container .fa-magnifying-glass {
-        left: 1.2rem;
-    }
-    .action-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-    }
-    
-    .level-buttons-container {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: stretch;
-    }
-    .level-btn {
-        width: 100%;
-        box-sizing: border-box;
-        justify-content: center;
-    }
-
-    .toggle-container {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .card-grid-container {
-        grid-template-columns: 1fr;
-    }
+    .nav-menu { display: none; }
+    .nav-container { justify-content: center; }
+    .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
+    .hero-logo { max-height: 180px; }
+    .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
+    .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
+    .action-buttons { flex-direction: column; width: 100%; gap: 0.5rem; }
+    .level-buttons-container { flex-direction: column; gap: 0.5rem; align-items: stretch; }
+    .level-btn { width: 100%; box-sizing: border-box; justify-content: center; }
+    .toggle-container { flex-direction: column; gap: 0.5rem; }
+    .card-grid-container { grid-template-columns: 1fr; }
 
     /* Ajustes móviles para nuevas secciones */
     .nivel-section {
         padding: 3rem 1rem;
-        background-attachment: scroll;
+        /* Aseguramos scroll en móvil también */
+        background-attachment: scroll; 
     }
-    .nivel-section h2 {
-        font-size: 2rem;
-    }
-    .nivel-btn-grid {
-        grid-template-columns: 1fr;
-    }
+    .nivel-section h2 { font-size: 2rem; }
+    .nivel-btn-grid { grid-template-columns: 1fr; }
 
-    /* ****** CAMBIO: Ajuste de posición de fondos en móvil ****** */
-    #seccion-colibri {
-        /* 70% desde la izquierda = lado derecho */
-        background-position: 70% 50%;
-    }
-    #seccion-ajolote {
-        /* 80% desde la izquierda = lado derecho */
-        background-position: 80% 50%;
-    }
-    #seccion-lobo {
-        /* Se mantiene centrado, dijiste que estaba bien */
-        background-position: center center;
-    }
-
-    /* Ajustes móviles para el footer */
-    .footer-container {
-        text-align: center;
-    }
-    .footer-logo {
-        margin: 0 auto;
-    }
+    /* Ajuste de posición de fondos en móvil */
+    #seccion-colibri { background-position: 70% 50%; }
+    #seccion-ajolote { background-position: 80% 50%; }
+    #seccion-lobo { background-position: center center; }
+    
+    .footer-container { text-align: center; }
+    .footer-logo { margin: 0 auto; }
 }
