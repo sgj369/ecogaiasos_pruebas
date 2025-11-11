@@ -322,8 +322,10 @@ body, html {
 
 #seccion-colibri { background-image: url('colibri.jpg'); }
 #seccion-ajolote { background-image: url('ajolote.jpg'); }
-#seccion-lobo { background-image: url('lobo.jpg'); }
-
+#seccion-lobo {
+    background-image: url('lobo.jpg');
+    background-position: center 25%; 
+}
 .nivel-content {
     position: relative;
     z-index: 2;
