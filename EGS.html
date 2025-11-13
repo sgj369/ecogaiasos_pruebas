@@ -6,23 +6,23 @@
     <title>ECO GAIA SOS - Pruebas</title>
     
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome (incluye íconos de marcas como fa-brands) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- PANTALLA DE CARGA (Loader) -->
+    <!-- PANTALLA DE CARGA -->
     <div id="loader">
+        <!-- RUTA CORREGIDA: carpeta gif/ -->
         <img src="gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
+                <!-- RUTA CORREGIDA: carpeta gif/ -->
                 <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
-            
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Proyectos</a></li>
@@ -31,14 +31,16 @@
         </div>
     </nav>
 
-    <!-- PARTE A: HERO PRINCIPAL -->
+    <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <!-- RUTA CORREGIDA: carpeta gif/ -->
+            <img src="gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
+            <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Busca un proyecto, actor o tema...">
+                <input type="text" id="buscador-input" placeholder="Busca un proyecto, actor o tema...">
             </div>
 
             <div class="action-buttons">
@@ -48,23 +50,19 @@
                     Eventos cerca de mí
                 </button>
             </div>
-
+            
             <div class="level-buttons-container">
-                <a href="#seccion-colibri" class="level-btn level-btn-colibri">
-                    <i class="fa-solid fa-dove"></i> Colibrí (Básico)
-                </a>
-                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote">
-                    <i class="fa-solid fa-frog"></i> Ajolote (Intermedio)
-                </a>
-                <a href="#seccion-lobo" class="level-btn level-btn-lobo">
-                    <i class="fa-solid fa-dog"></i> Lobo (Avanzado)
-                </a>
+                <a href="#seccion-colibri" class="level-btn level-btn-colibri"><i class="fa-solid fa-dove"></i> Colibrí (Básico)</a>
+                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote"><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</a>
+                <a href="#seccion-lobo" class="level-btn level-btn-lobo"><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</a>
             </div>
         </div>
     </header>
 
     <!-- PARTE B: SELECTOR Y TARJETAS -->
     <main class="content-section">
+        
+        <!-- Toggle Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-target="eventos">Eventos</span>
             <div class="toggle-switch">
@@ -73,38 +71,17 @@
             <span class="toggle-label" data-target="lugares">Lugares</span>
         </div>
 
-        <div class="card-grid-container">
-            <div class="card evento">
-                <div class="card-image"><img src="img/kpop.jpg" alt="Imagen de Evento"></div>
-                <div class="card-content">
-                    <span class="card-category">Voluntariado</span>
-                    <h3 class="card-title">Restauración de Hábitat</h3>
-                    <p class="card-location">Bosque de Chapultepec</p>
-                </div>
-            </div>
-            <div class="card evento">
-                <div class="card-image"><img src="img/kpop.jpg" alt="Imagen de Evento"></div>
-                <div class="card-content">
-                    <span class="card-category">Taller</span>
-                    <h3 class="card-title">Creación de Huertos Urbanos</h3>
-                    <p class="card-location">Huerto Roma Verde</p>
-                </div>
-            </div>
-            <div class="card lugar" style="display: none;">
-                <div class="card-image"><img src="img/kpop.jpg" alt="Imagen de Lugar"></div>
-                <div class="card-content">
-                    <span class="card-category">Punto de Encuentro</span>
-                    <h3 class="card-title">Huerto Roma Verde</h3>
-                    <p class="card-location">Jalapa 234, Roma Sur</p>
-                </div>
-            </div>
+        <!-- CONTENEDOR DE TARJETAS -->
+        <div class="card-grid-container" id="contenedor-tarjetas">
+            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
         </div>
     </main>
 
     <!-- PARTE C: NUEVAS SECCIONES DE NIVELES -->
-
+    
     <!-- SECCIÓN COLIBRÍ -->
     <section id="seccion-colibri" class="nivel-section">
+        <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
             <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
@@ -130,18 +107,15 @@
                     <p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p>
                 </a>
             </div>
-            <div class="section-nav">
-                <a href="#particles-js" class="btn-back-to-top">
-                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
-                </a>
-            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <!-- SECCIÓN AJOLOTE -->
     <section id="seccion-ajolote" class="nivel-section">
+        <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
             <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
@@ -163,18 +137,15 @@
                     <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
                 </a>
             </div>
-            <div class="section-nav">
-                <a href="#particles-js" class="btn-back-to-top">
-                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
-                </a>
-            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <!-- SECCIÓN LOBO -->
     <section id="seccion-lobo" class="nivel-section">
+        <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
             <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
@@ -188,35 +159,29 @@
                     <p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p>
                 </a>
             </div>
-            <div class="section-nav">
-                <a href="#particles-js" class="btn-back-to-top">
-                    <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
-                </a>
-            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="gif/EGSlg+2.gif" alt="Logo ECO GAIA SOS">
-            </div>
-            <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
-                <a href="#particles-js">Inicio</a>
-                <a href="#">Proyectos</a>
-                <a href="#">Contacto</a>
-            </div>
-            <div class="footer-social">
-                <h4>Redes</h4>
-                <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
-                <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-            </div>
-            <div class="footer-info">
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
                 <h4>ECO GAIA SOS</h4>
-                <p>Mapeando el cambio en la CDMX y alrededores.</p>
+                <p>Generando Redes Para el Futuro</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>Email: contacto@ecogaiasos.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -225,73 +190,10 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script>
-        const toggle = document.querySelector('.toggle-switch');
-        const labels = document.querySelectorAll('.toggle-label');
-        const cardsEventos = document.querySelectorAll('.card.evento');
-        const cardsLugares = document.querySelectorAll('.card.lugar');
-
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            if (toggle.classList.contains('active')) {
-                labels[0].classList.remove('active');
-                labels[1].classList.add('active');
-                cardsEventos.forEach(card => card.style.display = 'none');
-                cardsLugares.forEach(card => card.style.display = 'block');
-            } else {
-                labels[0].classList.add('active');
-                labels[1].classList.remove('active');
-                cardsEventos.forEach(card => card.style.display = 'block');
-                cardsLugares.forEach(card => card.style.display = 'none');
-            }
-        });
-
-        labels.forEach(label => {
-            label.addEventListener('click', () => {
-                const target = label.getAttribute('data-target');
-                if ((target === 'eventos' && toggle.classList.contains('active')) ||
-                    (target === 'lugares' && !toggle.classList.contains('active'))) {
-                    toggle.click();
-                }
-            });
-        });
-    </script>
-    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-          "particles": {
-            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] },
-            "shape": { "type": "circle" },
-            "opacity": {
-              "value": 0.6, "random": true,
-              "anim": { "enable": true, "speed": 0.5, "opacity_min": 0, "sync": false }
-            },
-            "size": { "value": 8, "random": true },
-            "line_linked": { "enable": true, "distance": 180, "color": "#cccccc", "opacity": 0.4, "width": 1 },
-            "move": {
-              "enable": true, "speed": 3.5, "direction": "out", "random": true, "straight": false, "out_mode": "out", "bounce": false
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-          },
-          "retina_detect": true
-        });
-    </script>
+    
+    <!-- Script PRINCIPAL (Lógica de datos y UI) -->
+    <script src="script.js"></script>
 
-    <script>
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 500);
-        });
-    </script>
 </body>
 </html>
