@@ -12,21 +12,21 @@
 
     <!-- PANTALLA DE CARGA -->
     <div id="loader">
-        <!-- RUTA CORREGIDA: carpeta gif/ -->
         <img src="gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <!-- RUTA CORREGIDA: carpeta gif/ -->
                 <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Nosotros</a></li> <!-- Opción Real -->
+                <li><a href="#">Directorio</a></li> <!-- Opción Real -->
+                <li><a href="#">Blog</a></li>     <!-- Opción Real -->
+                <li><a href="#" class="nav-btn-highlight">Súmate</a></li> <!-- Call to Action -->
             </ul>
         </div>
     </nav>
@@ -34,8 +34,7 @@
     <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <!-- RUTA CORREGIDA: carpeta gif/ -->
-            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
@@ -51,40 +50,102 @@
                 </button>
             </div>
             
+            <!-- 
+              BOTONES DE NIVELES (Con Tooltip Desplegable)
+              Ahora usan los conceptos del Manual: Polinización, Regeneración, Estrategia.
+            -->
             <div class="level-buttons-container">
-                <a href="#seccion-colibri" class="level-btn level-btn-colibri"><i class="fa-solid fa-dove"></i> Colibrí (Básico)</a>
-                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote"><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</a>
-                <a href="#seccion-lobo" class="level-btn level-btn-lobo"><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</a>
+                
+                <!-- COLIBRÍ -->
+                <div class="btn-wrapper">
+                    <a href="#seccion-colibri" class="level-btn level-btn-colibri">
+                        <i class="fa-solid fa-dove"></i> Colibrí (Polinización)
+                    </a>
+                    <!-- Lista que aparece al pasar el mouse -->
+                    <div class="tooltip-list">
+                        <ul>
+                            <li>🎓 Cursos</li>
+                            <li>💡 Ecotecnias</li>
+                            <li>✍️ Firmas</li>
+                            <li>📚 Lecturas</li>
+                            <li>🎬 Documentales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- AJOLOTE -->
+                <div class="btn-wrapper">
+                    <a href="#seccion-ajolote" class="level-btn level-btn-ajolote">
+                        <i class="fa-solid fa-frog"></i> Ajolote (Regeneración)
+                    </a>
+                    <div class="tooltip-list">
+                        <ul>
+                            <li>👥 Agentes de cambio</li>
+                            <li>📣 Convocatorias</li>
+                            <li>🤝 Voluntariados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LOBO -->
+                <div class="btn-wrapper">
+                    <a href="#seccion-lobo" class="level-btn level-btn-lobo">
+                        <i class="fa-solid fa-dog"></i> Lobo (Estrategia)
+                    </a>
+                    <div class="tooltip-list">
+                        <ul>
+                            <li>💰 Fondos</li>
+                            <li>⚖️ Normativa</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
 
-    <!-- PARTE B: SELECTOR Y TARJETAS -->
+    <!-- PARTE B: CONSOLA DE DATOS -->
     <main class="content-section">
         
         <!-- Toggle Eventos/Lugares -->
         <div class="toggle-container">
-            <span class="toggle-label active" data-target="eventos">Eventos</span>
+            <span class="toggle-label active" data-filter="evento">Eventos</span>
             <div class="toggle-switch">
                 <div class="toggle-handle"></div>
             </div>
-            <span class="toggle-label" data-target="lugares">Lugares</span>
+            <span class="toggle-label" data-filter="lugar">Lugares</span>
         </div>
 
         <!-- CONTENEDOR DE TARJETAS -->
         <div class="card-grid-container" id="contenedor-tarjetas">
             <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
         </div>
+
+        <!-- 
+             SECCIÓN DE MAPA DESPLEGABLE 
+             Inspirado en CDMX: Un botón ancho que despliega el mapa abajo.
+        -->
+        <div class="map-section-wrapper">
+            <button id="btn-toggle-mapa" class="btn-full-width">
+                <i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores
+            </button>
+            
+            <div id="mapa-desplegable" class="mapa-oculto">
+                <!-- IFRAME A TU MAPA REAL -->
+                <iframe src="https://ecogaiasos.github.io/web/charts.html" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
     </main>
 
-    <!-- PARTE C: NUEVAS SECCIONES DE NIVELES -->
+    <!-- PARTE C: SECCIONES DE NIVELES -->
     
     <!-- SECCIÓN COLIBRÍ -->
     <section id="seccion-colibri" class="nivel-section">
         <div class="section-divider"></div>
         <div class="nivel-content">
-            <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
-            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
+            <h2><i class="fa-solid fa-dove"></i> Colibrí (Polinización)</h2>
+            <p class="nivel-description">Poliniza tu mente con conocimiento y pequeñas acciones que generan vida.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">🎓 Cursos</span>
@@ -117,8 +178,8 @@
     <section id="seccion-ajolote" class="nivel-section">
         <div class="section-divider"></div>
         <div class="nivel-content">
-            <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
-            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
+            <h2><i class="fa-solid fa-frog"></i> Ajolote (Regeneración)</h2>
+            <p class="nivel-description">Regenera el tejido social y ambiental actuando en comunidad.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">👥 Agentes de cambio</span>
@@ -147,8 +208,8 @@
     <section id="seccion-lobo" class="nivel-section">
         <div class="section-divider"></div>
         <div class="nivel-content">
-            <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
-            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
+            <h2><i class="fa-solid fa-dog"></i> Lobo (Estrategia)</h2>
+            <p class="nivel-description">Lidera con estructura, fondos y legalidad para proyectos de alto impacto.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">💰 Fondos</span>
@@ -191,8 +252,6 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <!-- Script PRINCIPAL (Lógica de datos y UI) -->
     <script src="script.js"></script>
 
 </body>
