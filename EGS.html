@@ -12,7 +12,7 @@
 
     <!-- PANTALLA DE CARGA -->
     <div id="loader">
-        <img src="gif/EGSBOOK.gif" alt="Cargando ECO GAIA SOS...">
+        <img src="gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
@@ -21,12 +21,19 @@
             <a href="index.html" class="nav-brand">
                 <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
-            <ul class="nav-menu">
+            
+            <!-- NUEVO: Botón Hamburguesa para Móvil/Tablet -->
+            <button class="hamburger-menu" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Menú de Opciones -->
+            <ul class="nav-menu" id="nav-menu-list">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li> <!-- Opción Real -->
-                <li><a href="#">Directorio</a></li> <!-- Opción Real -->
-                <li><a href="#">Blog</a></li>     <!-- Opción Real -->
-                <li><a href="#" class="nav-btn-highlight">Súmate</a></li> <!-- Call to Action -->
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Directorio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#" class="nav-btn-highlight">Súmate</a></li>
             </ul>
         </div>
     </nav>
@@ -34,7 +41,7 @@
     <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
@@ -51,17 +58,21 @@
             </div>
             
             <!-- 
-              BOTONES DE NIVELES (Con Tooltip Desplegable)
-              Ahora usan los conceptos del Manual: Polinización, Regeneración, Estrategia.
+              BOTONES DE NIVELES (HÍBRIDOS)
             -->
             <div class="level-buttons-container">
                 
                 <!-- COLIBRÍ -->
                 <div class="btn-wrapper">
-                    <a href="#seccion-colibri" class="level-btn level-btn-colibri">
-                        <i class="fa-solid fa-dove"></i> Colibrí (Polinización)
-                    </a>
-                    <!-- Lista que aparece al pasar el mouse -->
+                    <div class="level-btn-group level-btn-colibri">
+                        <a href="#seccion-colibri" class="level-btn-link">
+                            <i class="fa-solid fa-dove"></i> Colibrí (Polinización)
+                        </a>
+                        <!-- La pestañita de opciones -->
+                        <button class="mobile-info-toggle" aria-label="Ver opciones">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                    </div>
                     <div class="tooltip-list">
                         <ul>
                             <li>🎓 Cursos</li>
@@ -75,9 +86,14 @@
 
                 <!-- AJOLOTE -->
                 <div class="btn-wrapper">
-                    <a href="#seccion-ajolote" class="level-btn level-btn-ajolote">
-                        <i class="fa-solid fa-frog"></i> Ajolote (Regeneración)
-                    </a>
+                    <div class="level-btn-group level-btn-ajolote">
+                        <a href="#seccion-ajolote" class="level-btn-link">
+                            <i class="fa-solid fa-frog"></i> Ajolote (Regeneración)
+                        </a>
+                        <button class="mobile-info-toggle" aria-label="Ver opciones">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                    </div>
                     <div class="tooltip-list">
                         <ul>
                             <li>👥 Agentes de cambio</li>
@@ -89,9 +105,14 @@
 
                 <!-- LOBO -->
                 <div class="btn-wrapper">
-                    <a href="#seccion-lobo" class="level-btn level-btn-lobo">
-                        <i class="fa-solid fa-dog"></i> Lobo (Estrategia)
-                    </a>
+                    <div class="level-btn-group level-btn-lobo">
+                        <a href="#seccion-lobo" class="level-btn-link">
+                            <i class="fa-solid fa-dog"></i> Lobo (Estrategia)
+                        </a>
+                        <button class="mobile-info-toggle" aria-label="Ver opciones">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                    </div>
                     <div class="tooltip-list">
                         <ul>
                             <li>💰 Fondos</li>
@@ -121,18 +142,14 @@
             <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
         </div>
 
-        <!-- 
-             SECCIÓN DE MAPA DESPLEGABLE 
-             Inspirado en CDMX: Un botón ancho que despliega el mapa abajo.
-        -->
+        <!-- SECCIÓN DE MAPA DESPLEGABLE -->
         <div class="map-section-wrapper">
             <button id="btn-toggle-mapa" class="btn-full-width">
                 <i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores
             </button>
             
             <div id="mapa-desplegable" class="mapa-oculto">
-                <!-- IFRAME A TU MAPA REAL -->
-                <iframe src="https://www.google.com/maps/d/u/1/edit?mid=1ucypWovpoEYMy6hrTsYjBGLT_NDP-TY&ll=19.41826643299109%2C-99.14414000000001&z=18" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://ecogaiasos.github.io/web/charts.html" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
 
@@ -226,7 +243,7 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA (FOOTER) -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
