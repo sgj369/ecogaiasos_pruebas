@@ -6,44 +6,41 @@
     <title>ECO GAIA SOS - Pruebas</title>
     
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
+    <!-- PANTALLA DE CARGA -->
+    <div id="loader">
+        <!-- RUTA CORREGIDA: carpeta gif/ -->
+        <img src="gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
+    </div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-brand">ECO GAIA SOS</a>
-            
+            <a href="index.html" class="nav-brand">
+                <!-- RUTA CORREGIDA: carpeta gif/ -->
+                <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Proyectos</a></li>
-                
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        Niveles de Acción <i class="fa-solid fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Colibrí (Básico)</a></li>
-                        <li><a href="#">Ajolote (Intermedio)</a></li>
-                        <li><a href="#">Lobo (Avanzado)</a></li>
-                    </ul>
-                </li>
-                
                 <li><a href="#">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
-
         <div class="hero-content">
-            <h1>ECO GAIA SOS</h1>
-            <p class="motto">Mapeando el cambio: Tu directorio de sostenibilidad en agua, huertos, residuos y más.</p>
-            
+            <!-- RUTA CORREGIDA: carpeta gif/ -->
+            <img src="gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+
+            <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Busca un proyecto, actor o tema...">
+                <input type="text" id="buscador-input" placeholder="Busca un proyecto, actor o tema...">
             </div>
 
             <div class="action-buttons">
@@ -53,11 +50,19 @@
                     Eventos cerca de mí
                 </button>
             </div>
+            
+            <div class="level-buttons-container">
+                <a href="#seccion-colibri" class="level-btn level-btn-colibri"><i class="fa-solid fa-dove"></i> Colibrí (Básico)</a>
+                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote"><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</a>
+                <a href="#seccion-lobo" class="level-btn level-btn-lobo"><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</a>
+            </div>
         </div>
     </header>
 
+    <!-- PARTE B: SELECTOR Y TARJETAS -->
     <main class="content-section">
         
+        <!-- Toggle Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-target="eventos">Eventos</span>
             <div class="toggle-switch">
@@ -66,141 +71,129 @@
             <span class="toggle-label" data-target="lugares">Lugares</span>
         </div>
 
-        <div class="card-grid-container">
-            
-            <div class="card evento">
-                <div class="card-image">
-                    <img src="img/kpop.jpg" alt="Imagen de Evento">
-                </div>
-                <div class="card-content">
-                    <span class="card-category">Voluntariado</span>
-                    <h3 class="card-title">Restauración de Hábitat</h3>
-                    <p class="card-location">Bosque de Chapultepec</p>
-                </div>
-            </div>
-
-            <div class="card evento">
-                <div class="card-image">
-                    <img src="img/kpop.jpg" alt="Imagen de Evento">
-                </div>
-                <div class="card-content">
-                    <span class="card-category">Taller</span>
-                    <h3 class="card-title">Creación de Huertos Urbanos</h3>
-                    <p class="card-location">Huerto Roma Verde</p>
-                </div>
-            </div>
-
-            <div class="card lugar" style="display: none;">
-                <div class="card-image">
-                    <img src="img/kpop.jpg" alt="Imagen de Lugar">
-                </div>
-                <div class="card-content">
-                    <span class="card-category">Punto de Encuentro</span>
-                    <h3 class="card-title">Huerto Roma Verde</h3>
-                    <p class="card-location">Jalapa 234, Roma Sur</p>
-                </div>
-            </div>
-            
-            </div>
+        <!-- CONTENEDOR DE TARJETAS -->
+        <div class="card-grid-container" id="contenedor-tarjetas">
+            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
+        </div>
     </main>
 
-    <script>
-        const toggle = document.querySelector('.toggle-switch');
-        const labels = document.querySelectorAll('.toggle-label');
-        const cardsEventos = document.querySelectorAll('.card.evento');
-        const cardsLugares = document.querySelectorAll('.card.lugar');
+    <!-- PARTE C: NUEVAS SECCIONES DE NIVELES -->
+    
+    <!-- SECCIÓN COLIBRÍ -->
+    <section id="seccion-colibri" class="nivel-section">
+        <div class="section-divider"></div>
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
+            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎓 Cursos</span>
+                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💡 Ecotecnias</span>
+                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">✍️ Firmas</span>
+                    <p class="nivel-btn-desc">Apoya causas y peticiones importantes con tu firma.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📚 Lecturas y bibliografía</span>
+                    <p class="nivel-btn-desc">Encuentra artículos, guías y libros recomendados por la comunidad.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎬 Vídeos y documentales</span>
+                    <p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p>
+                </a>
+            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
+        </div>
+    </section>
 
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            
-            if (toggle.classList.contains('active')) {
-                // Mostrar Lugares
-                labels[0].classList.remove('active');
-                labels[1].classList.add('active');
-                cardsEventos.forEach(card => card.style.display = 'none');
-                cardsLugares.forEach(card => card.style.display = 'block');
-            } else {
-                // Mostrar Eventos
-                labels[0].classList.add('active');
-                labels[1].classList.remove('active');
-                cardsEventos.forEach(card => card.style.display = 'block');
-                cardsLugares.forEach(card => card.style.display = 'none');
-            }
-        });
+    <!-- SECCIÓN AJOLOTE -->
+    <section id="seccion-ajolote" class="nivel-section">
+        <div class="section-divider"></div>
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
+            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">👥 Agentes de cambio</span>
+                    <p class="nivel-btn-desc">Conoce a las personas y organizaciones que están liderando el cambio.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📣 Convocatorias</span>
+                    <p class="nivel-btn-desc">Encuentra oportunidades para presentar tus proyectos o unirte a otros.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🤝 Eventos y voluntariados</span>
+                    <p class="nivel-btn-desc">Únete a eventos y jornadas de voluntariado cerca de ti.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span>
+                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
+                </a>
+            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
+        </div>
+    </section>
 
-        // Simular clic en etiquetas para activar el toggle
-        labels.forEach(label => {
-            label.addEventListener('click', () => {
-                const target = label.getAttribute('data-target');
-                if ((target === 'eventos' && toggle.classList.contains('active')) ||
-                    (target === 'lugares' && !toggle.classList.contains('active'))) {
-                    toggle.click();
-                }
-            });
-        });
-    </script>
+    <!-- SECCIÓN LOBO -->
+    <section id="seccion-lobo" class="nivel-section">
+        <div class="section-divider"></div>
+        <div class="nivel-content">
+            <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
+            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
+            <div class="nivel-btn-grid">
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💰 Fondos</span>
+                    <p class="nivel-btn-desc">Descubre fuentes de financiamiento y fondos para tus proyectos.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">⚖️ Normativa</span>
+                    <p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p>
+                </a>
+            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
+                <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
+            </button>
+        </div>
+    </section>
 
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ECO GAIA SOS</h4>
+                <p>Generando Redes Para el Futuro</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>Email: contacto@ecogaiasos.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ECO GAIA SOS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
-    <script>
-        particlesJS("particles-js", { // Se aplica al ID del <header>
-          "particles": {
-            "number": {
-              "value": 60, 
-              "density": {
-                "enable": true,
-                "value_area": 800
-              }
-            },
-            "color": {
-              // Colores de tu logo
-              "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] 
-            },
-            "shape": {
-              "type": "circle",
-            },
-            "opacity": {
-              "value": 0.6, 
-              "random": true,
-              "anim": { 
-                "enable": true,
-                "speed": 0.5,
-                "opacity_min": 0,
-                "sync": false
-              }
-            },
-            "size": {
-              "value": 8, 
-              "random": true
-            },
-            "line_linked": {
-              "enable": true, 
-              "distance": 180, 
-              "color": "#cccccc", // Líneas grises claras
-              "opacity": 0.4,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": 3.5,
-              "direction": "out", 
-              "random": true,
-              "straight": false,
-              "out_mode": "out", 
-              "bounce": false
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas", // Detecta en el canvas de partículas
-            "events": {
-              "onhover": { "enable": false },
-              "onclick": { "enable": false },
-              "resize": true
-            }
-          },
-          "retina_detect": true
-        });
-    </script>
+    <!-- Script PRINCIPAL (Lógica de datos y UI) -->
+    <script src="script.js"></script>
 
 </body>
 </html>
