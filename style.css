@@ -54,6 +54,17 @@ body, html {
     height: 60px;
     width: auto;
 }
+
+/* Botón Hamburguesa (Oculto en PC, Visible en Móvil) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
 .nav-menu {
     list-style: none;
     margin: 0;
@@ -72,8 +83,6 @@ body, html {
     transition: color 0.3s ease;
 }
 .nav-menu li a:hover { color: #007bff; }
-
-/* Botón 'Súmate' destacado */
 .nav-menu li a.nav-btn-highlight {
     background-color: #2c9a4d;
     color: white;
@@ -110,7 +119,7 @@ body, html {
     z-index: 0;
 }
 .hero-content {
-    max-width: 700px;
+    max-width: 800px; 
     position: relative;
     z-index: 1;
     width: 100%;
@@ -176,35 +185,36 @@ body, html {
 .btn-secondary:hover { background-color: #e0e0e0; }
 .btn .fa-solid { margin-right: 0.5rem; }
 
-/* * BOTONES DE NIVEL (CON TOOLTIP) 
+/* ****************************************
+ * BOTONES DE NIVEL (ESTILO HÍBRIDO)
+ ****************************************
  */
 .level-buttons-container {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 1rem;
+    flex-wrap: wrap; 
     width: 100%;
 }
+
 .btn-wrapper {
     position: relative;
-    display: inline-block;
-}
-.level-btn {
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    white-space: nowrap;
+    min-width: 200px; 
 }
-.level-btn:hover { transform: translateY(-3px); }
+
+.level-btn-group {
+    display: flex;
+    align-items: stretch;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+}
+.level-btn-group:hover { transform: translateY(-3px); }
 
 .level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
@@ -213,55 +223,89 @@ body, html {
 .level-btn-lobo { background-color: #6a00a8; }
 .level-btn-lobo:hover { background-color: #58008c; }
 
-/* TOOLTIP (Lista desplegable) */
+.level-btn-link {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+    white-space: nowrap; 
+}
+
+/* Botón Pestaña (Icono Info) */
+.mobile-info-toggle {
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    color: white;
+    padding: 0 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    transition: background-color 0.2s;
+}
+.mobile-info-toggle:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* LISTA DESPLEGABLE */
 .tooltip-list {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    display: none; 
     background-color: white;
     color: #333;
-    min-width: 200px;
+    width: 100%; 
+    min-width: 220px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 10;
-    padding: 10px 0;
-    transition: all 0.3s ease;
+    margin-top: 8px;
     text-align: left;
+    overflow: hidden;
 }
-.tooltip-list::before { /* Flechita arriba */
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
+
+.tooltip-list.activo {
+    display: block;
+    animation: slideDown 0.3s ease;
 }
+
+/* Estilo "Flotante" (Solo PC Grande > 1024px) */
+@media (min-width: 1025px) {
+    .btn-wrapper:hover .tooltip-list {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+    }
+    .mobile-info-toggle { display: none; }
+    .level-btn-link { padding-right: 1.5rem; } 
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .tooltip-list ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 .tooltip-list ul li {
-    padding: 8px 15px;
-    font-size: 0.9rem;
+    padding: 10px 15px;
+    font-size: 0.95rem;
     border-bottom: 1px solid #eee;
 }
 .tooltip-list ul li:last-child { border-bottom: none; }
 
-/* Mostrar Tooltip al Hover */
-.btn-wrapper:hover .tooltip-list {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(5px);
-}
 
-
-/* CONTENIDO PRINCIPAL */
+/* CONTENIDO Y OTRAS SECCIONES... (Igual que antes) */
 .content-section {
     max-width: 1200px;
     margin: 2rem auto;
@@ -269,8 +313,6 @@ body, html {
     position: relative;
     z-index: 1;
 }
-
-/* Toggle */
 .toggle-container {
     display: flex;
     justify-content: center;
@@ -311,8 +353,6 @@ body, html {
 .toggle-switch.active .toggle-handle {
     transform: translateX(26px);
 }
-
-/* Grid de Tarjetas */
 .card-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -357,15 +397,13 @@ body, html {
     color: #ddd;
     margin: 0;
 }
-
-/* SECCIÓN MAPA DESPLEGABLE */
 .map-section-wrapper {
     width: 100%;
     text-align: center;
     margin-bottom: 3rem;
 }
 .btn-full-width {
-    background-color: #b71c1c; /* Rojo como botón eventos cerca de mi */
+    background-color: #b71c1c; 
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -390,11 +428,8 @@ body, html {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 #mapa-desplegable.activo {
-    height: 500px; /* Altura cuando está abierto */
+    height: 500px; 
 }
-
-
-/* SECCIONES DE NIVELES */
 .nivel-section {
     position: relative;
     padding: 4rem 2rem;
@@ -415,11 +450,9 @@ body, html {
     z-index: 1;
 }
 .section-divider { height: 1px; width: 100%; }
-
 #seccion-colibri { background-image: url('img/colibri.jpg'); }
 #seccion-ajolote { background-image: url('img/ajolote.jpg'); }
 #seccion-lobo { background-image: url('img/lobo.jpg'); background-position: center 25%; }
-
 .nivel-content {
     position: relative;
     z-index: 2;
@@ -489,8 +522,6 @@ body, html {
     background-color: rgba(255, 255, 255, 0.2);
     border-color: white;
 }
-
-/* FOOTER */
 footer {
     background-color: #1e2a24;
     color: white;
@@ -530,44 +561,67 @@ footer {
     color: #888;
 }
 
-/* MÓVIL */
+/* --- AJUSTES PARA PANTALLAS MEDIANAS Y MÓVILES --- */
+
+@media (max-width: 1024px) {
+    /* NAV: Mostrar Hamburguesa, Ocultar Menú Normal */
+    .hamburger-menu { display: block; }
+    
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* Estado Cerrado */
+        display: none; 
+        padding: 1rem 0;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+    
+    .nav-menu li {
+        margin: 10px 0;
+    }
+
+    /* HERO: Ajustes Medianos */
+    .hero-content { max-width: 90%; }
+    
+    .level-buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Botones ocupan todo el ancho y usan pestañas */
+    .btn-wrapper {
+        width: 100%; 
+        max-width: 500px; /* Límite para que no se vea gigante */
+    }
+    
+    .mobile-info-toggle { display: flex; } /* Forzar visualización de pestaña */
+    .level-btn-link { justify-content: flex-start; } /* Texto alineado izq */
+    
+    /* Footer centrado */
+    .footer-content { flex-direction: column; text-align: center; }
+    .social-icons { justify-content: center; display: flex; }
+}
+
 @media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .nav-container { justify-content: center; }
+    /* Ajustes extra para móvil pequeño */
     .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
     .hero-logo { max-height: 180px; }
     
     .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
     
-    .action-buttons, .level-buttons-container {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem; /* Más espacio en móvil */
-        align-items: stretch;
-    }
-    
-    /* Ajuste para que los tooltips se vean bien en móvil si se presionan */
-    .btn-wrapper { width: 100%; }
-    .level-btn { width: 100%; justify-content: center; }
-    .tooltip-list { 
-        position: static; 
-        transform: none; 
-        width: 100%; 
-        visibility: visible; 
-        opacity: 1; 
-        margin-top: 5px;
-        display: none; /* Oculto por defecto en móvil, se podría activar con JS */
-    }
-    /* En móvil, mostramos la lista al presionar (active) o hacer focus */
-    .btn-wrapper:active .tooltip-list, .btn-wrapper:focus-within .tooltip-list {
-        display: block;
-    }
-
     .card-grid-container, .nivel-btn-grid { grid-template-columns: 1fr; }
     .nivel-section { padding: 3rem 1rem; }
     .nivel-section h2 { font-size: 2rem; }
     #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
-    .footer-content { flex-direction: column; text-align: center; }
-    .social-icons { justify-content: center; display: flex; }
 }
