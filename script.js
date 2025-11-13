@@ -22,9 +22,11 @@ window.addEventListener('load', () => {
 
     iniciarParticulas();
     cargarDatosDeGoogleSheets();
-    
-    // Inicializar Toggle de Mapa
     setupMapaToggle();
+    
+    // Inicializar Tooltips móviles y Menú Hamburguesa
+    setupMobileTooltips();
+    setupHamburgerMenu();
 });
 
 // ==========================================
@@ -40,7 +42,6 @@ async function cargarDatosDeGoogleSheets() {
         
         todosLosProyectos = json.table.rows.map((fila, index) => {
             const c = fila.c;
-            // Lógica simple para asignar tipo (temporal)
             const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
 
             return {
@@ -57,7 +58,6 @@ async function cargarDatosDeGoogleSheets() {
 
     } catch (error) {
         console.error("Error cargando Sheet:", error);
-        // DATOS DE RESPALDO
         todosLosProyectos = [
             { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
             { nombre: "Taller Composta", categoria: "Taller", ubicacion: "Parque México", imagen: "img/kpop.jpg", tipo: "evento" }
@@ -68,7 +68,6 @@ async function cargarDatosDeGoogleSheets() {
 
 function filtrarYRenderizar() {
     const textoBuscador = document.getElementById('buscador-input').value.toLowerCase();
-    
     let datosFiltrados = todosLosProyectos.filter(p => p.tipo === filtroActual);
 
     if (textoBuscador) {
@@ -126,10 +125,46 @@ function setupMapaToggle() {
     });
 }
 
-// Buscador Input
+// Pestañas de info en móvil/tablet
+function setupMobileTooltips() {
+    const toggles = document.querySelectorAll('.mobile-info-toggle');
+    
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const parentWrapper = toggle.closest('.btn-wrapper');
+            const tooltip = parentWrapper.querySelector('.tooltip-list');
+            
+            document.querySelectorAll('.tooltip-list').forEach(el => {
+                if(el !== tooltip) el.classList.remove('activo');
+            });
+            
+            tooltip.classList.toggle('activo');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.btn-wrapper')) {
+            document.querySelectorAll('.tooltip-list').forEach(el => el.classList.remove('activo'));
+        }
+    });
+}
+
+// NUEVO: Menú Hamburguesa
+function setupHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.getElementById('nav-menu-list');
+
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+}
+
+// Listeners
 document.getElementById('buscador-input').addEventListener('input', filtrarYRenderizar);
 
-// Toggle Eventos/Lugares
 const toggleSwitch = document.querySelector('.toggle-switch');
 const labels = document.querySelectorAll('.toggle-label');
 
