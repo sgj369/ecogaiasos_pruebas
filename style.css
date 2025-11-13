@@ -9,11 +9,7 @@ body, html {
     background-color: #f0f2f5;
 }
 
-/*
- ****************************************
- * PANTALLA DE CARGA
- ****************************************
- */
+/* PANTALLA DE CARGA */
 #loader {
     position: fixed;
     top: 0;
@@ -31,11 +27,7 @@ body, html {
     width: 200px;
 }
 
-/*
- ****************************************
- * BARRA DE NAVEGACIÓN SUPERIOR
- ****************************************
- */
+/* BARRA DE NAVEGACIÓN */
 .main-nav {
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -55,10 +47,6 @@ body, html {
     height: 80px; 
 }
 .nav-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2a3d34;
-    text-decoration: none;
     display: flex;
     align-items: center;
 }
@@ -74,7 +62,6 @@ body, html {
     align-items: center;
 }
 .nav-menu li {
-    position: relative;
     margin-left: 1.5rem;
 }
 .nav-menu li a {
@@ -86,11 +73,19 @@ body, html {
 }
 .nav-menu li a:hover { color: #007bff; }
 
-/*
- ****************************************
- * PARTE A: HERO PRINCIPAL
- ****************************************
- */
+/* Botón 'Súmate' destacado */
+.nav-menu li a.nav-btn-highlight {
+    background-color: #2c9a4d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+.nav-menu li a.nav-btn-highlight:hover {
+    background-color: #217a3a;
+    color: white;
+}
+
+/* HERO PRINCIPAL */
 .hero-section#particles-js {
     position: relative;
     height: auto;
@@ -118,6 +113,7 @@ body, html {
     max-width: 700px;
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 .hero-logo {
     width: 100%;
@@ -180,23 +176,24 @@ body, html {
 .btn-secondary:hover { background-color: #e0e0e0; }
 .btn .fa-solid { margin-right: 0.5rem; }
 
-/*
- ****************************************
- * BOTONES DE NIVEL (HERO)
- ****************************************
+/* * BOTONES DE NIVEL (CON TOOLTIP) 
  */
 .level-buttons-container {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     width: 100%;
+}
+.btn-wrapper {
+    position: relative;
+    display: inline-block;
 }
 .level-btn {
     color: white;
     font-size: 1rem;
     font-weight: 600;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -205,25 +202,66 @@ body, html {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
+    white-space: nowrap;
 }
-.level-btn:hover {
-    transform: translateY(-3px);
-}
+.level-btn:hover { transform: translateY(-3px); }
+
 .level-btn-colibri { background-color: #2a9d8f; }
 .level-btn-colibri:hover { background-color: #268a7f; }
-
 .level-btn-ajolote { background-color: #0056b3; }
 .level-btn-ajolote:hover { background-color: #004494; }
-
 .level-btn-lobo { background-color: #6a00a8; }
 .level-btn-lobo:hover { background-color: #58008c; }
 
+/* TOOLTIP (Lista desplegable) */
+.tooltip-list {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: white;
+    color: #333;
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 10;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+.tooltip-list::before { /* Flechita arriba */
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+.tooltip-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tooltip-list ul li {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+.tooltip-list ul li:last-child { border-bottom: none; }
 
-/*
- ****************************************
- * PARTE B: SELECTOR Y TARJETAS (Eventos/Lugares)
- ****************************************
- */
+/* Mostrar Tooltip al Hover */
+.btn-wrapper:hover .tooltip-list {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
+}
+
+
+/* CONTENIDO PRINCIPAL */
 .content-section {
     max-width: 1200px;
     margin: 2rem auto;
@@ -231,6 +269,8 @@ body, html {
     position: relative;
     z-index: 1;
 }
+
+/* Toggle */
 .toggle-container {
     display: flex;
     justify-content: center;
@@ -271,10 +311,13 @@ body, html {
 .toggle-switch.active .toggle-handle {
     transform: translateX(26px);
 }
+
+/* Grid de Tarjetas */
 .card-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 .card {
     background-color: #2a3d34; 
@@ -289,7 +332,6 @@ body, html {
     width: 100%;
     height: 180px;
     overflow: hidden;
-    border-radius: 8px 8px 0 0; 
 }
 .card-image img {
     width: 100%;
@@ -306,7 +348,7 @@ body, html {
     display: block;
 }
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin: 0 0 0.5rem 0;
 }
@@ -316,23 +358,52 @@ body, html {
     margin: 0;
 }
 
-/*
- ****************************************
- * PARTE C: SECCIONES DE NIVELES (Actualizado)
- ****************************************
- */
+/* SECCIÓN MAPA DESPLEGABLE */
+.map-section-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.btn-full-width {
+    background-color: #b71c1c; /* Rojo como botón eventos cerca de mi */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+}
+.btn-full-width:hover {
+    background-color: #9a1616;
+}
+#mapa-desplegable {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+#mapa-desplegable.activo {
+    height: 500px; /* Altura cuando está abierto */
+}
+
+
+/* SECCIONES DE NIVELES */
 .nivel-section {
     position: relative;
     padding: 4rem 2rem;
     background-size: cover;
     background-position: center center;
-    /* ****** CORRECCIÓN: Scroll para móviles ****** */
     background-attachment: scroll; 
     color: #ffffff;
     text-align: center;
 }
-
-/* Superposición oscura para legibilidad */
 .nivel-section::before {
     content: '';
     position: absolute;
@@ -343,26 +414,11 @@ body, html {
     background-color: rgba(0, 0, 0, 0.7); 
     z-index: 1;
 }
+.section-divider { height: 1px; width: 100%; }
 
-/* Espacio invisible entre secciones fixed/scroll */
-.section-divider {
-    height: 1px;
-    width: 100%;
-}
-
-/* ****** CORRECCIÓN: Rutas de carpeta IMG/ ****** */
-#seccion-colibri {
-    background-image: url('img/colibri.jpg');
-}
-#seccion-ajolote {
-    background-image: url('img/ajolote.jpg');
-}
-#seccion-lobo {
-    background-image: url('img/lobo.jpg');
-    /* ****** CORRECCIÓN: Bajar la imagen en Desktop ****** */
-    background-position: center 25%; 
-}
-
+#seccion-colibri { background-image: url('img/colibri.jpg'); }
+#seccion-ajolote { background-image: url('img/ajolote.jpg'); }
+#seccion-lobo { background-image: url('img/lobo.jpg'); background-position: center 25%; }
 
 .nivel-content {
     position: relative;
@@ -389,8 +445,6 @@ body, html {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
-
-/* Tarjetas Ovaladas */
 .nivel-btn-item {
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -420,8 +474,6 @@ body, html {
     margin: 0;
     line-height: 1.4;
 }
-
-/* Botón Volver Arriba (Discreto) */
 .btn-back-to-top {
     margin-top: 3rem;
     background-color: transparent;
@@ -438,14 +490,9 @@ body, html {
     border-color: white;
 }
 
-
-/*
- ****************************************
- * FOOTER (PIE DE PÁGINA)
- ****************************************
- */
+/* FOOTER */
 footer {
-    background-color: #1e2a24; /* Color oscuro (tipo Cartelera) */
+    background-color: #1e2a24;
     color: white;
     padding: 3rem 2rem 1rem 2rem;
     margin-top: 0;
@@ -463,7 +510,7 @@ footer {
 .footer-section h4 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: #D4AF37; /* Dorado sutil */
+    color: #D4AF37;
 }
 .footer-section p {
     font-size: 0.9rem;
@@ -475,9 +522,7 @@ footer {
     margin-right: 1rem;
     transition: color 0.3s ease;
 }
-.social-icons a:hover {
-    color: #D4AF37;
-}
+.social-icons a:hover { color: #D4AF37; }
 .footer-bottom {
     text-align: center;
     padding-top: 1rem;
@@ -485,50 +530,44 @@ footer {
     color: #888;
 }
 
-/*
- ****************************************
- * AJUSTES PARA MÓVIL
- ****************************************
- */
+/* MÓVIL */
 @media (max-width: 768px) {
     .nav-menu { display: none; }
     .nav-container { justify-content: center; }
     .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
     .hero-logo { max-height: 180px; }
     
-    .search-bar-container input {
-        font-size: 1rem;
-        padding: 0.8rem 0.8rem 0.8rem 3rem;
-    }
+    .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
     
-    .action-buttons, .level-buttons-container, .toggle-container {
+    .action-buttons, .level-buttons-container {
         flex-direction: column;
         width: 100%;
-        gap: 0.5rem;
+        gap: 1rem; /* Más espacio en móvil */
         align-items: stretch;
     }
-    .level-btn {
-        width: 100%;
-        box-sizing: border-box;
-        justify-content: center;
+    
+    /* Ajuste para que los tooltips se vean bien en móvil si se presionan */
+    .btn-wrapper { width: 100%; }
+    .level-btn { width: 100%; justify-content: center; }
+    .tooltip-list { 
+        position: static; 
+        transform: none; 
+        width: 100%; 
+        visibility: visible; 
+        opacity: 1; 
+        margin-top: 5px;
+        display: none; /* Oculto por defecto en móvil, se podría activar con JS */
+    }
+    /* En móvil, mostramos la lista al presionar (active) o hacer focus */
+    .btn-wrapper:active .tooltip-list, .btn-wrapper:focus-within .tooltip-list {
+        display: block;
     }
 
-    .card-grid-container, .nivel-btn-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Ajustes móviles para nuevas secciones */
-    .nivel-section {
-        padding: 3rem 1rem;
-    }
+    .card-grid-container, .nivel-btn-grid { grid-template-columns: 1fr; }
+    .nivel-section { padding: 3rem 1rem; }
     .nivel-section h2 { font-size: 2rem; }
-
-    /* Ajuste de imágenes en móvil (Derecha) */
-    #seccion-colibri { background-position: 80% center; }
-    #seccion-ajolote { background-position: 80% center; }
-    #seccion-lobo { background-position: 80% center; }
-
+    #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
     .footer-content { flex-direction: column; text-align: center; }
     .social-icons { justify-content: center; display: flex; }
 }
