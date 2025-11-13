@@ -2,165 +2,162 @@
 // 1. CONFIGURACIÓN Y DATOS
 // ==========================================
 
-// ID de tu Google Sheet (Extraído del repositorio original)
 const SHEET_ID = '1lM4o-nEUk-uDmdTymrqv9N0HDbnJDAvdw_dDfgRTA6c';
-// URL para obtener los datos como JSON (Usando la API de visualización de Google)
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
-// Variable para guardar los datos crudos
 let todosLosProyectos = [];
+let filtroActual = 'evento'; 
 
 // ==========================================
-// 2. INICIALIZACIÓN (Cuando carga la página)
+// 2. INICIALIZACIÓN
 // ==========================================
 
 window.addEventListener('load', () => {
-    // A. Manejar Pantalla de Carga
+    // Pantalla de carga
     const loader = document.getElementById('loader');
     setTimeout(() => {
         loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    }, 800); // Tiempo mínimo de carga
+        setTimeout(() => { loader.style.display = 'none'; }, 500);
+    }, 800);
 
-    // B. Iniciar Partículas
     iniciarParticulas();
-
-    // C. Cargar Datos
     cargarDatosDeGoogleSheets();
+    
+    // Inicializar Toggle de Mapa
+    setupMapaToggle();
 });
 
 // ==========================================
-// 3. LÓGICA DE DATOS (Google Sheets)
+// 3. LÓGICA DE DATOS
 // ==========================================
 
 async function cargarDatosDeGoogleSheets() {
-    const contenedor = document.getElementById('contenedor-tarjetas');
-    
     try {
         const respuesta = await fetch(SHEET_URL);
         const texto = await respuesta.text();
-        
-        // La respuesta de Google trae un texto extra al principio y final, hay que limpiarlo
         const jsonTexto = texto.substring(47).slice(0, -2);
         const json = JSON.parse(jsonTexto);
         
-        // Procesar las filas del Excel a un formato más limpio
-        todosLosProyectos = json.table.rows.map(fila => {
-            // OJO: Indices de columnas
+        todosLosProyectos = json.table.rows.map((fila, index) => {
             const c = fila.c;
+            // Lógica simple para asignar tipo (temporal)
+            const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
+
             return {
                 nombre: c[0] ? c[0].v : 'Sin Nombre',
                 categoria: c[1] ? c[1].v : 'General',
                 ubicacion: c[2] ? c[2].v : 'CDMX',
-                // RUTA CORREGIDA: img/kpop.jpg
                 imagen: c[3] ? c[3].v : 'img/kpop.jpg', 
-                descripcion: c[4] ? c[4].v : '',
-                tipo: 'evento'
+                descripcion: c[4] ? c[4].v : 'Sin descripción disponible.',
+                tipo: tipoAsignado
             };
         });
 
-        if (todosLosProyectos.length === 0) throw new Error("Hoja vacía");
-
-        mostrarProyectos(todosLosProyectos);
+        filtrarYRenderizar();
 
     } catch (error) {
         console.error("Error cargando Sheet:", error);
-        // DATOS DE RESPALDO (Por si falla la conexión)
+        // DATOS DE RESPALDO
         todosLosProyectos = [
-            {
-                nombre: "Huerto Roma Verde",
-                categoria: "Huerto Urbano",
-                ubicacion: "Roma Sur, CDMX",
-                imagen: "img/kpop.jpg", // RUTA CORREGIDA
-                tipo: "lugar"
-            },
-            {
-                nombre: "Taller de Composta",
-                categoria: "Taller",
-                ubicacion: "Parque México",
-                imagen: "img/kpop.jpg", // RUTA CORREGIDA
-                tipo: "evento"
-            },
-            {
-                nombre: "Limpieza de Barrancas",
-                categoria: "Voluntariado",
-                ubicacion: "Álvaro Obregón",
-                imagen: "img/kpop.jpg", // RUTA CORREGIDA
-                tipo: "evento"
-            }
+            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
+            { nombre: "Taller Composta", categoria: "Taller", ubicacion: "Parque México", imagen: "img/kpop.jpg", tipo: "evento" }
         ];
-        mostrarProyectos(todosLosProyectos);
+        filtrarYRenderizar();
     }
 }
 
-// Función para pintar las tarjetas en el HTML
-function mostrarProyectos(proyectos) {
-    const contenedor = document.getElementById('contenedor-tarjetas');
-    contenedor.innerHTML = ''; 
+function filtrarYRenderizar() {
+    const textoBuscador = document.getElementById('buscador-input').value.toLowerCase();
+    
+    let datosFiltrados = todosLosProyectos.filter(p => p.tipo === filtroActual);
 
-    proyectos.forEach(proyecto => {
-        // Crear HTML de la tarjeta
-        const tarjetaHTML = `
-            <div class="card">
-                <div class="card-image">
-                    <!-- RUTA CORREGIDA EN ONERROR: img/kpop.jpg -->
-                    <img src="${proyecto.imagen}" alt="${proyecto.nombre}" onerror="this.src='img/kpop.jpg'">
-                </div>
-                <div class="card-content">
-                    <span class="card-category">${proyecto.categoria}</span>
-                    <h3 class="card-title">${proyecto.nombre}</h3>
-                    <p class="card-location"><i class="fa-solid fa-location-dot"></i> ${proyecto.ubicacion}</p>
-                </div>
-            </div>
-        `;
-        contenedor.innerHTML += tarjetaHTML;
-    });
+    if (textoBuscador) {
+        datosFiltrados = datosFiltrados.filter(p => 
+            p.nombre.toLowerCase().includes(textoBuscador) ||
+            p.categoria.toLowerCase().includes(textoBuscador) ||
+            p.ubicacion.toLowerCase().includes(textoBuscador)
+        );
+    }
+
+    renderCards(datosFiltrados);
 }
 
 // ==========================================
-// 4. LÓGICA DE INTERFAZ (Buscador y Toggle)
+// 4. RENDERIZADO Y UI
 // ==========================================
 
-const inputBuscador = document.getElementById('buscador-input');
-inputBuscador.addEventListener('input', (e) => {
-    const texto = e.target.value.toLowerCase();
-    const proyectosFiltrados = todosLosProyectos.filter(proyecto => {
-        return proyecto.nombre.toLowerCase().includes(texto) || 
-               proyecto.categoria.toLowerCase().includes(texto) ||
-               proyecto.ubicacion.toLowerCase().includes(texto);
-    });
-    mostrarProyectos(proyectosFiltrados);
-});
+function renderCards(data) {
+    const contenedor = document.getElementById('contenedor-tarjetas');
+    contenedor.innerHTML = '';
+    
+    if(data.length === 0) {
+        contenedor.innerHTML = '<p style="color:white; text-align:center;">No se encontraron resultados.</p>';
+        return;
+    }
 
-const toggle = document.querySelector('.toggle-switch');
+    data.forEach(p => {
+        const html = `
+            <div class="card">
+                <div class="card-image">
+                    <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='img/kpop.jpg'">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">${p.categoria}</span>
+                    <h3 class="card-title">${p.nombre}</h3>
+                    <p class="card-location"><i class="fa-solid fa-location-dot"></i> ${p.ubicacion}</p>
+                </div>
+            </div>`;
+        contenedor.innerHTML += html;
+    });
+}
+
+function setupMapaToggle() {
+    const btn = document.getElementById('btn-toggle-mapa');
+    const mapaDiv = document.getElementById('mapa-desplegable');
+    
+    btn.addEventListener('click', () => {
+        mapaDiv.classList.toggle('activo');
+        
+        if (mapaDiv.classList.contains('activo')) {
+            btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Ocultar Mapa de Actores';
+        } else {
+            btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores';
+        }
+    });
+}
+
+// Buscador Input
+document.getElementById('buscador-input').addEventListener('input', filtrarYRenderizar);
+
+// Toggle Eventos/Lugares
+const toggleSwitch = document.querySelector('.toggle-switch');
 const labels = document.querySelectorAll('.toggle-label');
 
-toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    if (toggle.classList.contains('active')) {
+toggleSwitch.addEventListener('click', () => {
+    toggleSwitch.classList.toggle('active');
+    const isLugar = toggleSwitch.classList.toggle('lugar-mode'); 
+    
+    if(isLugar) {
         labels[0].classList.remove('active');
         labels[1].classList.add('active');
+        filtroActual = 'lugar';
     } else {
         labels[0].classList.add('active');
         labels[1].classList.remove('active');
+        filtroActual = 'evento';
     }
+    
+    filtrarYRenderizar();
 });
 
 labels.forEach(label => {
     label.addEventListener('click', () => {
-        const target = label.getAttribute('data-target');
-        if ((target === 'eventos' && toggle.classList.contains('active')) ||
-            (target === 'lugares' && !toggle.classList.contains('active'))) {
-            toggle.click();
-        }
+        const target = label.getAttribute('data-filter');
+        if(target !== filtroActual) toggleSwitch.click();
     });
 });
 
-// ==========================================
-// 5. PARTICULAS
-// ==========================================
+// Particulas
 function iniciarParticulas() {
     if(typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
