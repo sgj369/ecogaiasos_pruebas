@@ -13,7 +13,6 @@ let filtroActual = 'evento';
 // ==========================================
 
 window.addEventListener('load', () => {
-    // Pantalla de carga
     const loader = document.getElementById('loader');
     setTimeout(() => {
         loader.style.opacity = '0';
@@ -40,16 +39,14 @@ async function cargarDatosDeGoogleSheets() {
         
         todosLosProyectos = json.table.rows.map((fila, index) => {
             const c = fila.c;
-            // Asignar tipo: Para pruebas, hacemos que casi todos sean eventos
-            // para que se llene la lista. En producción usarás una columna real.
-            const tipoAsignado = 'evento'; 
+            const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
 
             return {
                 nombre: c[0] ? c[0].v : 'Sin Nombre',
                 categoria: c[1] ? c[1].v : 'General',
                 ubicacion: c[2] ? c[2].v : 'CDMX',
                 imagen: c[3] ? c[3].v : 'img/kpop.jpg', 
-                descripcion: c[4] ? c[4].v : 'Sin descripción disponible.',
+                descripcion: c[4] ? c[4].v : 'Sin descripción.',
                 tipo: tipoAsignado
             };
         });
@@ -57,52 +54,25 @@ async function cargarDatosDeGoogleSheets() {
         filtrarYRenderizar();
 
     } catch (error) {
-        console.log("Usando datos de prueba visual (6 tarjetas)...");
+        console.log("Cargando datos de prueba...");
         
-        // DATOS DE RESPALDO EXTENDIDOS (6 Elementos para ver el diseño)
+        // DATOS DE RESPALDO (6 Eventos + 6 Lugares)
         todosLosProyectos = [
-            { 
-                nombre: "Taller de Composta", 
-                categoria: "Taller", 
-                ubicacion: "Parque México, Condesa", 
-                imagen: "img/kpop.jpg", 
-                tipo: "evento" 
-            },
-            { 
-                nombre: "Limpieza del Río Magdalena", 
-                categoria: "Voluntariado", 
-                ubicacion: "Los Dinamos, Magdalena Contreras", 
-                imagen: "img/ajolote.jpg", // Usando tus otras imágenes para variar
-                tipo: "evento" 
-            },
-            { 
-                nombre: "Mercado de Trueque", 
-                categoria: "Feria", 
-                ubicacion: "Bosque de Chapultepec", 
-                imagen: "img/colibri.jpg", 
-                tipo: "evento" 
-            },
-            { 
-                nombre: "Cine Debate Ambiental", 
-                categoria: "Cultura", 
-                ubicacion: "Cineteca Nacional", 
-                imagen: "img/lobo.jpg", 
-                tipo: "evento" 
-            },
-            { 
-                nombre: "Clase de Huerto Urbano", 
-                categoria: "Curso", 
-                ubicacion: "Huerto Roma Verde", 
-                imagen: "img/kpop.jpg", 
-                tipo: "evento" 
-            },
-            { 
-                nombre: "Recolección de Electrónicos", 
-                categoria: "Acopio", 
-                ubicacion: "Parque de los Venados", 
-                imagen: "img/ajolote.jpg", 
-                tipo: "evento" 
-            }
+            // EVENTOS
+            { nombre: "Taller de Composta", categoria: "Taller", ubicacion: "Parque México, Condesa", imagen: "img/kpop.jpg", tipo: "evento" },
+            { nombre: "Limpieza del Río", categoria: "Voluntariado", ubicacion: "Los Dinamos", imagen: "img/ajolote.jpg", tipo: "evento" },
+            { nombre: "Mercado de Trueque", categoria: "Feria", ubicacion: "Bosque de Chapultepec", imagen: "img/colibri.jpg", tipo: "evento" },
+            { nombre: "Cine Debate Ambiental", categoria: "Cultura", ubicacion: "Cineteca Nacional", imagen: "img/lobo.jpg", tipo: "evento" },
+            { nombre: "Clase de Huerto", categoria: "Curso", ubicacion: "Huerto Roma Verde", imagen: "img/kpop.jpg", tipo: "evento" },
+            { nombre: "Recolección Electrónicos", categoria: "Acopio", ubicacion: "Parque de los Venados", imagen: "img/ajolote.jpg", tipo: "evento" },
+            
+            // LUGARES
+            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
+            { nombre: "Viveros de Coyoacán", categoria: "Parque", ubicacion: "Coyoacán", imagen: "img/colibri.jpg", tipo: "lugar" },
+            { nombre: "Parque Bicentenario", categoria: "Parque", ubicacion: "Azcapotzalco", imagen: "img/lobo.jpg", tipo: "lugar" },
+            { nombre: "Jardín Botánico UNAM", categoria: "Jardín", ubicacion: "CU", imagen: "img/ajolote.jpg", tipo: "lugar" },
+            { nombre: "Mercado El 100", categoria: "Mercado", ubicacion: "Roma", imagen: "img/kpop.jpg", tipo: "lugar" },
+            { nombre: "Museo de Historia Natural", categoria: "Museo", ubicacion: "Chapultepec", imagen: "img/colibri.jpg", tipo: "lugar" }
         ];
         filtrarYRenderizar();
     }
@@ -123,10 +93,6 @@ function filtrarYRenderizar() {
     renderCards(datosFiltrados);
 }
 
-// ==========================================
-// 4. RENDERIZADO Y UI
-// ==========================================
-
 function renderCards(data) {
     const contenedor = document.getElementById('contenedor-tarjetas');
     contenedor.innerHTML = '';
@@ -140,7 +106,6 @@ function renderCards(data) {
         const html = `
             <div class="card">
                 <div class="card-image">
-                    <!-- onerror para que no se rompa si falta la imagen -->
                     <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='img/kpop.jpg'">
                 </div>
                 <div class="card-content">
@@ -157,13 +122,11 @@ function renderCards(data) {
 
 function setupMapaToggle() {
     const btn = document.getElementById('btn-toggle-mapa');
-    if(!btn) return; // Seguridad si no existe el botón
-    
+    if(!btn) return;
     const mapaDiv = document.getElementById('mapa-desplegable');
     
     btn.addEventListener('click', () => {
         mapaDiv.classList.toggle('activo');
-        
         if (mapaDiv.classList.contains('activo')) {
             btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Ocultar Mapa de Actores';
         } else {
@@ -174,21 +137,17 @@ function setupMapaToggle() {
 
 function setupMobileTooltips() {
     const toggles = document.querySelectorAll('.mobile-info-toggle');
-    
     toggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             const parentWrapper = toggle.closest('.btn-wrapper');
             const tooltip = parentWrapper.querySelector('.tooltip-list');
-            
             document.querySelectorAll('.tooltip-list').forEach(el => {
                 if(el !== tooltip) el.classList.remove('activo');
             });
-            
             tooltip.classList.toggle('activo');
         });
     });
-
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.btn-wrapper')) {
             document.querySelectorAll('.tooltip-list').forEach(el => el.classList.remove('activo'));
@@ -198,12 +157,9 @@ function setupMobileTooltips() {
 
 function setupHamburgerMenu() {
     const hamburger = document.querySelector('.hamburger-menu');
-    const navMenu = document.getElementById('nav-menu-list'); // Asegúrate que el UL tenga este ID en el HTML
-
+    const navMenu = document.getElementById('nav-menu-list');
     if(hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
-            // Toggle clase 'active' en el menú para mostrar/ocultar
-            // Nota: En tu CSS definiste .nav-menu.active { display: flex }
             if (navMenu.style.display === 'flex') {
                 navMenu.style.display = 'none';
             } else {
@@ -213,7 +169,6 @@ function setupHamburgerMenu() {
     }
 }
 
-// Listeners
 document.getElementById('buscador-input').addEventListener('input', filtrarYRenderizar);
 
 const toggleSwitch = document.querySelector('.toggle-switch');
@@ -221,29 +176,27 @@ const labels = document.querySelectorAll('.toggle-label');
 
 toggleSwitch.addEventListener('click', () => {
     toggleSwitch.classList.toggle('active');
-    const isLugar = toggleSwitch.classList.toggle('lugar-mode'); 
-    
-    if(isLugar) {
-        labels[0].classList.remove('active');
-        labels[1].classList.add('active');
+    // Lógica: Si tiene la clase active, estamos en "Lugares"
+    if(toggleSwitch.classList.contains('active')) {
+        labels[0].classList.remove('active'); // Eventos OFF
+        labels[1].classList.add('active');    // Lugares ON
         filtroActual = 'lugar';
     } else {
-        labels[0].classList.add('active');
-        labels[1].classList.remove('active');
+        labels[0].classList.add('active');    // Eventos ON
+        labels[1].classList.remove('active'); // Lugares OFF
         filtroActual = 'evento';
     }
-    
     filtrarYRenderizar();
 });
 
 labels.forEach(label => {
     label.addEventListener('click', () => {
         const target = label.getAttribute('data-filter');
+        // Si hacemos clic en un label que NO es el actual, cambiamos el switch
         if(target !== filtroActual) toggleSwitch.click();
     });
 });
 
-// Particulas
 function iniciarParticulas() {
     if(typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
