@@ -55,7 +55,7 @@ body, html {
     width: auto;
 }
 
-/* Botón Hamburguesa (Oculto en PC, Visible en Móvil) */
+/* Botón Hamburguesa */
 .hamburger-menu {
     display: none;
     background: none;
@@ -342,90 +342,77 @@ body, html {
 }
 
 /* ================================================================
-   NUEVO DISEÑO DE TARJETAS: ESTILO AGENDA/LISTA (Horizontal)
-   ================================================================
-*/
-
+   DISEÑO TARJETAS HORIZONTALES (Estilo Lista/Agenda)
+   ================================================================ */
 .card-grid-container {
     display: grid;
-    /* Cambiamos a 1 sola columna para que sea una lista */
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr; /* Una columna para lista vertical */
     gap: 1.5rem;
     margin-bottom: 3rem;
-    /* Limitamos el ancho para que no se vean estiradas en pantallas muy grandes */
-    max-width: 950px; 
+    max-width: 900px; /* Ancho máximo para que no se estire demasiado en pantallas 4k */
     margin-left: auto;
     margin-right: auto;
 }
 
 .card {
-    /* FLEX: Esto hace que la imagen y el contenido estén lado a lado */
-    display: flex; 
-    flex-direction: row; 
-    
+    display: flex;
+    flex-direction: row; /* Horizontal: Imagen Izq | Info Der */
     background-color: #2a3d34; 
     color: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-    /* Altura fija para uniformidad en escritorio */
-    height: 220px; 
+    height: 200px; /* Altura fija para uniformidad en escritorio */
 }
-
 .card:hover { 
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .card-image {
-    /* La imagen ocupa el 35% del ancho de la tarjeta */
-    width: 35%; 
+    width: 35%; /* La imagen toma un poco más de un tercio */
     height: 100%;
     overflow: hidden;
-    /* Importante: evita que la imagen se encoja si hay mucho texto */
     flex-shrink: 0; 
+    position: relative;
 }
-
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta la imagen para llenar el espacio */
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
-
 .card:hover .card-image img {
-    transform: scale(1.05); /* Zoom suave al pasar el mouse */
+    transform: scale(1.05); 
 }
 
 .card-content { 
-    /* El contenido ocupa el resto del espacio */
     flex-grow: 1;
     padding: 1.5rem 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
+    justify-content: center; 
 }
 
 .card-category {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: #a0d8b3;
+    color: #a0d8b3; /* Verde claro */
     margin-bottom: 0.5rem;
     letter-spacing: 0.5px;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     line-height: 1.2;
 }
 
 .card-location {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #ddd;
     margin: 0;
     display: flex;
@@ -621,17 +608,13 @@ footer {
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         display: none; 
         padding: 1rem 0;
-        z-index: 1001; /* Asegurar que esté sobre todo */
+        z-index: 1001;
     }
-    
     .nav-menu.active {
         display: flex;
         animation: slideDown 0.3s ease;
     }
-    
-    .nav-menu li {
-        margin: 10px 0;
-    }
+    .nav-menu li { margin: 10px 0; }
 
     .hero-content { max-width: 90%; }
     
@@ -639,12 +622,10 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    
     .btn-wrapper {
         width: 100%; 
         max-width: 500px;
     }
-    
     .mobile-info-toggle { display: flex; } 
     .level-btn-link { justify-content: flex-start; }
     
@@ -659,14 +640,14 @@ footer {
     .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
     
-    /* REVERTIR TARJETA A VERTICAL EN MÓVIL */
+    /* AJUSTE DE TARJETA PARA MÓVIL: Vuelta a Vertical */
     .card {
         flex-direction: column; 
-        height: auto; /* Altura automática */
+        height: auto; 
     }
     .card-image {
         width: 100%;
-        height: 180px; /* Imagen rectangular arriba */
+        height: 180px; 
     }
     .card-content {
         padding: 1.5rem;
