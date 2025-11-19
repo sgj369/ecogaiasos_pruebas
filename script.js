@@ -1,219 +1,228 @@
-// ==========================================
-// 1. CONFIGURACIÓN Y DATOS
-// ==========================================
+const { useState } = React;
 
-const SHEET_ID = '1lM4o-nEUk-uDmdTymrqv9N0HDbnJDAvdw_dDfgRTA6c';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+// --- 1. COMPONENTES DE ÍCONOS (SVG) ---
+// Definimos los iconos aquí para no depender de descargas externas en la tablet
+const IconLeaf = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>;
+const IconMenu = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>;
+const IconX = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 12"/></svg>;
+const IconMap = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>;
+const IconChevronLeft = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
+const IconChevronRight = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>;
 
-let todosLosProyectos = [];
-let filtroActual = 'evento'; 
+// --- 2. DATOS DE LA AGENDA ---
+const EVENTS_DATA = [
+  { 
+    id: 1, 
+    category: "Voluntariado", 
+    title: "Reforestación Urbana", 
+    subtitle: "Parque México", 
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+  { 
+    id: 2, 
+    category: "Talleres", 
+    title: "Huertos en Casa", 
+    subtitle: "Centro Comunitario Roma", 
+    image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+  { 
+    id: 3, 
+    category: "Conferencias", 
+    title: "El Futuro del Agua", 
+    subtitle: "Auditorio Nacional", 
+    image: "https://images.unsplash.com/photo-1518998053901-5348d3969105?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+  { 
+    id: 4, 
+    category: "Talleres", 
+    title: "Ecoprint y Pigmentos", 
+    subtitle: "Museo de Geología", 
+    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+  { 
+    id: 5, 
+    category: "Reciclaje", 
+    title: "Taller de Composta", 
+    subtitle: "Viveros de Coyoacán", 
+    image: "https://images.unsplash.com/photo-1591857177580-dc82b9bf4e10?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+  { 
+    id: 6, 
+    category: "Cine Debate", 
+    title: "Documental: Terra", 
+    subtitle: "Cineteca Nacional", 
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=300&h=200" 
+  },
+];
 
-// ==========================================
-// 2. INICIALIZACIÓN
-// ==========================================
+// --- 3. COMPONENTE PRINCIPAL (APP) ---
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [view, setView] = useState('eventos'); // Estado para cambiar entre Eventos y Lugares
 
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = 'none'; }, 500);
-    }, 800);
-
-    iniciarParticulas();
-    cargarDatosDeGoogleSheets();
-    setupMapaToggle();
-    setupMobileTooltips();
-    setupHamburgerMenu();
-});
-
-// ==========================================
-// 3. LÓGICA DE DATOS
-// ==========================================
-
-async function cargarDatosDeGoogleSheets() {
-    try {
-        const respuesta = await fetch(SHEET_URL);
-        const texto = await respuesta.text();
-        const jsonTexto = texto.substring(47).slice(0, -2);
-        const json = JSON.parse(jsonTexto);
-        
-        todosLosProyectos = json.table.rows.map((fila, index) => {
-            const c = fila.c;
-            const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
-
-            return {
-                nombre: c[0] ? c[0].v : 'Sin Nombre',
-                categoria: c[1] ? c[1].v : 'General',
-                ubicacion: c[2] ? c[2].v : 'CDMX',
-                imagen: c[3] ? c[3].v : 'img/kpop.jpg', 
-                descripcion: c[4] ? c[4].v : 'Sin descripción.',
-                tipo: tipoAsignado
-            };
-        });
-
-        filtrarYRenderizar();
-
-    } catch (error) {
-        console.log("Cargando datos de prueba...");
-        
-        // DATOS DE RESPALDO (6 Eventos + 6 Lugares)
-        todosLosProyectos = [
-            // EVENTOS
-            { nombre: "Taller de Composta", categoria: "Taller", ubicacion: "Parque México, Condesa", imagen: "img/kpop.jpg", tipo: "evento" },
-            { nombre: "Limpieza del Río", categoria: "Voluntariado", ubicacion: "Los Dinamos", imagen: "img/ajolote.jpg", tipo: "evento" },
-            { nombre: "Mercado de Trueque", categoria: "Feria", ubicacion: "Bosque de Chapultepec", imagen: "img/colibri.jpg", tipo: "evento" },
-            { nombre: "Cine Debate Ambiental", categoria: "Cultura", ubicacion: "Cineteca Nacional", imagen: "img/lobo.jpg", tipo: "evento" },
-            { nombre: "Clase de Huerto", categoria: "Curso", ubicacion: "Huerto Roma Verde", imagen: "img/kpop.jpg", tipo: "evento" },
-            { nombre: "Recolección Electrónicos", categoria: "Acopio", ubicacion: "Parque de los Venados", imagen: "img/ajolote.jpg", tipo: "evento" },
+  return (
+    <div className="font-sans text-gray-800 bg-gray-50">
+      
+      {/* --- NAVBAR --- */}
+      <nav className="bg-white shadow-sm fixed w-full z-50 top-0 left-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center gap-2">
+              <div className="bg-green-600 p-1.5 rounded-lg text-white">
+                <IconLeaf />
+              </div>
+              <span className="font-bold text-xl tracking-tight text-green-800">Ecogaia</span>
+            </div>
             
-            // LUGARES
-            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
-            { nombre: "Viveros de Coyoacán", categoria: "Parque", ubicacion: "Coyoacán", imagen: "img/colibri.jpg", tipo: "lugar" },
-            { nombre: "Parque Bicentenario", categoria: "Parque", ubicacion: "Azcapotzalco", imagen: "img/lobo.jpg", tipo: "lugar" },
-            { nombre: "Jardín Botánico UNAM", categoria: "Jardín", ubicacion: "CU", imagen: "img/ajolote.jpg", tipo: "lugar" },
-            { nombre: "Mercado El 100", categoria: "Mercado", ubicacion: "Roma", imagen: "img/kpop.jpg", tipo: "lugar" },
-            { nombre: "Museo de Historia Natural", categoria: "Museo", ubicacion: "Chapultepec", imagen: "img/colibri.jpg", tipo: "lugar" }
-        ];
-        filtrarYRenderizar();
-    }
-}
+            {/* Menú Escritorio */}
+            <div className="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+              <a href="#" className="hover:text-green-600 transition">Inicio</a>
+              <a href="#nosotros" className="hover:text-green-600 transition">Nosotros</a>
+              <a href="#agenda" className="text-green-600 font-bold">Agenda</a>
+              <a href="#contacto" className="hover:text-green-600 transition">Contacto</a>
+            </div>
 
-function filtrarYRenderizar() {
-    const textoBuscador = document.getElementById('buscador-input').value.toLowerCase();
-    let datosFiltrados = todosLosProyectos.filter(p => p.tipo === filtroActual);
+            {/* Botón Menú Móvil */}
+            <div className="md:hidden">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600 p-2">
+                {isMenuOpen ? <IconX /> : <IconMenu />}
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Desplegable Menú Móvil */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-600">Inicio</a>
+              <a href="#agenda" className="block px-3 py-2 text-base font-medium text-green-600 font-bold">Agenda</a>
+            </div>
+          </div>
+        )}
+      </nav>
 
-    if (textoBuscador) {
-        datosFiltrados = datosFiltrados.filter(p => 
-            p.nombre.toLowerCase().includes(textoBuscador) ||
-            p.categoria.toLowerCase().includes(textoBuscador) ||
-            p.ubicacion.toLowerCase().includes(textoBuscador)
-        );
-    }
+      {/* --- HERO HEADER --- */}
+      <header className="relative bg-green-900 text-white pt-32 pb-20 px-4">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Imagen de fondo */}
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c88928d999?auto=format&fit=crop&q=80&w=1920" alt="Naturaleza" className="w-full h-full object-cover opacity-40" />
+        </div>
+        <div className="relative max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+            Conectando con la <span className="text-green-300">Naturaleza</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-green-100 max-w-2xl mx-auto mb-10">
+            Descubre eventos, talleres y lugares dedicados a la conservación.
+          </p>
+          <a href="#agenda" className="inline-block bg-white text-green-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-50 transition transform hover:scale-105">
+            Ver Agenda
+          </a>
+        </div>
+      </header>
 
-    renderCards(datosFiltrados);
-}
+      {/* --- SECCIÓN AGENDA (INTEGRADA CON DISEÑO DE 3 COLUMNAS) --- */}
+      <section id="agenda" className="py-16 bg-[#5b7f75] relative">
+        {/* Textura de fondo opcional */}
+        <div className="absolute inset-0 pointer-events-none opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
-function renderCards(data) {
-    const contenedor = document.getElementById('contenedor-tarjetas');
-    contenedor.innerHTML = '';
-    
-    if(data.length === 0) {
-        contenedor.innerHTML = '<p style="color:white; text-align:center;">No se encontraron resultados.</p>';
-        return;
-    }
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          
+          {/* Título Sección */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-white mb-2">Agenda Ecológica</h2>
+            <p className="text-green-100">Actividades destacadas del mes</p>
+          </div>
 
-    data.forEach(p => {
-        const html = `
-            <div class="card">
-                <div class="card-image">
-                    <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='img/kpop.jpg'">
+          {/* Interruptor (Toggle) Eventos/Lugares */}
+          <div className="flex justify-center items-center mb-10 space-x-4">
+            <span className={`font-bold text-lg ${view === 'eventos' ? 'text-white' : 'text-green-200/70'}`}>Eventos</span>
+            
+            <button 
+              onClick={() => setView(view === 'eventos' ? 'lugares' : 'eventos')}
+              className="w-16 h-8 bg-black/20 rounded-full p-1 flex items-center transition-colors duration-300 cursor-pointer border border-white/10"
+            >
+              <div 
+                className={`w-6 h-6 bg-[#e8dcb5] rounded-full shadow-md transform transition-transform duration-300 ${view === 'lugares' ? 'translate-x-8' : 'translate-x-0'}`}
+              ></div>
+            </button>
+
+            <span className={`font-bold text-lg ${view === 'lugares' ? 'text-white' : 'text-green-200/70'}`}>Lugares</span>
+          </div>
+
+          {/* GRID DE TARJETAS (3 COLUMNAS) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {EVENTS_DATA.map((item) => (
+              <div 
+                key={item.id} 
+                className="bg-[#1f2928] rounded-2xl overflow-hidden shadow-xl flex h-40 hover:scale-[1.02] transition-transform duration-200 cursor-pointer border border-white/10 group"
+              >
+                {/* Imagen a la izquierda (40%) */}
+                <div className="w-2/5 relative overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Gradiente sutil */}
+                  <div className="absolute inset-0 bg-black/10"></div>
                 </div>
-                <div class="card-content">
-                    <span class="card-category">${p.categoria}</span>
-                    <h3 class="card-title">${p.nombre}</h3>
-                    <p class="card-location">
-                        <i class="fa-solid fa-location-dot"></i> ${p.ubicacion}
-                    </p>
+
+                {/* Texto a la derecha (60%) */}
+                <div className="w-3/5 p-4 flex flex-col justify-center relative">
+                  <span className="text-[10px] uppercase tracking-wider text-green-400/80 mb-1 block font-semibold">
+                    {item.category}
+                  </span>
+                  <h3 className="text-[#e8dcb5] font-bold text-lg leading-tight mb-1 line-clamp-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-xs italic mt-1 line-clamp-1">
+                    {item.subtitle}
+                  </p>
                 </div>
-            </div>`;
-        contenedor.innerHTML += html;
-    });
+              </div>
+            ))}
+          </div>
+
+          {/* Paginación */}
+          <div className="flex justify-center items-center mt-12 space-x-4 text-sm font-medium text-white/80">
+             <button className="hover:text-white p-2 hover:bg-white/10 rounded-full transition"><IconChevronLeft /></button>
+             
+             <span className="w-8 h-8 bg-[#e8dcb5] text-[#1f2928] rounded-full flex items-center justify-center font-bold shadow-lg">
+               1
+             </span>
+             <button className="w-8 h-8 hover:bg-white/10 rounded-full flex items-center justify-center transition">
+               2
+             </button>
+             
+             <button className="hover:text-white p-2 hover:bg-white/10 rounded-full transition"><IconChevronRight /></button>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="bg-[#1f2928] text-gray-400 py-12 px-4 border-t border-white/5">
+        <div className="max-w-7xl mx-auto text-center text-sm">
+            <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="text-green-500"><IconLeaf /></span>
+                <span className="font-bold text-lg text-white">Ecogaia</span>
+            </div>
+            <p>© 2024 Ecogaia. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+
+      {/* --- BOTÓN FLOTANTE (MAPA) --- */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button className="bg-[#b91c49] hover:bg-[#d62859] text-white font-bold py-3 px-6 rounded-full shadow-xl flex items-center gap-2 transition-all transform hover:scale-105 hover:-translate-y-1 border-2 border-white/10">
+          <span>Ver mapa</span>
+          <IconMap />
+        </button>
+      </div>
+
+    </div>
+  );
 }
 
-function setupMapaToggle() {
-    const btn = document.getElementById('btn-toggle-mapa');
-    if(!btn) return;
-    const mapaDiv = document.getElementById('mapa-desplegable');
-    
-    btn.addEventListener('click', () => {
-        mapaDiv.classList.toggle('activo');
-        if (mapaDiv.classList.contains('activo')) {
-            btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Ocultar Mapa de Actores';
-        } else {
-            btn.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores';
-        }
-    });
-}
-
-function setupMobileTooltips() {
-    const toggles = document.querySelectorAll('.mobile-info-toggle');
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const parentWrapper = toggle.closest('.btn-wrapper');
-            const tooltip = parentWrapper.querySelector('.tooltip-list');
-            document.querySelectorAll('.tooltip-list').forEach(el => {
-                if(el !== tooltip) el.classList.remove('activo');
-            });
-            tooltip.classList.toggle('activo');
-        });
-    });
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.btn-wrapper')) {
-            document.querySelectorAll('.tooltip-list').forEach(el => el.classList.remove('activo'));
-        }
-    });
-}
-
-function setupHamburgerMenu() {
-    const hamburger = document.querySelector('.hamburger-menu');
-    const navMenu = document.getElementById('nav-menu-list');
-    if(hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            if (navMenu.style.display === 'flex') {
-                navMenu.style.display = 'none';
-            } else {
-                navMenu.style.display = 'flex';
-            }
-        });
-    }
-}
-
-document.getElementById('buscador-input').addEventListener('input', filtrarYRenderizar);
-
-const toggleSwitch = document.querySelector('.toggle-switch');
-const labels = document.querySelectorAll('.toggle-label');
-
-toggleSwitch.addEventListener('click', () => {
-    toggleSwitch.classList.toggle('active');
-    // Lógica: Si tiene la clase active, estamos en "Lugares"
-    if(toggleSwitch.classList.contains('active')) {
-        labels[0].classList.remove('active'); // Eventos OFF
-        labels[1].classList.add('active');    // Lugares ON
-        filtroActual = 'lugar';
-    } else {
-        labels[0].classList.add('active');    // Eventos ON
-        labels[1].classList.remove('active'); // Lugares OFF
-        filtroActual = 'evento';
-    }
-    filtrarYRenderizar();
-});
-
-labels.forEach(label => {
-    label.addEventListener('click', () => {
-        const target = label.getAttribute('data-filter');
-        // Si hacemos clic en un label que NO es el actual, cambiamos el switch
-        if(target !== filtroActual) toggleSwitch.click();
-    });
-});
-
-function iniciarParticulas() {
-    if(typeof particlesJS !== 'undefined') {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0, "sync": false } },
-                "size": { "value": 8, "random": true },
-                "line_linked": { "enable": true, "distance": 180, "color": "#cccccc", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 3.5, "direction": "out", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
-            },
-            "retina_detect": true
-        });
-    }
-}
+// --- 4. RENDERIZADO ---
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
