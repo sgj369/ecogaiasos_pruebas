@@ -342,17 +342,17 @@ body, html {
 }
 
 /* =========================================
-   NUEVO ESTILO DE TARJETA HORIZONTAL (LISTA)
+   ESTILO DE TARJETA HORIZONTAL (CDMX-style)
    =========================================
 */
 
 /* Contenedor: Una columna ancha en PC */
 .card-grid-container {
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna */
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Una sola columna para que se apilen */
+    gap: 1.5rem; /* Espacio entre las tarjetas */
     margin-bottom: 3rem;
-    max-width: 1000px; /* Ancho máximo para que se vea bien */
+    max-width: 900px; /* Un poco menos ancho para que no se estiren demasiado */
     margin-left: auto;
     margin-right: auto;
 }
@@ -360,60 +360,82 @@ body, html {
 /* Tarjeta: Flex Horizontal */
 .card {
     display: flex;
-    flex-direction: row; /* Imagen lado a lado con texto */
+    flex-direction: row; /* Imagen a la izquierda, contenido a la derecha */
     background-color: #2a3d34; 
     color: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    height: 220px; /* Altura fija en escritorio */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 160px; /* Altura un poco más reducida para parecer más un listado */
+    align-items: center; /* Centrar verticalmente el contenido */
 }
-.card:hover { transform: translateY(-5px); }
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
 
-/* Imagen: Ancho fijo */
+/* Imagen: Ancho fijo para el cuadrado de la izquierda */
 .card-image {
-    width: 35%; /* Ocupa el 35% del ancho */
-    height: 100%;
+    width: 130px; /* Ancho fijo para la imagen cuadrada */
+    height: 100%; /* Ocupa toda la altura de la tarjeta */
     overflow: hidden;
+    flex-shrink: 0; /* Asegura que la imagen no se encoja */
     position: relative;
+    /* Para que la imagen también tenga el borde redondeado izquierdo */
+    border-top-left-radius: 16px; 
+    border-bottom-left-radius: 16px;
 }
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Se recorta para llenar */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.card:hover .card-image img {
+    transform: scale(1.05); /* Efecto de zoom */
 }
 
-/* Contenido: Flexible */
+/* Contenido: Flexible, ocupa el espacio restante */
 .card-content {
-    padding: 1.5rem 2rem;
-    width: 65%; /* El resto del ancho */
+    padding: 1.2rem 1.8rem; /* Ajuste del padding para más espacio */
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centra el texto verticalmente */
 }
 
+/* Categoría (Pequeña arriba) */
 .card-category {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #a0d8b3;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
-.card-title {
-    font-size: 1.5rem;
+    font-size: 0.8rem; /* Un poco más pequeña */
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.2;
+    text-transform: uppercase;
+    color: #90ee90; /* Un verde claro más vivo */
+    margin-bottom: 0.3rem; /* Menos margen inferior */
+    letter-spacing: 0.8px;
+    opacity: 0.8; /* Ligeramente más tenue */
 }
+
+/* Título del Evento */
+.card-title {
+    font-size: 1.35rem; /* Ajuste para un título más visible pero no gigante */
+    font-weight: 600; /* Menos negrita que antes, más legible */
+    margin: 0 0 0.4rem 0; /* Menos margen inferior */
+    line-height: 1.3;
+    color: white;
+}
+
+/* Ubicación */
 .card-location {
-    font-size: 1rem;
-    color: #ddd;
+    font-size: 0.9rem;
+    color: #cccccc; /* Gris claro */
     margin: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+.card-location i {
+    color: #ef5350; /* Icono rojo para ubicación */
 }
 
 
@@ -644,16 +666,22 @@ footer {
     
     /* AJUSTE DE TARJETA PARA MÓVIL (Vertical) */
     .card {
-        flex-direction: column; /* Regresa a vertical en móvil */
-        height: auto;
+        flex-direction: column; /* Apilar imagen y contenido en móvil */
+        height: auto; /* Altura automática para que se adapte al contenido */
+        padding-bottom: 1rem; /* Pequeño padding extra abajo */
     }
     .card-image {
-        width: 100%;
-        height: 180px;
+        width: 100%; /* La imagen ocupa todo el ancho */
+        height: 180px; /* Altura fija para la imagen */
+        border-radius: 16px 16px 0 0; /* Bordes redondeados solo arriba */
     }
     .card-content {
-        width: 100%;
-        padding: 1.5rem;
+        width: 100%; /* El contenido también ocupa todo el ancho */
+        padding: 1rem 1.2rem; /* Ajuste de padding para móvil */
+        text-align: left;
+    }
+    .card-title {
+        font-size: 1.2rem; /* Título un poco más pequeño en móvil */
     }
 
     .card-grid-container, .nivel-btn-grid { grid-template-columns: 1fr; }
