@@ -119,7 +119,7 @@ body, html {
     z-index: 0;
 }
 .hero-content {
-    max-width: 800px; 
+    max-width: 900px; 
     position: relative;
     z-index: 1;
     width: 100%;
@@ -193,7 +193,6 @@ body, html {
     flex-wrap: wrap; 
     width: 100%;
 }
-
 .btn-wrapper {
     position: relative;
     display: flex;
@@ -201,7 +200,6 @@ body, html {
     align-items: center;
     min-width: 200px; 
 }
-
 .level-btn-group {
     display: flex;
     align-items: stretch;
@@ -292,9 +290,9 @@ body, html {
 
 /* CONTENIDO PRINCIPAL */
 .content-section {
-    max-width: 1200px;
+    max-width: 1300px; /* Ancho aumentado para soportar 3 columnas cómodas */
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -342,19 +340,15 @@ body, html {
 }
 
 /* =========================================================
-   NUEVO DISEÑO DE TARJETAS (Estilo Agenda Horizontal)
+   DISEÑO TARJETAS: GRID DE 3 COLUMNAS CON ESTILO HORIZONTAL
    ========================================================= */
 
 .card-grid-container {
     display: grid;
-    /* Una sola columna para que se apilen como lista */
-    grid-template-columns: 1fr; 
+    /* 3 columnas iguales */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
-    /* Ancho máximo controlado para que no se vea gigante en pantallas grandes */
-    max-width: 950px; 
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .card {
@@ -367,8 +361,8 @@ body, html {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Altura fija para consistencia en la lista */
-    height: 200px;
+    /* Altura compacta para caber en grid */
+    height: 160px;
 }
 
 .card:hover {
@@ -377,11 +371,10 @@ body, html {
 }
 
 .card-image {
-    /* La imagen ocupa el 35% del ancho de la tarjeta */
-    width: 35%;
+    /* Imagen ocupa el 40% de la tarjeta pequeña */
+    width: 40%;
     height: 100%;
     overflow: hidden;
-    /* Importante: evita que la imagen se aplaste */
     flex-shrink: 0;
     position: relative;
 }
@@ -389,7 +382,7 @@ body, html {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cubre todo el espacio */
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
 
@@ -398,37 +391,42 @@ body, html {
 }
 
 .card-content {
-    /* El contenido toma el resto del espacio */
     flex-grow: 1;
-    padding: 1.5rem 2rem;
+    padding: 1rem; /* Padding reducido para que quepa */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrado vertical */
+    justify-content: center; 
+    width: 60%; /* Asegura el texto */
 }
 
 .card-category {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     color: #a0d8b3;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 0.5px;
 }
 
 .card-title {
-    font-size: 1.4rem;
+    font-size: 1.1rem; /* Título ajustado */
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.4rem 0;
     line-height: 1.2;
+    /* Limitar a 3 líneas por si el título es largo */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-location {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #ddd;
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 /* SECCIÓN MAPA DESPLEGABLE */
@@ -489,11 +487,7 @@ body, html {
 }
 .section-divider { height: 1px; width: 100%; }
 
-/* *********************************************************
-   AJUSTE DE SCROLL (IMPORTANTE)
-   Esto hace que al dar clic, la sección baje 100px 
-   para que el menú no tape el título.
-   ********************************************************* */
+/* AJUSTE DE SCROLL: Margen para el menú fijo */
 #seccion-colibri, #seccion-ajolote, #seccion-lobo {
     scroll-margin-top: 100px; 
 }
@@ -612,11 +606,15 @@ footer {
     color: #888;
 }
 
-/* --- AJUSTES PARA PANTALLAS MEDIANAS Y MÓVILES --- */
+/* --- AJUSTES RESPONSIVE --- */
 
-@media (max-width: 1024px) {
-    .hamburger-menu { display: block; }
+/* Tablet (Menos de 1200px): 2 Columnas */
+@media (max-width: 1200px) {
+    .card-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
     
+    .hamburger-menu { display: block; }
     .nav-menu {
         position: absolute;
         top: 80px;
@@ -630,22 +628,9 @@ footer {
         padding: 1rem 0;
         z-index: 1001;
     }
-    .nav-menu.active {
-        display: flex;
-        animation: slideDown 0.3s ease;
-    }
+    .nav-menu.active { display: flex; animation: slideDown 0.3s ease; }
     .nav-menu li { margin: 10px 0; }
-
-    .hero-content { max-width: 90%; }
     
-    .level-buttons-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn-wrapper {
-        width: 100%; 
-        max-width: 500px;
-    }
     .mobile-info-toggle { display: flex; } 
     .level-btn-link { justify-content: flex-start; }
     
@@ -653,6 +638,7 @@ footer {
     .social-icons { justify-content: center; display: flex; }
 }
 
+/* Móvil (Menos de 768px): 1 Columna y Tarjetas Verticales */
 @media (max-width: 768px) {
     .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
     .hero-logo { max-height: 180px; }
@@ -660,7 +646,11 @@ footer {
     .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
     
-    /* AJUSTE DE TARJETA PARA MÓVIL: Vuelta a Vertical */
+    .card-grid-container {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* En móvil, la tarjeta vuelve a ser vertical */
     .card {
         flex-direction: column; 
         height: auto; 
@@ -670,11 +660,19 @@ footer {
         height: 180px; 
     }
     .card-content {
-        padding: 1.5rem;
+        padding: 1.2rem;
         width: 100%;
     }
 
-    .card-grid-container, .nivel-btn-grid { grid-template-columns: 1fr; }
+    .action-buttons, .level-buttons-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    .btn-wrapper { width: 100%; }
+    
+    .nivel-btn-grid { grid-template-columns: 1fr; }
     .nivel-section { padding: 3rem 1rem; }
     .nivel-section h2 { font-size: 2rem; }
     #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
