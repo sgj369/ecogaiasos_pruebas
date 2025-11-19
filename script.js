@@ -56,9 +56,9 @@ async function cargarDatosDeGoogleSheets() {
     } catch (error) {
         console.log("Cargando datos de prueba...");
         
-        // DATOS DE RESPALDO (6 Eventos + 6 Lugares)
+        // DATOS DE RESPALDO (6 Eventos + 6 Lugares para llenar el grid)
         todosLosProyectos = [
-            // EVENTOS
+            // EVENTOS (Se mostrarán en 3 columnas)
             { nombre: "Taller de Composta", categoria: "Taller", ubicacion: "Parque México, Condesa", imagen: "img/kpop.jpg", tipo: "evento" },
             { nombre: "Limpieza del Río", categoria: "Voluntariado", ubicacion: "Los Dinamos", imagen: "img/ajolote.jpg", tipo: "evento" },
             { nombre: "Mercado de Trueque", categoria: "Feria", ubicacion: "Bosque de Chapultepec", imagen: "img/colibri.jpg", tipo: "evento" },
@@ -66,7 +66,7 @@ async function cargarDatosDeGoogleSheets() {
             { nombre: "Clase de Huerto", categoria: "Curso", ubicacion: "Huerto Roma Verde", imagen: "img/kpop.jpg", tipo: "evento" },
             { nombre: "Recolección Electrónicos", categoria: "Acopio", ubicacion: "Parque de los Venados", imagen: "img/ajolote.jpg", tipo: "evento" },
             
-            // LUGARES
+            // LUGARES (Se mostrarán al cambiar el switch)
             { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
             { nombre: "Viveros de Coyoacán", categoria: "Parque", ubicacion: "Coyoacán", imagen: "img/colibri.jpg", tipo: "lugar" },
             { nombre: "Parque Bicentenario", categoria: "Parque", ubicacion: "Azcapotzalco", imagen: "img/lobo.jpg", tipo: "lugar" },
@@ -176,7 +176,6 @@ const labels = document.querySelectorAll('.toggle-label');
 
 toggleSwitch.addEventListener('click', () => {
     toggleSwitch.classList.toggle('active');
-    // Lógica: Si tiene la clase active, estamos en "Lugares"
     if(toggleSwitch.classList.contains('active')) {
         labels[0].classList.remove('active'); // Eventos OFF
         labels[1].classList.add('active');    // Lugares ON
@@ -192,7 +191,6 @@ toggleSwitch.addEventListener('click', () => {
 labels.forEach(label => {
     label.addEventListener('click', () => {
         const target = label.getAttribute('data-filter');
-        // Si hacemos clic en un label que NO es el actual, cambiamos el switch
         if(target !== filtroActual) toggleSwitch.click();
     });
 });
