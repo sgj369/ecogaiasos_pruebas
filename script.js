@@ -23,8 +23,6 @@ window.addEventListener('load', () => {
     iniciarParticulas();
     cargarDatosDeGoogleSheets();
     setupMapaToggle();
-    
-    // Inicializar Tooltips móviles y Menú Hamburguesa
     setupMobileTooltips();
     setupHamburgerMenu();
 });
@@ -42,7 +40,9 @@ async function cargarDatosDeGoogleSheets() {
         
         todosLosProyectos = json.table.rows.map((fila, index) => {
             const c = fila.c;
-            const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
+            // Asignar tipo: Para pruebas, hacemos que casi todos sean eventos
+            // para que se llene la lista. En producción usarás una columna real.
+            const tipoAsignado = 'evento'; 
 
             return {
                 nombre: c[0] ? c[0].v : 'Sin Nombre',
@@ -57,10 +57,52 @@ async function cargarDatosDeGoogleSheets() {
         filtrarYRenderizar();
 
     } catch (error) {
-        console.error("Error cargando Sheet:", error);
+        console.log("Usando datos de prueba visual (6 tarjetas)...");
+        
+        // DATOS DE RESPALDO EXTENDIDOS (6 Elementos para ver el diseño)
         todosLosProyectos = [
-            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "img/kpop.jpg", tipo: "lugar" },
-            { nombre: "Taller Composta", categoria: "Taller", ubicacion: "Parque México", imagen: "img/kpop.jpg", tipo: "evento" }
+            { 
+                nombre: "Taller de Composta", 
+                categoria: "Taller", 
+                ubicacion: "Parque México, Condesa", 
+                imagen: "img/kpop.jpg", 
+                tipo: "evento" 
+            },
+            { 
+                nombre: "Limpieza del Río Magdalena", 
+                categoria: "Voluntariado", 
+                ubicacion: "Los Dinamos, Magdalena Contreras", 
+                imagen: "img/ajolote.jpg", // Usando tus otras imágenes para variar
+                tipo: "evento" 
+            },
+            { 
+                nombre: "Mercado de Trueque", 
+                categoria: "Feria", 
+                ubicacion: "Bosque de Chapultepec", 
+                imagen: "img/colibri.jpg", 
+                tipo: "evento" 
+            },
+            { 
+                nombre: "Cine Debate Ambiental", 
+                categoria: "Cultura", 
+                ubicacion: "Cineteca Nacional", 
+                imagen: "img/lobo.jpg", 
+                tipo: "evento" 
+            },
+            { 
+                nombre: "Clase de Huerto Urbano", 
+                categoria: "Curso", 
+                ubicacion: "Huerto Roma Verde", 
+                imagen: "img/kpop.jpg", 
+                tipo: "evento" 
+            },
+            { 
+                nombre: "Recolección de Electrónicos", 
+                categoria: "Acopio", 
+                ubicacion: "Parque de los Venados", 
+                imagen: "img/ajolote.jpg", 
+                tipo: "evento" 
+            }
         ];
         filtrarYRenderizar();
     }
@@ -98,12 +140,15 @@ function renderCards(data) {
         const html = `
             <div class="card">
                 <div class="card-image">
+                    <!-- onerror para que no se rompa si falta la imagen -->
                     <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='img/kpop.jpg'">
                 </div>
                 <div class="card-content">
                     <span class="card-category">${p.categoria}</span>
                     <h3 class="card-title">${p.nombre}</h3>
-                    <p class="card-location"><i class="fa-solid fa-location-dot"></i> ${p.ubicacion}</p>
+                    <p class="card-location">
+                        <i class="fa-solid fa-location-dot"></i> ${p.ubicacion}
+                    </p>
                 </div>
             </div>`;
         contenedor.innerHTML += html;
@@ -112,6 +157,8 @@ function renderCards(data) {
 
 function setupMapaToggle() {
     const btn = document.getElementById('btn-toggle-mapa');
+    if(!btn) return; // Seguridad si no existe el botón
+    
     const mapaDiv = document.getElementById('mapa-desplegable');
     
     btn.addEventListener('click', () => {
@@ -125,7 +172,6 @@ function setupMapaToggle() {
     });
 }
 
-// Pestañas de info en móvil/tablet
 function setupMobileTooltips() {
     const toggles = document.querySelectorAll('.mobile-info-toggle');
     
@@ -150,14 +196,19 @@ function setupMobileTooltips() {
     });
 }
 
-// NUEVO: Menú Hamburguesa
 function setupHamburgerMenu() {
     const hamburger = document.querySelector('.hamburger-menu');
-    const navMenu = document.getElementById('nav-menu-list');
+    const navMenu = document.getElementById('nav-menu-list'); // Asegúrate que el UL tenga este ID en el HTML
 
-    if(hamburger) {
+    if(hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            // Toggle clase 'active' en el menú para mostrar/ocultar
+            // Nota: En tu CSS definiste .nav-menu.active { display: flex }
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+            }
         });
     }
 }
