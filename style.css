@@ -119,7 +119,7 @@ body, html {
     z-index: 0;
 }
 .hero-content {
-    max-width: 800px; 
+    max-width: 1200px; /* Aumentado para que quepan los botones */
     position: relative;
     z-index: 1;
     width: 100%;
@@ -135,7 +135,8 @@ body, html {
 .search-bar-container {
     position: relative;
     width: 100%;
-    margin-bottom: 1.5rem;
+    max-width: 800px; /* Limitado para que no sea eterno */
+    margin: 0 auto 1.5rem auto;
 }
 .search-bar-container input {
     width: 100%;
@@ -292,9 +293,9 @@ body, html {
 
 /* CONTENIDO PRINCIPAL */
 .content-section {
-    max-width: 1200px;
+    max-width: 1300px; /* Hacemos el contenedor más ancho para que quepan 3 columnas */
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -342,33 +343,29 @@ body, html {
 }
 
 /* =========================================================
-   NUEVO DISEÑO DE TARJETAS (Estilo Agenda Horizontal)
+   NUEVO DISEÑO: GRID DE 3 COLUMNAS CON TARJETAS HORIZONTALES
    ========================================================= */
 
 .card-grid-container {
     display: grid;
-    /* Una sola columna para que se apilen como lista */
-    grid-template-columns: 1fr; 
+    /* En escritorio grande: 3 columnas iguales */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
-    /* Ancho máximo controlado para que no se vea gigante en pantallas grandes */
-    max-width: 950px; 
     margin-left: auto;
     margin-right: auto;
 }
 
 .card {
-    /* Flex Horizontal: Imagen Izq | Texto Der */
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Mantener horizontal */
     background-color: #2a3d34; 
     color: white;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Altura fija para consistencia en la lista */
-    height: 200px;
+    height: 180px; /* Un poco más compacta para caber en 3 columnas */
 }
 
 .card:hover {
@@ -377,11 +374,10 @@ body, html {
 }
 
 .card-image {
-    /* La imagen ocupa el 35% del ancho de la tarjeta */
-    width: 35%;
+    /* Reducimos la imagen un poco porque la tarjeta es más angosta */
+    width: 40%; 
     height: 100%;
     overflow: hidden;
-    /* Importante: evita que la imagen se aplaste */
     flex-shrink: 0;
     position: relative;
 }
@@ -389,7 +385,7 @@ body, html {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cubre todo el espacio */
+    object-fit: cover; 
     transition: transform 0.5s ease;
 }
 
@@ -398,37 +394,42 @@ body, html {
 }
 
 .card-content {
-    /* El contenido toma el resto del espacio */
     flex-grow: 1;
-    padding: 1.5rem 2rem;
+    padding: 1rem; /* Menos padding para que quepa */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrado vertical */
+    justify-content: center; 
+    width: 60%; /* Asegura que el texto no se salga */
 }
 
 .card-category {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     color: #a0d8b3;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 0.5px;
 }
 
 .card-title {
-    font-size: 1.4rem;
+    font-size: 1.1rem; /* Título un poco más pequeño */
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.3rem 0;
     line-height: 1.2;
+    /* Limitar líneas si el título es muy largo */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-location {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #ddd;
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 /* SECCIÓN MAPA DESPLEGABLE */
@@ -605,9 +606,12 @@ footer {
 
 /* --- AJUSTES PARA PANTALLAS MEDIANAS Y MÓVILES --- */
 
-@media (max-width: 1024px) {
+/* Tablet y Laptops Pequeñas (Menos de 1200px) */
+@media (max-width: 1200px) {
+    .card-grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 Columnas */
+    }
     .hamburger-menu { display: block; }
-    
     .nav-menu {
         position: absolute;
         top: 80px;
@@ -621,35 +625,24 @@ footer {
         padding: 1rem 0;
         z-index: 1001;
     }
-    .nav-menu.active {
-        display: flex;
-        animation: slideDown 0.3s ease;
-    }
+    .nav-menu.active { display: flex; animation: slideDown 0.3s ease; }
     .nav-menu li { margin: 10px 0; }
-
-    .hero-content { max-width: 90%; }
-    
-    .level-buttons-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn-wrapper {
-        width: 100%; 
-        max-width: 500px;
-    }
     .mobile-info-toggle { display: flex; } 
     .level-btn-link { justify-content: flex-start; }
-    
-    .footer-content { flex-direction: column; text-align: center; }
-    .social-icons { justify-content: center; display: flex; }
 }
 
+/* Móvil (Menos de 768px) */
 @media (max-width: 768px) {
     .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
     .hero-logo { max-height: 180px; }
     
     .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
+    
+    /* GRID: 1 Columna en móvil */
+    .card-grid-container {
+        grid-template-columns: 1fr; 
+    }
     
     /* REVERTIR TARJETA A VERTICAL EN MÓVIL */
     .card {
@@ -661,12 +654,20 @@ footer {
         height: 180px; 
     }
     .card-content {
-        padding: 1.5rem;
+        padding: 1.2rem;
         width: 100%;
     }
 
-    .card-grid-container, .nivel-btn-grid { grid-template-columns: 1fr; }
+    .level-buttons-container, .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-wrapper { width: 100%; }
+    
+    .nivel-btn-grid { grid-template-columns: 1fr; }
     .nivel-section { padding: 3rem 1rem; }
     .nivel-section h2 { font-size: 2rem; }
     #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .social-icons { justify-content: center; display: flex; }
 }
