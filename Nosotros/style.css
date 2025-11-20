@@ -1,0 +1,247 @@
+/* --- Variables específicas para esta sección --- */
+:root {
+    --nopal: #4CAF50;
+    --agua: #03A9F4;
+    --energia: #FFC107;
+    --texto: #333;
+    --fondo: #f4f7f6;
+    --blanco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* --- Navegación Simple --- */
+.nav-simple {
+    padding: 20px;
+    background: var(--blanco);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-back {
+    text-decoration: none;
+    color: var(--texto);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+}
+
+.btn-back:hover {
+    color: var(--nopal);
+}
+
+/* --- Contenedor Principal --- */
+.nosotros-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- Header --- */
+.header-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.brand-color {
+    color: var(--nopal);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* --- Grid Misión / Visión --- */
+.mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.card {
+    background: var(--blanco);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 5px solid transparent;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card.mission { border-color: var(--nopal); }
+.card.vision { border-color: var(--agua); }
+
+.card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.card.mission .icon { color: var(--nopal); }
+.card.vision .icon { color: var(--agua); }
+
+/* --- Sección ADN --- */
+.dna-section {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.dna-section h3, .founders-section h3 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.levels-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.level {
+    flex: 1;
+    min-width: 250px;
+    background: var(--blanco);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.level h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--texto);
+}
+
+.level.colibri h4 { color: var(--energia); }
+.level.ajolote h4 { color: var(--nopal); }
+.level.lobo h4 { color: #5D4037; }
+
+.level span {
+    display: block;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+/* --- Fundadores --- */
+.founders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.founder-card {
+    background: var(--blanco);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.photo-frame {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    border: 3px solid var(--energia);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.founder-card .info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.founder-card .role {
+    color: var(--nopal);
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.founder-card p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-link {
+    background-color: var(--agua);
+    color: var(--blanco);
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+
+.btn-link:hover {
+    background-color: #0288d1;
+}
+
+.social-icon {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .mv-grid, .founders-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .founder-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .photo-frame {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .links {
+        justify-content: center;
+    }
+}
