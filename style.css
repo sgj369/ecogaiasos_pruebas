@@ -83,18 +83,25 @@ body, html {
     font-weight: 600;
     padding: 10px 5px;
     transition: color 0.3s ease;
+    border-botton: 2px solid transparent; 
+    padding-botton: 8px;
 }
-.nav-menu li a:hover { color: #007bff; }
+.nav-menu li a:hover { color: #007bff; border-bottom-color: #007bff;}
+
 .nav-menu li a.nav-btn-highlight {
-    background-color: #2c9a4d;
-    color: white;
+    background-color: transparent; /* Fondo transparente */
+    color: #2c9a4d; /* Color del texto verde */
+    border: 2px solid #2c9a4d; /* Contorno verde */
     padding: 8px 16px;
     border-radius: 20px;
 }
 .nav-menu li a.nav-btn-highlight:hover {
-    background-color: #217a3a;
-    color: white;
+
+    background-color: #217a3a; /* Fondo verde al pasar el mouse */
+    color: white; /* Texto blanco al pasar el mouse */
+    border-color: #217a3a; /* Asegura que el borde también se ponga verde sólido */
 }
+
 /* Nuevo estilo para el botón "Cómo Usar" (Base de color/forma) */
 .nav-menu li a.nav-btn-how-to, 
 .nav-btn-how-to { /* Aplicar también a la versión fuera del UL */
