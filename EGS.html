@@ -4,324 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
-    <!-- NOTA: Los enlaces a archivos locales (icon, css, gif) han sido eliminados o reemplazados por placeholders para cumplir con la restricción de un solo archivo runnable. -->
+    <link rel="icon" href="gif/EGSlg.gif" type="image/gif">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        /* ======================================= */
-        /* ESTILOS DE BARRA DE NAVEGACIÓN Y BOTONES */
-        /* ======================================= */
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding-top: 80px; /* Espacio para la barra de navegación fija */
-            background-color: #f0f0f0;
-        }
-
-        /* Barra de Navegación Principal */
-        .main-nav {
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            height: 80px;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand-logo {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-        }
-
-        /* Contenedor de Flex para los elementos de navegación */
-        .nav-options-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1; /* Permite que este contenedor use el espacio central */
-            justify-content: flex-end; /* Alinea el menú a la derecha por defecto */
-        }
-        
-        /* Botón "Cómo usar ECOGUIA SOS" - Standalone */
-        .btn-standalone-how-to {
-            background-color: #d9ad4c; /* Color Dorado/Amarillo */
-            color: #fff;
-            padding: 10px 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-right: 20px; /* Separación del menú principal */
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            white-space: nowrap; /* Evita que el texto se rompa */
-        }
-
-        .btn-standalone-how-to:hover {
-            background-color: #c99c3a;
-        }
-
-        /* Menú de Opciones Principal */
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-menu li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 10px 0;
-            transition: color 0.3s;
-        }
-
-        .nav-menu li a:hover {
-            color: #4CAF50; /* Color verde de énfasis */
-        }
-        
-        /* Botón "Súmate" - Estilo Resaltado */
-        .nav-btn-highlight {
-            background-color: #4CAF50; /* Color Verde */
-            color: white !important; /* Importante para sobreescribir el color normal del enlace */
-            padding: 10px 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-btn-highlight:hover {
-            background-color: #3e8e41;
-        }
-        
-        /* Ocultar el botón Cómo usar en el menú principal (ya no es parte de la UL) */
-        .nav-btn-how-to { 
-            display: none !important; 
-        }
-
-        /* Estilos de la Hamburguesa y Menú Móvil */
-        .hamburger-menu {
-            display: none; /* Oculto por defecto en escritorio */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #333;
-        }
-
-        .nav-menu.active {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            background-color: #fff;
-            position: absolute;
-            top: 80px;
-            left: 0;
-            padding: 10px 0;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-menu.active li {
-            padding: 10px 20px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .nav-menu.active li a {
-            display: block;
-        }
-        
-        /* Ocultar el botón Standalone en móvil */
-        @media (max-width: 950px) {
-            .btn-standalone-how-to {
-                display: none;
-            }
-        }
-
-        /* Media Queries para Móviles y Tabletas */
-        @media (max-width: 768px) {
-            .nav-options-container {
-                justify-content: flex-end;
-            }
-
-            .nav-menu {
-                display: none; /* Ocultar el menú en mobile por defecto */
-            }
-
-            .hamburger-menu {
-                display: block;
-            }
-        }
-
-        /* ======================================= */
-        /* ESTILOS DEL RESTO DEL CONTENIDO         */
-        /* (Mantenidos básicos para funcionalidad) */
-        /* ======================================= */
-        
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background-color: #4CAF50; /* Fondo del héroe */
-            color: white;
-            text-align: center;
-            position: relative; /* Para partículas */
-            overflow: hidden;
-        }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            padding: 20px;
-        }
-
-        .hero-logo {
-            max-width: 200px;
-            margin-bottom: 30px;
-        }
-        
-        .search-bar-container {
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            padding: 10px 20px;
-            border-radius: 30px;
-            max-width: 600px;
-            margin: 20px auto;
-            color: #333;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        #buscador-input {
-            border: none;
-            outline: none;
-            flex-grow: 1;
-            padding-left: 10px;
-            font-size: 16px;
-        }
-
-        /* Estilos genéricos de botones */
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        .btn-primary {
-            background-color: #d9ad4c;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #fff;
-            color: #4CAF50;
-        }
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        /* Estilos de carga (loader) */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
-        }
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-    </style>
 </head>
 <body>
 
     <!-- PANTALLA DE CARGA -->
     <div id="loader">
-        <!-- Placeholder para la imagen de carga -->
-        <img src="https://placehold.co/150x150/ffffff/000?text=Cargando..." alt="Cargando ECO GAIA SOS...">
+        <img src="gif/EGSBOOK.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <!-- Placeholder para Logo -->
-                <img src="https://placehold.co/50x50/4CAF50/ffffff?text=EGS" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             
-            <!-- Botón "Cómo usar ECOGUIA SOS" (STANDALONE) -->
-            <!-- Se mantiene visible en resoluciones grandes y fuera del menú hamburguesa -->
-            <a href="como-usar.html" class="btn-standalone-how-to">Cómo usar ECOGUIA SOS</a>
+            <!-- Botón Hamburguesa para Móvil/Tablet -->
+            <button class="hamburger-menu" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-            <!-- Contenedor para el Menú y la Hamburguesa -->
-            <div class="nav-options-container">
-                <!-- Menú de Opciones -->
-                <ul class="nav-menu" id="nav-menu-list">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Directorio</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <!-- El botón "Cómo usar ECOGUIA SOS" fue movido afuera (Standalone) -->
-                    <li><a href="#" class="nav-btn-highlight">Súmate</a></li>
-                </ul>
-                
-                <!-- Botón Hamburguesa para Móvil/Tablet -->
-                <button class="hamburger-menu" aria-label="Abrir menú">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-
+            <!-- Menú de Opciones -->
+            <ul class="nav-menu" id="nav-menu-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Directorio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="como-usar.html" class="nav-btn-how-to">Cómo usar ECOGUIA SOS</a></li>
+                <li><a href="#" class="nav-btn-highlight">Súmate</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- HERO PRINCIPAL (El resto del código se mantiene igual a tu original) -->
+    <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <!-- Placeholder para Logo animado -->
-            <img src="https://placehold.co/150x150/4CAF50/ffffff?text=EGS" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
 
             <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
@@ -420,7 +141,7 @@
         <!-- CONTENEDOR DE TARJETAS -->
         <div class="card-grid-container" id="contenedor-tarjetas">
             <!-- Las tarjetas se insertan aquí con JavaScript -->
-            <p style="color: black; text-align: center; width: 100%;">Cargando proyectos...</p>
+            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
         </div>
 
         <!-- SECCIÓN DE MAPA DESPLEGABLE -->
@@ -551,57 +272,7 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- Lógica para el menú móvil y pantalla de carga -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Lógica de la Pantalla de Carga
-            const loader = document.getElementById('loader');
-            if (loader) {
-                // Simula que la carga termina después de un momento
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                }, 500); // 0.5 segundos
-            }
-
-            // 2. Lógica del Menú Hamburguesa
-            const hamburgerButton = document.querySelector('.hamburger-menu');
-            const navMenu = document.getElementById('nav-menu-list');
-            
-            if (hamburgerButton && navMenu) {
-                hamburgerButton.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                });
-            }
-            
-            // 3. Inicialización de Particles.js (Si está presente en el HTML)
-            if (typeof particlesJS !== 'undefined') {
-                particlesJS("particles-js", {
-                    "particles": {
-                        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                        "color": { "value": "#ffffff" },
-                        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
-                        "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                        "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
-                        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                        "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
-                    },
-                    "interactivity": {
-                        "detect_on": "canvas",
-                        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                        "modes": {
-                            "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-                            "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
-                            "repulse": { "distance": 200, "duration": 0.4 },
-                            "push": { "particles_nb": 4 },
-                            "remove": { "particles_nb": 2 }
-                        }
-                    },
-                    "retina_detect": true
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
