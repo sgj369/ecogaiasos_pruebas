@@ -132,6 +132,8 @@ body {
   .logo-highlight {
     width: 280px;  /* Ancho para móvil */
     height: 280px; /* Alto para móvil */
+  position: relative;
+  left: -15px;  /* Negativo mueve a la izquierda. Prueba con -10px o -20px */
   }
 }
 
