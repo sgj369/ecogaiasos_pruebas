@@ -1,3 +1,29 @@
+:root {
+    /* TU PALETA DE COLORES (Cámbialos aquí y cambian en todos lados) */
+    --color-eco: #72B04D;  /* Verde */
+    --color-gaia: #0077b6; /* Azul */
+    --color-sos: #FFD700;  /* Amarillo */
+    --color-glow: rgba(255, 255, 255, 0.5); /* Color del brillo (blanco semi-transparente) */
+}
+
+/* Clases para pintar el texto */
+.txt-eco { color: var(--color-eco) !important; }
+.txt-gaia { color: var(--color-gaia) !important; }
+.txt-sos { color: var(--color-sos) !important; }
+
+/* Efecto de Brillo para las tarjetas */
+.card, .symbol-card, .founder-card {
+    border: 1px solid rgba(255,255,255,0.1); /* Borde sutil */
+    box-shadow: 0 0 15px var(--color-glow); /* El brillo blanco */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Opcional: Que brille más al pasar el mouse */
+.card:hover, .symbol-card:hover, .founder-card:hover {
+    box-shadow: 0 0 25px var(--color-glow);
+    transform: translateY(-5px);
+}
+
 /* --- VARIABLES (MODO OSCURO) --- */
 :root {
     --nopal: #4CAF50;
