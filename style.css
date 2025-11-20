@@ -102,6 +102,7 @@ body, html {
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
+    text-decoration: none;
 }
 .nav-menu li a.nav-btn-how-to:hover, 
 .nav-btn-how-to:hover {
@@ -116,9 +117,9 @@ body, html {
     align-items: center; /* Centra verticalmente dentro del .nav-container */
     text-decoration: none; /* Asegura que el enlace no se subraye */
     margin-left: 1.5rem; /* Espacio después del logo, similar a los li */
-    margin-right: auto; /* IMPORTANTE: Empuja el menú .nav-menu a la derecha */
+    margin-right: auto; /* IMPORTANTE: Empuja el menú .nav-menu y el menú hamburguesa a la derecha */
+    list-style: none; 
 }
-
 
 /* HERO PRINCIPAL */
 .hero-section#particles-js {
