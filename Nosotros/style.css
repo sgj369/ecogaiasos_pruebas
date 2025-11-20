@@ -127,6 +127,14 @@ body {
 .logo-highlight { margin: 0 auto 30px auto; width: 500px; height: 500px; }
 .main-logo-gif { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; box-shadow: 0 0 20px rgba(255,255,255,0.1); }
 
+/* Esto detecta pantallas menores a 768px (celulares y tablets pequeñas) */
+@media (max-width: 768px) {
+  .la-clase-que-estas-modificando {
+    height: 280px; /* O la propiedad que estés usando (width, min-height, etc.) */
+  }
+}
+
+
 /* Desglose de nombre */
 .name-breakdown {
     display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap;
