@@ -74,6 +74,8 @@ body, html {
 }
 .nav-menu li {
     margin-left: 1.5rem;
+    /* Ajuste para que el botón "Cómo Usar" no desaparezca en móvil */
+    display: block; 
 }
 .nav-menu li a {
     text-decoration: none;
@@ -91,6 +93,17 @@ body, html {
 }
 .nav-menu li a.nav-btn-highlight:hover {
     background-color: #217a3a;
+    color: white;
+}
+/* Nuevo estilo para el botón "Cómo Usar" */
+.nav-menu li a.nav-btn-how-to {
+    background-color: #D4AF37; /* Color dorado */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+.nav-menu li a.nav-btn-how-to:hover {
+    background-color: #c09e2e; /* Tono más oscuro al pasar el mouse */
     color: white;
 }
 
@@ -630,6 +643,16 @@ footer {
     }
     .nav-menu.active { display: flex; animation: slideDown 0.3s ease; }
     .nav-menu li { margin: 10px 0; }
+    /* Ajuste para que el botón "Cómo Usar" sea visible en el menú hamburguesa */
+    .nav-menu li a.nav-btn-how-to {
+        display: block; /* Aseguramos que se muestre en el menú colapsado */
+        width: fit-content; /* Para que no ocupe todo el ancho */
+    }
+
+    /* AJUSTE IMAGEN HERO EN TABLET */
+    .hero-logo {
+        max-width: 550px; /* Reducimos el ancho máximo para tablet */
+    }
     
     .mobile-info-toggle { display: flex; } 
     .level-btn-link { justify-content: flex-start; }
@@ -641,7 +664,7 @@ footer {
 /* Móvil (Menos de 768px): 1 Columna y Tarjetas Verticales */
 @media (max-width: 768px) {
     .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
-    .hero-logo { max-height: 180px; }
+    .hero-logo { max-height: 180px; max-width: 90%; /* Ajuste también para móvil */ }
     
     .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
     .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
@@ -676,4 +699,78 @@ footer {
     .nivel-section { padding: 3rem 1rem; }
     .nivel-section h2 { font-size: 2rem; }
     #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
+}
+
+/* Estilos para la nueva página de "Cómo Usar" */
+.how-to-section {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.how-to-section h1 {
+    color: #2a3d34;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+.how-to-section p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+.how-to-video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin-bottom: 2rem;
+}
+.how-to-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.manual-content {
+    text-align: left;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+.manual-content h2 {
+    color: #2c9a4d;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.manual-content h3 {
+    color: #0056b3;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+.manual-content ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 1.5rem;
+}
+.manual-content ul li {
+    margin-bottom: 0.5rem;
+    color: #666;
+    position: relative;
+    padding-left: 1.5rem;
+}
+.manual-content ul li::before {
+    content: "\f058"; /* Icono de checkmark */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #2c9a4d;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
