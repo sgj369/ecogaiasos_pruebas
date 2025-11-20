@@ -16,15 +16,14 @@
     <!-- NAVEGACIÓN SUPERIOR -->
     <nav class="nav-top">
         <div class="nav-content">
-            <!-- Logo que lleva al inicio -->
-            <a href="../index.html" class="nav-logo">
-                <!-- Busca el logo en la carpeta gif del directorio superior -->
-                <img src="../gif/EGSlg.gif" alt="Logo ECO GAIA SOS" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
-                <span id="alt-logo" style="display:none; color:white; font-weight:bold;">ECO GAIA SOS</span>
+            <!-- Logo que lleva al inicio (CORREGIDO A EGS.html) -->
+            <a href="../EGS.html" class="nav-logo">
+                <img src="../gif/EGSlg.gif" alt="Logo ECO GAIA SOS" onerror="this.style.display='none';">
+                <span class="nav-text-logo">ECO GAIA SOS</span>
             </a>
 
-            <!-- Botón Regresar (Corregido) -->
-            <a href="../index.html" class="btn-back">
+            <!-- Botón Regresar (CORREGIDO A EGS.html) -->
+            <a href="../EGS.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Regresar al Inicio
             </a>
         </div>
@@ -61,11 +60,16 @@
             </div>
         </section>
 
-        <!-- NUEVA SECCIÓN: SIMBOLOGÍA DEL LOGO -->
+        <!-- SECCIÓN: SIMBOLOGÍA DEL LOGO (Actualizada) -->
         <section class="symbology-section">
             <h3><i class="fas fa-fingerprint"></i> Nuestro Emblema</h3>
-            <p class="section-intro">Nuestro logo es un mapa de nuestras áreas de acción:</p>
+            <p class="section-intro">Nuestro logo es un mapa vivo de nuestras áreas de acción:</p>
             
+            <!-- GIF CENTRAL -->
+            <div class="logo-highlight">
+                <img src="../gif/EGSlg+2.gif" alt="Logo Animado ECO GAIA SOS" class="main-logo-gif">
+            </div>
+
             <!-- Desglose del Nombre -->
             <div class="name-breakdown">
                 <div class="name-item">
@@ -82,27 +86,46 @@
                 </div>
             </div>
 
-            <!-- Grid de Significados -->
+            <!-- Grid de Elementos con FOTOS -->
             <div class="symbols-grid">
+                <!-- Nopal -->
                 <div class="symbol-card">
-                    <i class="fas fa-plant-wilt" style="color: #4CAF50;"></i>
+                    <div class="symbol-img-box">
+                        <!-- Carga aquí tu imagen del Nopal -->
+                        <img src="../gif/nopal-symbol.png" alt="Nopal" onerror="this.src='https://via.placeholder.com/300x200/2e7d32/fff?text=Foto+Nopal'">
+                    </div>
                     <h4>El Nopal</h4>
-                    <p>Identidad mexicana y resiliencia. Capacidad de florecer incluso en condiciones difíciles.</p>
+                    <p class="symbol-desc">Identidad mexicana y resiliencia. Capacidad de florecer incluso en condiciones difíciles.</p>
                 </div>
+
+                <!-- Engrane -->
                 <div class="symbol-card">
-                    <i class="fas fa-cogs" style="color: #aaa;"></i>
+                    <div class="symbol-img-box">
+                        <!-- Carga aquí tu imagen del Engrane -->
+                        <img src="../gif/engrane-symbol.png" alt="Engrane" onerror="this.src='https://via.placeholder.com/300x200/555/fff?text=Foto+Engrane'">
+                    </div>
                     <h4>Engrane con Brote</h4>
-                    <p>Fusión de ingeniería y biología. Tecnología puesta al servicio de la vida (Ecotecnología).</p>
+                    <p class="symbol-desc">Fusión de ingeniería y biología. Tecnología puesta al servicio de la vida (Ecotecnología).</p>
                 </div>
+
+                <!-- Gota -->
                 <div class="symbol-card">
-                    <i class="fas fa-tint" style="color: #03A9F4;"></i>
+                    <div class="symbol-img-box">
+                        <!-- Carga aquí tu imagen de la Gota -->
+                        <img src="../gif/gota-symbol.png" alt="Gota de Agua" onerror="this.src='https://via.placeholder.com/300x200/0288d1/fff?text=Foto+Gota'">
+                    </div>
                     <h4>Gota de Agua</h4>
-                    <p>Recurso vital. Nuestro compromiso con la protección y saneamiento del agua.</p>
+                    <p class="symbol-desc">Recurso vital. Compromiso ineludible con la protección y saneamiento del agua.</p>
                 </div>
+
+                <!-- Rayo -->
                 <div class="symbol-card">
-                    <i class="fas fa-bolt" style="color: #FFC107;"></i>
+                    <div class="symbol-img-box">
+                        <!-- Carga aquí tu imagen del Rayo -->
+                        <img src="../gif/rayo-symbol.png" alt="Rayo y Hoja" onerror="this.src='https://via.placeholder.com/300x200/fbc02d/333?text=Foto+Energía'">
+                    </div>
                     <h4>Rayo y Hoja</h4>
-                    <p>Energía renovable y el poder de la naturaleza como fuente limpia.</p>
+                    <p class="symbol-desc">Energía renovable y el poder de la naturaleza como fuente limpia y sostenible.</p>
                 </div>
             </div>
         </section>
@@ -137,15 +160,12 @@
                 <!-- Sergio -->
                 <div class="founder-card">
                     <div class="photo-frame">
-                        <!-- Apuntando a la carpeta gif del directorio superior -->
                         <img src="../gif/sergio.jpg" alt="Sergio Garduño" onerror="this.src='https://via.placeholder.com/150/333/fff?text=Sergio';">
                     </div>
                     <div class="info">
                         <h4>Sergio Garduño Jardón</h4>
                         <span class="role">Tecnología & Desarrollo (IT)</span>
-                        <p>
-                            Encargado de la arquitectura de software y la experiencia de usuario.
-                        </p>
+                        <p>Encargado de la arquitectura de software y la experiencia de usuario.</p>
                         <div class="links">
                             <a href="https://sgj369.github.io/cv-sergio-gardu-o-jardon/index.html" target="_blank" class="btn-link">Portafolio</a>
                             <a href="https://github.com/sgj369" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
@@ -156,15 +176,12 @@
                 <!-- Alejandro -->
                 <div class="founder-card">
                     <div class="photo-frame">
-                        <!-- Apuntando a la carpeta gif del directorio superior -->
                         <img src="../gif/alejandro.jpg" alt="Alejandro Enríquez" onerror="this.src='https://via.placeholder.com/150/333/fff?text=Alejandro';">
                     </div>
                     <div class="info">
                         <h4>Alejandro Enríquez</h4>
                         <span class="role">Investigación & Datos</span>
-                        <p>
-                            Responsable de la curaduría de datos y validación de proyectos.
-                        </p>
+                        <p>Responsable de la curaduría de datos y validación de proyectos.</p>
                         <div class="links">
                             <a href="https://jenriquezv1400.github.io/EVJA/" target="_blank" class="btn-link">Portafolio</a>
                         </div>
@@ -176,7 +193,7 @@
 
     </main>
 
-    <!-- FOOTER NUEVO (Para dar espacio abajo) -->
+    <!-- FOOTER -->
     <footer class="footer-main">
         <div class="footer-content">
             <div class="footer-logo">
@@ -184,7 +201,8 @@
                 <p>Generando Redes Para el Futuro</p>
             </div>
             <div class="footer-links">
-                <a href="../index.html">Inicio</a>
+                <!-- Enlaces ajustados para regresar a la principal si es necesario -->
+                <a href="../EGS.html">Inicio</a>
                 <a href="#">Directorio</a>
                 <a href="#">Súmate</a>
             </div>
@@ -196,4 +214,5 @@
 
 </body>
 </html>
+
 
