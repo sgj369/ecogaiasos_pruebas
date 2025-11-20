@@ -13,16 +13,19 @@
 </head>
 <body>
 
+    <!-- FONDO DE PARTÍCULAS (CONSTELACIÓN) -->
+    <div id="particles-js"></div>
+
     <!-- NAVEGACIÓN SUPERIOR -->
     <nav class="nav-top">
         <div class="nav-content">
-            <!-- Logo que lleva al inicio (CORREGIDO A EGS.html) -->
+            <!-- Logo que lleva al inicio -->
             <a href="../EGS.html" class="nav-logo">
                 <img src="../gif/EGSlg.gif" alt="Logo ECO GAIA SOS" onerror="this.style.display='none';">
                 <span class="nav-text-logo">ECO GAIA SOS</span>
             </a>
 
-            <!-- Botón Regresar (CORREGIDO A EGS.html) -->
+            <!-- Botón Regresar -->
             <a href="../EGS.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Regresar al Inicio
             </a>
@@ -60,14 +63,14 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: SIMBOLOGÍA DEL LOGO (Actualizada) -->
+        <!-- SECCIÓN: SIMBOLOGÍA DEL LOGO -->
         <section class="symbology-section">
             <h3><i class="fas fa-fingerprint"></i> Nuestro Emblema</h3>
             <p class="section-intro">Nuestro logo es un mapa vivo de nuestras áreas de acción:</p>
             
             <!-- GIF CENTRAL -->
             <div class="logo-highlight">
-                <img src="../gif/EGSlg+2.gif" alt="Logo Animado ECO GAIA SOS" class="main-logo-gif">
+                <img src="../gif/EGSlg.gif" alt="Logo Animado ECO GAIA SOS" class="main-logo-gif">
             </div>
 
             <!-- Desglose del Nombre -->
@@ -86,13 +89,12 @@
                 </div>
             </div>
 
-            <!-- Grid de Elementos con FOTOS -->
+            <!-- Grid de Elementos (4 en renglón) -->
             <div class="symbols-grid">
                 <!-- Nopal -->
                 <div class="symbol-card">
                     <div class="symbol-img-box">
-                        <!-- Carga aquí tu imagen del Nopal -->
-                        <img src="../gif/nopal-symbol.png" alt="Nopal" onerror="this.src='https://via.placeholder.com/300x200/2e7d32/fff?text=Foto+Nopal'">
+                        <img src="Nosotros/img/nopal.png" alt="Nopal" onerror="this.src='https://via.placeholder.com/300x200/2e7d32/fff?text=Foto+Nopal'">
                     </div>
                     <h4>El Nopal</h4>
                     <p class="symbol-desc">Identidad mexicana y resiliencia. Capacidad de florecer incluso en condiciones difíciles.</p>
@@ -101,8 +103,7 @@
                 <!-- Engrane -->
                 <div class="symbol-card">
                     <div class="symbol-img-box">
-                        <!-- Carga aquí tu imagen del Engrane -->
-                        <img src="../gif/engrane-symbol.png" alt="Engrane" onerror="this.src='https://via.placeholder.com/300x200/555/fff?text=Foto+Engrane'">
+                        <img src="Nosotros/img/engrane.png" alt="Engrane" onerror="this.src='https://via.placeholder.com/300x200/555/fff?text=Foto+Engrane'">
                     </div>
                     <h4>Engrane con Brote</h4>
                     <p class="symbol-desc">Fusión de ingeniería y biología. Tecnología puesta al servicio de la vida (Ecotecnología).</p>
@@ -111,8 +112,7 @@
                 <!-- Gota -->
                 <div class="symbol-card">
                     <div class="symbol-img-box">
-                        <!-- Carga aquí tu imagen de la Gota -->
-                        <img src="../gif/gota-symbol.png" alt="Gota de Agua" onerror="this.src='https://via.placeholder.com/300x200/0288d1/fff?text=Foto+Gota'">
+                        <img src="Nosotros/img/agua.png" alt="Gota de Agua" onerror="this.src='https://via.placeholder.com/300x200/0288d1/fff?text=Foto+Gota'">
                     </div>
                     <h4>Gota de Agua</h4>
                     <p class="symbol-desc">Recurso vital. Compromiso ineludible con la protección y saneamiento del agua.</p>
@@ -121,8 +121,7 @@
                 <!-- Rayo -->
                 <div class="symbol-card">
                     <div class="symbol-img-box">
-                        <!-- Carga aquí tu imagen del Rayo -->
-                        <img src="../gif/rayo-symbol.png" alt="Rayo y Hoja" onerror="this.src='https://via.placeholder.com/300x200/fbc02d/333?text=Foto+Energía'">
+                        <img src="Nosotros/img/luz.png" alt="Rayo y Hoja" onerror="this.src='https://via.placeholder.com/300x200/fbc02d/333?text=Foto+Energía'">
                     </div>
                     <h4>Rayo y Hoja</h4>
                     <p class="symbol-desc">Energía renovable y el poder de la naturaleza como fuente limpia y sostenible.</p>
@@ -201,7 +200,6 @@
                 <p>Generando Redes Para el Futuro</p>
             </div>
             <div class="footer-links">
-                <!-- Enlaces ajustados para regresar a la principal si es necesario -->
                 <a href="../EGS.html">Inicio</a>
                 <a href="#">Directorio</a>
                 <a href="#">Súmate</a>
@@ -212,7 +210,54 @@
         </div>
     </footer>
 
+    <!-- SCRIPTS DE PARTÍCULAS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": {
+                    /* Colores de tu Logo: Verde, Azul, Amarillo, Rojo(SOS) */
+                    "value": ["#72B04D", "#0077b6", "#FFD700", "#E74C3C"]
+                },
+                "shape": { "type": "circle" },
+                "opacity": {
+                    "value": 0.7,
+                    "random": true,
+                    "anim": { "enable": true, "speed": 0.5, "opacity_min": 0, "sync": false }
+                },
+                "size": { "value": 6, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
 </body>
 </html>
-
-
