@@ -9,6 +9,17 @@ body, html {
     background-color: #f0f2f5;
 }
 
+/* Nuevo estilo de posicionamiento para el botón fuera del UL */
+.nav-how-to-desktop {
+    /* Utiliza los mismos estilos de .nav-btn-how-to (que son el color y padding) */
+    display: block; 
+    text-decoration: none; /* Asegura que no tenga subrayado */
+    margin-right: auto; /* Empuja el menú al extremo derecho */
+    margin-left: 2rem; /* Espacio después del logo */
+    height: fit-content; /* Ajusta la altura al contenido */
+}
+
+
 /* PANTALLA DE CARGA */
 #loader {
     position: fixed;
