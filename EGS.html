@@ -4,337 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
-    <!-- Carga de Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carga de Font Awesome -->
+    <link rel="icon" href="gif/EGSlg.gif" type="image/gif">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- ESTILOS CSS CONSOLIDADOS (Incluye la nueva animación de carga) -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        :root {
-            --color-primary: #4CAF50; /* Verde principal */
-            --color-secondary: #d9ad4c; /* Dorado/Amarillo */
-            --color-dark: #333333;
-            --color-light: #f7f7f7;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--color-light);
-            overflow-x: hidden;
-        }
-
-        /* 1. ESTILOS DE BOTONES SOLICITADOS (Golden/Green) */
-        .btn-ecoguia, .btn-sumate {
-            padding: 0.75rem 1.25rem;
-            font-size: 0.875rem; 
-            font-weight: 600;
-            border-radius: 0.5rem; 
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .btn-ecoguia {
-            background-color: var(--color-secondary);
-            color: white;
-            white-space: nowrap;
-        }
-        .btn-ecoguia:hover {
-            background-color: #c99c3a;
-        }
-        
-        .btn-sumate {
-            background-color: var(--color-primary);
-            color: white;
-        }
-        .btn-sumate:hover {
-            background-color: #3e8e41;
-        }
-
-        /* 2. BARRA DE NAVEGACIÓN */
-        .main-nav {
-            @apply bg-white shadow-lg sticky top-0 z-50;
-        }
-        .nav-container {
-            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20;
-        }
-        .nav-brand-logo {
-            @apply h-12 w-12 rounded-full;
-        }
-        .nav-link {
-            @apply text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition duration-150;
-        }
-
-        /* 3. PANTALLA DE CARGA Y NUEVO EFECTO DE TEXTO */
-        #loader {
-            /* Añadir flex-col para centrar mejor el texto */
-            @apply fixed inset-0 flex items-center justify-center bg-white z-[9999] transition-opacity duration-1000 ease-out flex-col; 
-        }
-        .loaded #loader {
-            @apply opacity-0 pointer-events-none;
-        }
-        
-        .loading-text {
-            /* Contenedor del texto, usa un tamaño de fuente base */
-            @apply text-6xl font-extrabold tracking-wider;
-            line-height: 1.2; 
-        }
-
-        /* Estilo de cada letra individual (SOLICITADO POR EL USUARIO) */
-        .loading-text span {
-            opacity: 0;
-            transform: translateY(-5px);
-            /* Transición para el efecto de "caída" */
-            transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-            
-            /* --- NUEVO EFECTO: LÍNEA DE COLOR ABAJO --- */
-            color: var(--color-dark); /* Letra oscura para contraste en fondo blanco */
-            border-bottom: 4px solid #0077b6; 
-            padding-bottom: 5px; 
-            margin: 0 3px; 
-            display: inline-block; 
-            font-size: 3rem; /* Tamaño de letra grande */
-        }
-        
-        /* Estado final de la animación: visible y en posición */
-        .loading-text.visible span {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Alternar colores en la línea inferior (SOLICITADO POR EL USUARIO) */
-        .loading-text span:nth-child(4n+1) { border-bottom-color: #72B04D; } /* Verde */
-        .loading-text span:nth-child(4n+2) { border-bottom-color: #0077b6; } /* Azul */
-        .loading-text span:nth-child(4n+3) { border-bottom-color: #FFD700; } /* Amarillo */
-        .loading-text span:nth-child(4n+4) { border-bottom-color: #E74C3C; } /* Rojo */
-
-        /* 4. HERO SECTION */
-        .hero-section {
-            @apply min-h-[80vh] bg-cover bg-center flex items-center justify-center relative;
-            background-image: url('https://placehold.co/1920x800/e0e0e0/555555?text=Fondo+Hero+Section'); 
-        }
-        .hero-content {
-            @apply text-center p-8 bg-black bg-opacity-30 rounded-xl max-w-4xl w-full mx-4 relative z-10;
-        }
-        .hero-logo {
-            @apply h-40 mx-auto mb-8;
-        }
-
-        /* 5. BUSCADOR */
-        .search-bar-container {
-            @apply flex items-center bg-white rounded-full p-3 shadow-xl mb-8 max-w-xl mx-auto;
-        }
-        #buscador-input {
-            @apply flex-grow text-lg p-1 px-3 border-none focus:outline-none;
-        }
-        .search-bar-container i {
-            @apply text-gray-400 text-xl mx-2;
-        }
-
-        /* 6. BOTONES DE ACCIÓN */
-        .action-buttons {
-            @apply flex justify-center space-x-4 mb-10;
-        }
-        .btn {
-            @apply px-6 py-3 rounded-full font-semibold transition duration-200;
-        }
-        .btn-primary {
-            @apply bg-green-600 text-white hover:bg-green-700 flex items-center space-x-2;
-        }
-        .btn-secondary {
-            @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
-        }
-
-        /* 7. BOTONES DE NIVELES */
-        .level-buttons-container {
-            @apply flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4;
-        }
-        .btn-wrapper {
-            @apply relative group;
-        }
-        .level-btn-group {
-            @apply flex rounded-full overflow-hidden shadow-lg transform transition duration-300 hover:scale-[1.02];
-        }
-        .level-btn-link {
-            @apply flex-grow text-white text-base font-bold py-3 px-6 text-left;
-        }
-        .mobile-info-toggle {
-            @apply px-4 py-3 bg-opacity-20 hover:bg-opacity-30 transition-colors text-white;
-        }
-        .level-btn-colibri { background-color: #8c72cf; } /* Morado */
-        .level-btn-ajolote { background-color: #4c8cff; } /* Azul */
-        .level-btn-lobo { background-color: #ff994c; } /* Naranja */
-
-        /* Tooltips */
-        .tooltip-list {
-            @apply hidden absolute top-full mt-2 w-max p-3 bg-white border border-gray-200 rounded-lg shadow-xl z-20 md:group-hover:block;
-        }
-        .tooltip-list ul {
-            @apply list-none p-0 m-0;
-        }
-        .tooltip-list li {
-            @apply text-gray-700 text-sm py-1 whitespace-nowrap;
-        }
-
-        /* 8. SECCIONES Y GRID DE TARJETAS */
-        .content-section {
-            @apply max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
-        }
-        .toggle-container {
-            @apply flex items-center justify-center space-x-3 mb-8;
-        }
-        .toggle-label {
-            @apply text-xl font-semibold text-gray-500 cursor-pointer transition-colors;
-        }
-        .toggle-label.active {
-            @apply text-gray-800;
-        }
-        .toggle-switch {
-            @apply w-12 h-6 bg-gray-300 rounded-full p-1 cursor-pointer relative;
-        }
-        .toggle-handle {
-            @apply w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300;
-        }
-        
-        .card-grid-container {
-            @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
-        }
-
-        /* 9. MAPA DESPLEGABLE */
-        .map-section-wrapper {
-            @apply my-10;
-        }
-        .btn-full-width {
-            @apply w-full px-6 py-3 rounded-lg bg-gray-800 text-white font-semibold hover:bg-gray-700 transition duration-200 flex items-center justify-center space-x-2;
-        }
-        .mapa-oculto {
-            @apply max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out;
-        }
-        .mapa-visible {
-            @apply max-h-[600px] mt-4;
-        }
-        #mapa-desplegable iframe {
-            @apply w-full h-96 rounded-lg shadow-xl;
-        }
-
-        /* 10. SECCIONES DE NIVELES */
-        .nivel-section {
-            @apply py-16 px-4 sm:px-6 lg:px-8 bg-white shadow-inner;
-        }
-        .section-divider {
-            @apply border-t-2 border-green-500 max-w-3xl mx-auto my-8;
-        }
-        .nivel-section h2 {
-            @apply text-4xl font-extrabold text-green-700 mb-4 flex items-center space-x-3;
-        }
-        .btn-back-to-top {
-            @apply mt-10 px-6 py-3 rounded-full bg-gray-500 text-white font-semibold hover:bg-gray-600 transition duration-200 flex items-center justify-center space-x-2 mx-auto;
-        }
-
-        /* 11. FOOTER */
-        footer {
-            @apply bg-gray-900 text-white py-10;
-        }
-        .social-icons a {
-            @apply text-2xl text-gray-400 hover:text-green-500 transition-colors mr-4;
-        }
-        
-        /* Ocultar el texto del botón 'Cómo usar' en móvil */
-        @media (max-width: 640px) {
-            .btn-ecoguia-mobile .btn-text {
-                display: none;
-            }
-            .btn-ecoguia-mobile .fa-circle-question {
-                display: block;
-                font-size: 1.25rem;
-                padding: 0.5rem;
-            }
-        }
-
-    </style>
 </head>
 <body>
 
-    <!-- PANTALLA DE CARGA (Ahora solo es un contenedor vacío para el texto dinámico) -->
+    <!-- PANTALLA DE CARGA -->
     <div id="loader">
-        <!-- El texto animado será insertado aquí por JavaScript -->
+        <img src="gif/EGSBOOK.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="main-nav">
         <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+            </a>
             
-            <!-- Grupo Izquierdo: Logo y Botón 'Cómo usar' -->
-            <div class="flex items-center space-x-4 md:space-x-6">
-                <!-- Logo -->
-                <a href="index.html" class="nav-brand">
-                    <img src="https://placehold.co/50x50/4CAF50/ffffff?text=EGS" alt="Logo ECO GAIA SOS" class="nav-brand-logo border-2 border-green-500">
-                </a>
-                
-                <!-- Botón 'Cómo usar ECOGUIA SOS' (Dorado y fuera del menú) -->
-                <a href="como-usar.html" class="btn-ecoguia btn-ecoguia-mobile">
-                    <i class="fa-solid fa-circle-question sm:hidden"></i>
-                    <span class="btn-text hidden sm:inline">Cómo usar ECOGUIA SOS</span>
-                </a>
-            </div>
+            <!-- Botón Hamburguesa para Móvil/Tablet -->
+            <button class="hamburger-menu" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-            <!-- Grupo Derecho: Menú Principal, Súmate y Hamburguesa -->
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                
-                <!-- Menú de Opciones (Desktop) -->
-                <ul class="nav-menu hidden md:flex space-x-6 lg:space-x-8" id="nav-menu-list-desktop">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="Nosotros/nosotros.html" class="nav-link">Nosotros</a></li>
-                    <li><a href="#" class="nav-link">Directorio</a></li>
-                    <li><a href="#" class="nav-link">Blog</a></li>
-                </ul>
-                
-                <!-- Botón Súmate (Verde) -->
-                <a href="#" class="btn-sumate text-sm hidden md:inline-block">
-                    Súmate
-                </a>
-
-                <!-- Botón Hamburguesa para Móvil/Tablet -->
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-label="Abrir menú">
-                    <i id="hamburger-icon" class="fa-solid fa-bars text-2xl"></i>
-                    <i id="close-icon" class="fa-solid fa-xmark text-2xl hidden"></i>
-                </button>
-            </div>
+            <!-- Menú de Opciones -->
+            <ul class="nav-menu" id="nav-menu-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Nosotros/nosotros.html">Nosotros</a></li>
+                <li><a href="#">Directorio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="como-usar.html" class="nav-btn-how-to">Cómo usar ECOGUIA SOS</a></li>
+                <li><a href="#" class="nav-btn-highlight">Súmate</a></li>
+            </ul>
         </div>
-        
-        <!-- Menú Móvil Desplegable -->
-        <ul class="nav-menu-mobile hidden md:hidden px-2 pt-2 pb-3 space-y-1" id="mobile-menu">
-            <li><a href="index.html" class="nav-link block text-base">Inicio</a></li>
-            <li><a href="Nosotros/nosotros.html" class="nav-link block text-base">Nosotros</a></li>
-            <li><a href="#" class="nav-link block text-base">Directorio</a></li>
-            <li><a href="#" class="nav-link block text-base">Blog</a></li>
-            <li><a href="#" class="btn-sumate w-full mt-2 block text-base">Súmate</a></li>
-        </ul>
     </nav>
 
     <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <img src="https://placehold.co/150x150/4CAF50/ffffff?text=EGS+Animado" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+
+            <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="buscador-input" placeholder="Busca un proyecto, actor o tema..." class="bg-transparent">
+                <input type="text" id="buscador-input" placeholder="Busca un proyecto, actor o tema...">
             </div>
+
             <div class="action-buttons">
-                <button class="btn btn-secondary shadow-md">Búsqueda Avanzada</button>
-                <button class="btn btn-primary shadow-md">
+                <button class="btn btn-secondary">Búsqueda Avanzada</button>
+                <button class="btn btn-primary">
                     <i class="fa-solid fa-location-dot"></i>
                     Eventos cerca de mí
                 </button>
             </div>
+            
+            <!-- 
+              BOTONES DE NIVELES (HÍBRIDOS)
+            -->
             <div class="level-buttons-container">
+                
+                <!-- COLIBRÍ -->
                 <div class="btn-wrapper">
                     <div class="level-btn-group level-btn-colibri">
                         <a href="#seccion-colibri" class="level-btn-link">
                             <i class="fa-solid fa-dove"></i> Colibrí (Polinización)
                         </a>
+                        <!-- La pestañita de opciones -->
                         <button class="mobile-info-toggle" aria-label="Ver opciones">
                             <i class="fa-solid fa-caret-down"></i>
                         </button>
@@ -349,6 +84,8 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- AJOLOTE -->
                 <div class="btn-wrapper">
                     <div class="level-btn-group level-btn-ajolote">
                         <a href="#seccion-ajolote" class="level-btn-link">
@@ -366,6 +103,8 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- LOBO -->
                 <div class="btn-wrapper">
                     <div class="level-btn-group level-btn-lobo">
                         <a href="#seccion-lobo" class="level-btn-link">
@@ -382,6 +121,7 @@
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </header>
@@ -389,7 +129,8 @@
     <!-- PARTE B: CONSOLA DE DATOS -->
     <main class="content-section">
         
-        <div class="toggle-container" id="filter-toggle">
+        <!-- Toggle Eventos/Lugares -->
+        <div class="toggle-container">
             <span class="toggle-label active" data-filter="evento">Eventos</span>
             <div class="toggle-switch">
                 <div class="toggle-handle"></div>
@@ -397,23 +138,27 @@
             <span class="toggle-label" data-filter="lugar">Lugares</span>
         </div>
 
+        <!-- CONTENEDOR DE TARJETAS -->
         <div class="card-grid-container" id="contenedor-tarjetas">
-            <p class="text-white text-center w-full">Cargando proyectos...</p>
+            <!-- Las tarjetas se insertan aquí con JavaScript -->
+            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
         </div>
 
+        <!-- SECCIÓN DE MAPA DESPLEGABLE -->
         <div class="map-section-wrapper">
-            <button id="btn-toggle-mapa" class="btn-full-width shadow-lg">
+            <button id="btn-toggle-mapa" class="btn-full-width">
                 <i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores
             </button>
             
             <div id="mapa-desplegable" class="mapa-oculto">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ucypWovpoEYMy6hrTsYjBGLT_NDP-TY&ehbc=2E312F" title="Mapa de Actores ECO GUÍA SOS" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <!-- IFRAME A TU MAPA REAL -->
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ucypWovpoEYMy6hrTsYjBGLT_NDP-TY&ehbc=2E312F" width="640" height="480"></iframe>
             </div>
         </div>
 
     </main>
 
-    <!-- PARTE C: SECCIONES DE NIVELES (El resto del contenido se mantiene igual) -->
+    <!-- PARTE C: SECCIONES DE NIVELES -->
     
     <!-- SECCIÓN COLIBRÍ -->
     <section id="seccion-colibri" class="nivel-section">
@@ -422,31 +167,58 @@
             <h2><i class="fa-solid fa-dove"></i> Colibrí (Polinización)</h2>
             <p class="nivel-description">Poliniza tu mente con conocimiento y pequeñas acciones que generan vida.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">🎓 Cursos</span><p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">💡 Ecotecnias</span><p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">✍️ Firmas</span><p class="nivel-btn-desc">Apoya causas y peticiones importantes con tu firma.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">📚 Lecturas y bibliografía</span><p class="nivel-btn-desc">Encuentra artículos, guías y libros recomendados por la comunidad.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">🎬 Vídeos y documentales</span><p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p></a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎓 Cursos</span>
+                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💡 Ecotecnias</span>
+                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">✍️ Firmas</span>
+                    <p class="nivel-btn-desc">Apoya causas y peticiones importantes con tu firma.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📚 Lecturas y bibliografía</span>
+                    <p class="nivel-btn-desc">Encuentra artículos, guías y libros recomendados por la comunidad.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🎬 Vídeos y documentales</span>
+                    <p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p>
+                </a>
             </div>
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top shadow-md">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
                 <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
             </button>
         </div>
     </section>
 
     <!-- SECCIÓN AJOLOTE -->
-    <section id="seccion-ajolote" class="nivel-section bg-gray-50">
-        <div class="section-divider border-gray-300"></div>
+    <section id="seccion-ajolote" class="nivel-section">
+        <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-frog"></i> Ajolote (Regeneración)</h2>
             <p class="nivel-description">Regenera el tejido social y ambiental actuando en comunidad.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">👥 Agentes de cambio</span><p class="nivel-btn-desc">Conoce a las personas y organizaciones que están liderando el cambio.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">📣 Convocatorias</span><p class="nivel-btn-desc">Encuentra oportunidades para presentar tus proyectos o unirte a otros.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">🤝 Eventos y voluntariados</span><p class="nivel-btn-desc">Únete a eventos y jornadas de voluntariado cerca de ti.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span><p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p></a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">👥 Agentes de cambio</span>
+                    <p class="nivel-btn-desc">Conoce a las personas y organizaciones que están liderando el cambio.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">📣 Convocatorias</span>
+                    <p class="nivel-btn-desc">Encuentra oportunidades para presentar tus proyectos o unirte a otros.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🤝 Eventos y voluntariados</span>
+                    <p class="nivel-btn-desc">Únete a eventos y jornadas de voluntariado cerca de ti.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span>
+                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
+                </a>
             </div>
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top shadow-md">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
                 <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
             </button>
         </div>
@@ -459,10 +231,16 @@
             <h2><i class="fa-solid fa-dog"></i> Lobo (Estrategia)</h2>
             <p class="nivel-description">Lidera con estructura, fondos y legalidad para proyectos de alto impacto.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">💰 Fondos</span><p class="nivel-btn-desc">Descubre fuentes de financiamiento y fondos para tus proyectos.</p></a>
-                <a href="#" class="nivel-btn-item"><span class="nivel-btn-title">⚖️ Normativa</span><p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p></a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">💰 Fondos</span>
+                    <p class="nivel-btn-desc">Descubre fuentes de financiamiento y fondos para tus proyectos.</p>
+                </a>
+                <a href="#" class="nivel-btn-item">
+                    <span class="nivel-btn-title">⚖️ Normativa</span>
+                    <p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p>
+                </a>
             </div>
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top shadow-md">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
                 <i class="fa-solid fa-arrow-up"></i> Ir al Buscador
             </button>
         </div>
@@ -482,8 +260,8 @@
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -492,136 +270,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS CONSOLIDADOS -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Función para generar el texto de carga con spans individuales
-        function setupLoadingText(text) {
-            const loader = document.getElementById('loader');
-            
-            // Limpiar el contenido original (la imagen placeholder)
-            loader.innerHTML = ''; 
-
-            const textContainer = document.createElement('div');
-            textContainer.className = 'loading-text';
-            loader.appendChild(textContainer);
-
-            // Dividir el texto en letras y crear un span para cada una
-            text.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                // Usar espacio no rompible para que el margen y el borde funcionen en espacios
-                span.textContent = char === ' ' ? '\u00A0' : char; 
-                span.style.transitionDelay = `${index * 0.08}s`; // Retraso escalonado
-                textContainer.appendChild(span);
-            });
-            
-            // Iniciar la animación después de un breve momento
-            setTimeout(() => {
-                textContainer.classList.add('visible');
-            }, 50);
-
-            // Calcular el tiempo total de la animación (letras * retraso + duración de la transición + buffer)
-            const animationDuration = (text.length * 80) + (200) + 1000;
-            
-            // Ocultar la pantalla de carga después de que termine la animación
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, animationDuration);
-        }
-
-        // Llama a la función de configuración tan pronto como el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            setupLoadingText("ECO GAIA SOS");
-        });
-
-
-        // Lógica de inicialización de la página (se ejecuta cuando todos los recursos han cargado)
-        window.addEventListener('load', () => {
-            // Inicializa particles.js
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#ffffff" },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                    "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
-                },
-                "retina_detect": true
-            });
-        });
-
-        // Lógica del menú móvil
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
-
-        if (menuButton) {
-            menuButton.addEventListener('click', () => {
-                const isExpanded = mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                hamburgerIcon.classList.toggle('hidden', !isExpanded);
-                closeIcon.classList.toggle('hidden', isExpanded);
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-            });
-        }
-
-        // Lógica del mapa desplegable
-        const mapToggleButton = document.getElementById('btn-toggle-mapa');
-        const mapContainer = document.getElementById('mapa-desplegable');
-
-        if (mapToggleButton) {
-            mapToggleButton.addEventListener('click', () => {
-                mapContainer.classList.toggle('mapa-oculto');
-                mapContainer.classList.toggle('mapa-visible');
-
-                const isVisible = mapContainer.classList.contains('mapa-visible');
-                if (isVisible) {
-                    mapToggleButton.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Ocultar Mapa de Actores';
-                } else {
-                    mapToggleButton.innerHTML = '<i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores';
-                }
-            });
-        }
-
-        // Lógica del Toggle Eventos/Lugares (Ejemplo simple)
-        const filterToggleContainer = document.getElementById('filter-toggle');
-        
-        if (filterToggleContainer) {
-            const eventLabel = filterToggleContainer.querySelector('[data-filter="evento"]');
-            const lugarLabel = filterToggleContainer.querySelector('[data-filter="lugar"]');
-            const toggleHandle = filterToggleContainer.querySelector('.toggle-handle');
-
-            filterToggleContainer.addEventListener('click', (e) => {
-                let targetFilter = eventLabel.classList.contains('active') ? 'lugar' : 'evento';
-
-                if (e.target === eventLabel || e.target.closest('[data-filter="evento"]')) {
-                    targetFilter = 'evento';
-                } else if (e.target === lugarLabel || e.target.closest('[data-filter="lugar"]')) {
-                    targetFilter = 'lugar';
-                }
-
-                if (targetFilter === 'lugar') {
-                    eventLabel.classList.remove('active');
-                    lugarLabel.classList.add('active');
-                    toggleHandle.style.transform = 'translateX(100%)';
-                } else {
-                    eventLabel.classList.add('active');
-                    lugarLabel.classList.remove('active');
-                    toggleHandle.style.transform = 'translateX(0)';
-                }
-            });
-        }
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
