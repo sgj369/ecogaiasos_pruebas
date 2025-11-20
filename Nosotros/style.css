@@ -5,7 +5,39 @@
     --color-sos: #FFD700;  /* Amarillo */
     --color-glow: rgba(255, 255, 255, 0.5); /* Color del brillo (blanco semi-transparente) */
 }
+        /* Colores de referencia */
+        :root {
+            --color-primary: #4CAF50; /* Verde principal */
+            --color-secondary: #d9ad4c; /* Dorado/Amarillo */
+        }
+        
+        /* Estilos base para ambos botones */
+        .btn-ecoguia, .btn-sumate {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem; 
+            font-weight: 600;
+            border-radius: 0.5rem; /* Bordes redondeados */
+            transition: all 0.2s ease-in-out;
+            color: white; /* Texto blanco para ambos */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap; /* Evita que el texto se rompa */
+        }
 
+        /* 1. Estilo para el botón dorado (Cómo usar ECOGUIA SOS) */
+        .btn-ecoguia {
+            background-color: var(--color-secondary); 
+        }
+        .btn-ecoguia:hover {
+            background-color: #c99c3a; /* Tono más oscuro al pasar el ratón */
+        }
+        
+        /* 2. Estilo para el botón verde (Súmate) */
+        .btn-sumate {
+            background-color: var(--color-primary); 
+        }
+        .btn-sumate:hover {
+            background-color: #3e8e41; /* Tono más oscuro al pasar el ratón */
+        }
 /* Clases para pintar el texto */
 .txt-eco { color: var(--color-eco) !important; }
 .txt-gaia { color: var(--color-gaia) !important; }
