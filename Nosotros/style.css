@@ -130,7 +130,7 @@ body {
 /* Esto detecta pantallas menores a 768px (celulares y tablets pequeñas) */
 @media (max-width: 768px) {
   .la-clase-que-estas-modificando {
-    height: 280px; /* O la propiedad que estés usando (width, min-height, etc.) */
+    height: 140px; /* O la propiedad que estés usando (width, min-height, etc.) */
   }
 }
 
