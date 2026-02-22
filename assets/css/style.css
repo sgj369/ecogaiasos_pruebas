@@ -1,4 +1,4 @@
-/* --- Reseteo Básico y Fuentes --- */
+﻿/* --- Reseteo Básico y Fuentes --- */
 html {
     scroll-behavior: smooth;
 }
@@ -650,15 +650,15 @@ html {
 }
 
 #seccion-colibri {
-    background-image: url('../img/colibri.jpg');
+    background-image: url('../img/colibri.webp');
 }
 
 #seccion-ajolote {
-    background-image: url('../img/ajolote.jpg');
+    background-image: url('../img/ajolote.webp');
 }
 
 #seccion-lobo {
-    background-image: url('../img/lobo.jpg');
+    background-image: url('../img/lobo.webp');
     background-position: center 25%;
 }
 

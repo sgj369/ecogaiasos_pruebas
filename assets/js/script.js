@@ -1,4 +1,4 @@
-// ==========================================
+﻿// ==========================================
 // 1. CONFIGURACIÓN Y DATOS
 // ==========================================
 
@@ -45,7 +45,7 @@ async function cargarDatosDeGoogleSheets() {
                 nombre: c[0] ? c[0].v : 'Sin Nombre',
                 categoria: c[1] ? c[1].v : 'General',
                 ubicacion: c[2] ? c[2].v : 'CDMX',
-                imagen: c[3] ? c[3].v : 'assets/img/kpop.jpg',
+                imagen: c[3] ? c[3].v : 'assets/img/kpop.webp',
                 descripcion: c[4] ? c[4].v : 'Sin descripción.',
                 tipo: tipoAsignado
             };
@@ -59,20 +59,20 @@ async function cargarDatosDeGoogleSheets() {
         // DATOS DE RESPALDO (6 Eventos + 6 Lugares para llenar el grid)
         todosLosProyectos = [
             // EVENTOS (Se mostrarán en 3 columnas)
-            { nombre: "Taller de Composta", categoria: "Taller", ubicacion: "Parque México, Condesa", imagen: "assets/img/kpop.jpg", tipo: "evento" },
-            { nombre: "Limpieza del Río", categoria: "Voluntariado", ubicacion: "Los Dinamos", imagen: "assets/img/ajolote.jpg", tipo: "evento" },
-            { nombre: "Mercado de Trueque", categoria: "Feria", ubicacion: "Bosque de Chapultepec", imagen: "assets/img/colibri.jpg", tipo: "evento" },
-            { nombre: "Cine Debate Ambiental", categoria: "Cultura", ubicacion: "Cineteca Nacional", imagen: "assets/img/lobo.jpg", tipo: "evento" },
-            { nombre: "Clase de Huerto", categoria: "Curso", ubicacion: "Huerto Roma Verde", imagen: "assets/img/kpop.jpg", tipo: "evento" },
-            { nombre: "Recolección Electrónicos", categoria: "Acopio", ubicacion: "Parque de los Venados", imagen: "assets/img/ajolote.jpg", tipo: "evento" },
+            { nombre: "Taller de Composta", categoria: "Taller", ubicacion: "Parque México, Condesa", imagen: "assets/img/kpop.webp", tipo: "evento" },
+            { nombre: "Limpieza del Río", categoria: "Voluntariado", ubicacion: "Los Dinamos", imagen: "assets/img/ajolote.webp", tipo: "evento" },
+            { nombre: "Mercado de Trueque", categoria: "Feria", ubicacion: "Bosque de Chapultepec", imagen: "assets/img/colibri.webp", tipo: "evento" },
+            { nombre: "Cine Debate Ambiental", categoria: "Cultura", ubicacion: "Cineteca Nacional", imagen: "assets/img/lobo.webp", tipo: "evento" },
+            { nombre: "Clase de Huerto", categoria: "Curso", ubicacion: "Huerto Roma Verde", imagen: "assets/img/kpop.webp", tipo: "evento" },
+            { nombre: "Recolección Electrónicos", categoria: "Acopio", ubicacion: "Parque de los Venados", imagen: "assets/img/ajolote.webp", tipo: "evento" },
 
             // LUGARES (Se mostrarán al cambiar el switch)
-            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "assets/img/kpop.jpg", tipo: "lugar" },
-            { nombre: "Viveros de Coyoacán", categoria: "Parque", ubicacion: "Coyoacán", imagen: "assets/img/colibri.jpg", tipo: "lugar" },
-            { nombre: "Parque Bicentenario", categoria: "Parque", ubicacion: "Azcapotzalco", imagen: "assets/img/lobo.jpg", tipo: "lugar" },
-            { nombre: "Jardín Botánico UNAM", categoria: "Jardín", ubicacion: "CU", imagen: "assets/img/ajolote.jpg", tipo: "lugar" },
-            { nombre: "Mercado El 100", categoria: "Mercado", ubicacion: "Roma", imagen: "assets/img/kpop.jpg", tipo: "lugar" },
-            { nombre: "Museo de Historia Natural", categoria: "Museo", ubicacion: "Chapultepec", imagen: "assets/img/colibri.jpg", tipo: "lugar" }
+            { nombre: "Huerto Roma Verde", categoria: "Huerto", ubicacion: "Roma Sur", imagen: "assets/img/kpop.webp", tipo: "lugar" },
+            { nombre: "Viveros de Coyoacán", categoria: "Parque", ubicacion: "Coyoacán", imagen: "assets/img/colibri.webp", tipo: "lugar" },
+            { nombre: "Parque Bicentenario", categoria: "Parque", ubicacion: "Azcapotzalco", imagen: "assets/img/lobo.webp", tipo: "lugar" },
+            { nombre: "Jardín Botánico UNAM", categoria: "Jardín", ubicacion: "CU", imagen: "assets/img/ajolote.webp", tipo: "lugar" },
+            { nombre: "Mercado El 100", categoria: "Mercado", ubicacion: "Roma", imagen: "assets/img/kpop.webp", tipo: "lugar" },
+            { nombre: "Museo de Historia Natural", categoria: "Museo", ubicacion: "Chapultepec", imagen: "assets/img/colibri.webp", tipo: "lugar" }
         ];
         filtrarYRenderizar();
     }
@@ -106,7 +106,7 @@ function renderCards(data) {
         const html = `
             <div class="card">
                 <div class="card-image">
-                    <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='assets/img/kpop.jpg'">
+                    <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='assets/img/kpop.webp'">
                 </div>
                 <div class="card-content">
                     <span class="card-category">${p.categoria}</span>
