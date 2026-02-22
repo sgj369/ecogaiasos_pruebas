@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
-    
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
     <!-- PANTALLA DE CARGA -->
     <div id="loader">
         <!-- RUTA CORREGIDA: carpeta gif/ -->
-        <img src="gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
+        <img src="assets/gif/EGSlg.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!-- BARRA DE NAVEGACIÓN -->
-    <nav class="main-nav">
+    <nav class="main-nav glass-effect flat-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
                 <!-- RUTA CORREGIDA: carpeta gif/ -->
-                <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="assets/gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -35,7 +37,8 @@
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
             <!-- RUTA CORREGIDA: carpeta gif/ -->
-            <img src="gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="assets/gif/EGS2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo"
+                onerror="this.src='assets/gif/EGSlg+2.gif'">
 
             <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
@@ -50,18 +53,21 @@
                     Eventos cerca de mí
                 </button>
             </div>
-            
+
             <div class="level-buttons-container">
-                <a href="#seccion-colibri" class="level-btn level-btn-colibri"><i class="fa-solid fa-dove"></i> Colibrí (Básico)</a>
-                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote"><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</a>
-                <a href="#seccion-lobo" class="level-btn level-btn-lobo"><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</a>
+                <a href="#seccion-colibri" class="level-btn level-btn-colibri"><i class="fa-solid fa-dove"></i> Colibrí
+                    (Básico)</a>
+                <a href="#seccion-ajolote" class="level-btn level-btn-ajolote"><i class="fa-solid fa-frog"></i> Ajolote
+                    (Intermedio)</a>
+                <a href="#seccion-lobo" class="level-btn level-btn-lobo"><i class="fa-solid fa-dog"></i> Lobo
+                    (Avanzado)</a>
             </div>
         </div>
     </header>
 
     <!-- PARTE B: SELECTOR Y TARJETAS -->
     <main class="content-section">
-        
+
         <!-- Toggle Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-target="eventos">Eventos</span>
@@ -73,26 +79,29 @@
 
         <!-- CONTENEDOR DE TARJETAS -->
         <div class="card-grid-container" id="contenedor-tarjetas">
-            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
+            <p class="txt-loading">Cargando proyectos...</p>
         </div>
     </main>
 
     <!-- PARTE C: NUEVAS SECCIONES DE NIVELES -->
-    
+
     <!-- SECCIÓN COLIBRÍ -->
     <section id="seccion-colibri" class="nivel-section">
         <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dove"></i> Colibrí (Básico)</h2>
-            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la sostenibilidad.</p>
+            <p class="nivel-description">Contenido introductorio y acciones sencillas para empezar tu camino en la
+                sostenibilidad.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">🎓 Cursos</span>
-                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p>
+                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.
+                    </p>
                 </a>
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">💡 Ecotecnias</span>
-                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p>
+                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.
+                    </p>
                 </a>
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">✍️ Firmas</span>
@@ -118,7 +127,8 @@
         <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-frog"></i> Ajolote (Intermedio)</h2>
-            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos comunitarios.</p>
+            <p class="nivel-description">Participa activamente, conéctate con otros y forma parte de proyectos
+                comunitarios.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">👥 Agentes de cambio</span>
@@ -134,7 +144,8 @@
                 </a>
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span>
-                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
+                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.
+                    </p>
                 </a>
             </div>
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
@@ -148,7 +159,8 @@
         <div class="section-divider"></div>
         <div class="nivel-content">
             <h2><i class="fa-solid fa-dog"></i> Lobo (Avanzado)</h2>
-            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y profesionalizar tu impacto.</p>
+            <p class="nivel-description">Accede a recursos de alto nivel para escalar proyectos, entender la ley y
+                profesionalizar tu impacto.</p>
             <div class="nivel-btn-grid">
                 <a href="#" class="nivel-btn-item">
                     <span class="nivel-btn-title">💰 Fondos</span>
@@ -179,8 +191,8 @@
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -191,9 +203,10 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
+
     <!-- Script PRINCIPAL (Lógica de datos y UI) -->
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>

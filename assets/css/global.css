@@ -1,0 +1,126 @@
+/* ==========================================================
+   GLOBAL.CSS - Variables, Web Fonts y Reseteo Base
+   ========================================================== */
+
+/* 1. IMPORTAR GOOGLE FONTS (Outfit y Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* 2. VARIABLES GLOBALES */
+:root {
+    /* Paleta Principal ECO GAIA SOS */
+    --color-eco: #72B04D;
+    /* Verde Nopal */
+    --color-eco-hover: #5a8e3d;
+    --color-gaia: #0077b6;
+    /* Azul Agua */
+    --color-gaia-hover: #005f92;
+    --color-sos: #FFD700;
+    /* Amarillo Energía */
+    --color-sos-hover: #e0be00;
+
+    /* Colores Especiales de Niveles */
+    --color-colibri: #2a9d8f;
+    --color-colibri-hover: #217a70;
+    --color-ajolote: #0056b3;
+    --color-ajolote-hover: #004494;
+    --color-lobo: #6a00a8;
+    --color-lobo-hover: #58008c;
+
+    /* Tema Oscuro y Tarjetas Glassmorphism */
+    --color-fondo: #0a0e12;
+    /* Gris Noche Profundo */
+    --color-texto: #f0f2f5;
+    --color-texto-secundario: #a3aab1;
+    --tarjeta-bg-light: rgba(255, 255, 255, 0.95);
+    --tarjeta-bg-dark: rgba(30, 40, 45, 0.65);
+    /* Más profundo para modo oscuro */
+    --tarjeta-border-dark: rgba(255, 255, 255, 0.08);
+
+    /* Otros Elementos Visuales */
+    --color-glow: rgba(255, 255, 255, 0.3);
+    /* Brillo moderado */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* 3. RESETEO BÁSICO Y PREFERENCIAS */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+a {
+    transition: all 0.3s ease;
+}
+
+/* 4. CLASES DE UTILIDAD TEXTO */
+.txt-eco {
+    color: var(--color-eco) !important;
+    text-shadow: 0 0 15px rgba(114, 176, 77, 0.4);
+}
+
+.txt-gaia {
+    color: var(--color-gaia) !important;
+    text-shadow: 0 0 15px rgba(0, 119, 182, 0.4);
+}
+
+.txt-sos {
+    color: var(--color-sos) !important;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* 5. EFECTOS GLOBALES GLASSMORPHISM Y TARJETAS */
+.glass-effect {
+    background: var(--tarjeta-bg-dark);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--tarjeta-border-dark);
+    border-radius: 16px;
+    box-shadow: var(--shadow-strong);
+}
+
+.glass-effect:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.flat-nav {
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.pill-radius {
+    border-radius: 50px;
+}

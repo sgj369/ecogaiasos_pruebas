@@ -2,7 +2,9 @@
 html {
     scroll-behavior: smooth;
 }
-body, html {
+
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -23,33 +25,35 @@ body, html {
     justify-content: center;
     transition: opacity 0.5s ease;
 }
+
 #loader img {
     width: 200px;
 }
 
 /* BARRA DE NAVEGACIÓN */
+/* Se apoya en glass-effect, configuramos posición y nav transparentado */
 .main-nav {
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 0 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
     box-sizing: border-box;
 }
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px; 
+    height: 80px;
 }
+
 .nav-brand {
     display: flex;
     align-items: center;
 }
+
 .nav-brand-logo {
     height: 60px;
     width: auto;
@@ -72,48 +76,66 @@ body, html {
     display: flex;
     align-items: center;
 }
+
 .nav-menu li {
     margin-left: 1.5rem;
     /* Ajuste para que el botón "Cómo Usar" no desaparezca en móvil */
-    display: block; 
+    display: block;
 }
+
 .nav-menu li a {
     text-decoration: none;
-    color: #333;
-    font-weight: 600;
+    color: var(--color-texto);
+    font-weight: 500;
+    font-family: var(--font-heading);
     padding: 10px 5px;
     transition: color 0.3s ease;
-    border-botton: 2px solid transparent; 
-    padding-botton: 8px;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 8px;
 }
-.nav-menu li a:hover { color: #007bff; border-bottom-color: #007bff;}
+
+.nav-menu li a:hover {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
 
 .nav-menu li a.nav-btn-highlight {
-    background-color: transparent; /* Fondo transparente */
-    color: #2c9a4d; /* Color del texto verde */
-    border: 2px solid #2c9a4d; /* Contorno verde */
+    background-color: transparent;
+    /* Fondo transparente */
+    color: #2c9a4d;
+    /* Color del texto verde */
+    border: 2px solid #2c9a4d;
+    /* Contorno verde */
     padding: 8px 16px;
     border-radius: 20px;
 }
+
 .nav-menu li a.nav-btn-highlight:hover {
 
-    background-color: #217a3a; /* Fondo verde al pasar el mouse */
-    color: white; /* Texto blanco al pasar el mouse */
-    border-color: #217a3a; /* Asegura que el borde también se ponga verde sólido */
+    background-color: #217a3a;
+    /* Fondo verde al pasar el mouse */
+    color: white;
+    /* Texto blanco al pasar el mouse */
+    border-color: #217a3a;
+    /* Asegura que el borde también se ponga verde sólido */
 }
 
 /* Nuevo estilo para el botón "Cómo Usar" (Base de color/forma) */
-.nav-menu li a.nav-btn-how-to, 
-.nav-btn-how-to { /* Aplicar también a la versión fuera del UL */
-    background-color: #D4AF37; /* Color dorado */
+.nav-menu li a.nav-btn-how-to,
+.nav-btn-how-to {
+    /* Aplicar también a la versión fuera del UL */
+    background-color: #D4AF37;
+    /* Color dorado */
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     text-decoration: none;
 }
-.nav-menu li a.nav-btn-how-to:hover, 
+
+.nav-menu li a.nav-btn-how-to:hover,
 .nav-btn-how-to:hover {
-    background-color: #c09e2e; /* Tono más oscuro al pasar el mouse */
+    background-color: #c09e2e;
+    /* Tono más oscuro al pasar el mouse */
     color: white;
 }
 
@@ -121,11 +143,15 @@ body, html {
 .nav-how-to-always-visible {
     /* El resto de estilos de color/forma son provistos por .nav-btn-how-to */
     display: flex;
-    align-items: center; /* Centra verticalmente dentro del .nav-container */
-    text-decoration: none; /* Asegura que el enlace no se subraye */
-    margin-left: 1.5rem; /* Espacio después del logo, similar a los li */
-    margin-right: auto; /* IMPORTANTE: Empuja el menú .nav-menu y el menú hamburguesa a la derecha */
-    list-style: none; 
+    align-items: center;
+    /* Centra verticalmente dentro del .nav-container */
+    text-decoration: none;
+    /* Asegura que el enlace no se subraye */
+    margin-left: 1.5rem;
+    /* Espacio después del logo, similar a los li */
+    margin-right: auto;
+    /* IMPORTANTE: Empuja el menú .nav-menu y el menú hamburguesa a la derecha */
+    list-style: none;
 }
 
 /* HERO PRINCIPAL */
@@ -142,9 +168,10 @@ body, html {
     color: #333;
     background-color: #f9f9f9;
     box-sizing: border-box;
-    z-index: 2; 
+    z-index: 2;
 }
-.hero-section#particles-js > .particles-js-canvas-el {
+
+.hero-section#particles-js>.particles-js-canvas-el {
     position: absolute;
     top: 0;
     left: 0;
@@ -152,16 +179,18 @@ body, html {
     height: 100%;
     z-index: 0;
 }
+
 .hero-content {
-    max-width: 900px; 
+    max-width: 900px;
     position: relative;
     z-index: 1;
     width: 100%;
 }
+
 .hero-logo {
     width: 100%;
-    max-width: 700px; 
-    height: auto; 
+    max-width: 700px;
+    height: auto;
     margin-bottom: 1.5rem;
 }
 
@@ -171,6 +200,7 @@ body, html {
     width: 100%;
     margin-bottom: 1.5rem;
 }
+
 .search-bar-container input {
     width: 100%;
     padding: 1rem 1rem 1rem 3.5rem;
@@ -181,6 +211,7 @@ body, html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
 }
+
 .search-bar-container .fa-magnifying-glass {
     position: absolute;
     left: 1.5rem;
@@ -197,6 +228,7 @@ body, html {
     flex-wrap: wrap;
     margin-bottom: 2rem;
 }
+
 .btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -206,51 +238,84 @@ body, html {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .btn-primary {
     background-color: #b71c1c;
     color: white;
 }
-.btn-primary:hover { background-color: #a31818; }
+
+.btn-primary:hover {
+    background-color: #a31818;
+}
+
 .btn-secondary {
     background-color: #f0f0f0;
     color: #333;
     border: 1px solid #ccc;
 }
-.btn-secondary:hover { background-color: #e0e0e0; }
-.btn .fa-solid { margin-right: 0.5rem; }
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn .fa-solid {
+    margin-right: 0.5rem;
+}
 
 /* BOTONES DE NIVEL (ESTILO HÍBRIDO) */
 .level-buttons-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     width: 100%;
 }
+
 .btn-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 200px; 
+    min-width: 200px;
 }
+
 .level-btn-group {
     display: flex;
     align-items: stretch;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
-.level-btn-group:hover { transform: translateY(-3px); }
 
-.level-btn-colibri { background-color: #2a9d8f; }
-.level-btn-colibri:hover { background-color: #268a7f; }
-.level-btn-ajolote { background-color: #0056b3; }
-.level-btn-ajolote:hover { background-color: #004494; }
-.level-btn-lobo { background-color: #6a00a8; }
-.level-btn-lobo:hover { background-color: #58008c; }
+.level-btn-group:hover {
+    transform: translateY(-3px);
+}
+
+.level-btn-colibri {
+    background-color: #2a9d8f;
+}
+
+.level-btn-colibri:hover {
+    background-color: #268a7f;
+}
+
+.level-btn-ajolote {
+    background-color: #0056b3;
+}
+
+.level-btn-ajolote:hover {
+    background-color: #004494;
+}
+
+.level-btn-lobo {
+    background-color: #6a00a8;
+}
+
+.level-btn-lobo:hover {
+    background-color: #58008c;
+}
 
 .level-btn-link {
     color: white;
@@ -263,40 +328,45 @@ body, html {
     justify-content: center;
     gap: 0.5rem;
     flex-grow: 1;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .mobile-info-toggle {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border: none;
     color: white;
     padding: 0 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-left: 1px solid rgba(255,255,255,0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
     transition: background-color 0.2s;
 }
-.mobile-info-toggle:hover { background-color: rgba(0,0,0,0.3); }
+
+.mobile-info-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
 
 /* LISTA DESPLEGABLE */
 .tooltip-list {
-    display: none; 
+    display: none;
     background-color: white;
     color: #333;
-    width: 100%; 
+    width: 100%;
     min-width: 220px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     z-index: 10;
     margin-top: 8px;
     text-align: left;
     overflow: hidden;
 }
+
 .tooltip-list.activo {
     display: block;
     animation: slideDown 0.3s ease;
 }
+
 @media (min-width: 1025px) {
     .btn-wrapper:hover .tooltip-list {
         display: block;
@@ -306,25 +376,49 @@ body, html {
         transform: translateX(-50%);
         width: max-content;
     }
-    .mobile-info-toggle { display: none; }
-    .level-btn-link { padding-right: 1.5rem; } 
+
+    .mobile-info-toggle {
+        display: none;
+    }
+
+    .level-btn-link {
+        padding-right: 1.5rem;
+    }
 }
+
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.tooltip-list ul { list-style: none; padding: 0; margin: 0; }
+
+.tooltip-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .tooltip-list ul li {
     padding: 10px 15px;
     font-size: 0.95rem;
     border-bottom: 1px solid #eee;
 }
-.tooltip-list ul li:last-child { border-bottom: none; }
+
+.tooltip-list ul li:last-child {
+    border-bottom: none;
+}
 
 
 /* CONTENIDO PRINCIPAL */
 .content-section {
-    max-width: 1300px; /* Ancho aumentado para soportar 3 columnas cómodas */
+    max-width: 1300px;
+    /* Ancho aumentado para soportar 3 columnas cómodas */
     margin: 2rem auto;
     padding: 0 1.5rem;
     position: relative;
@@ -338,6 +432,7 @@ body, html {
     align-items: center;
     margin-bottom: 2.5rem;
 }
+
 .toggle-label {
     font-size: 1.1rem;
     font-weight: 600;
@@ -345,7 +440,11 @@ body, html {
     cursor: pointer;
     transition: color 0.3s ease;
 }
-.toggle-label.active { color: #111; }
+
+.toggle-label.active {
+    color: #111;
+}
+
 .toggle-switch {
     width: 60px;
     height: 34px;
@@ -356,6 +455,7 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .toggle-switch .toggle-handle {
     position: absolute;
     height: 26px;
@@ -366,11 +466,19 @@ body, html {
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
+
 .toggle-switch.active {
-    background-color: #D4AF37; 
+    background-color: #D4AF37;
 }
+
 .toggle-switch.active .toggle-handle {
     transform: translateX(26px);
+}
+
+.txt-loading {
+    color: white;
+    text-align: center;
+    width: 100%;
 }
 
 /* =========================================================
@@ -389,7 +497,7 @@ body, html {
     /* Flex Horizontal: Imagen Izq | Texto Der */
     display: flex;
     flex-direction: row;
-    background-color: #2a3d34; 
+    background-color: #2a3d34;
     color: white;
     border-radius: 16px;
     overflow: hidden;
@@ -416,7 +524,7 @@ body, html {
 .card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
@@ -426,11 +534,13 @@ body, html {
 
 .card-content {
     flex-grow: 1;
-    padding: 1rem; /* Padding reducido para que quepa */
+    padding: 1rem;
+    /* Padding reducido para que quepa */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    width: 60%; /* Asegura el texto */
+    justify-content: center;
+    width: 60%;
+    /* Asegura el texto */
 }
 
 .card-category {
@@ -443,13 +553,15 @@ body, html {
 }
 
 .card-title {
-    font-size: 1.1rem; /* Título ajustado */
+    font-size: 1.1rem;
+    /* Título ajustado */
     font-weight: 700;
     margin: 0 0 0.4rem 0;
     line-height: 1.2;
     /* Limitar a 3 líneas por si el título es largo */
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -469,8 +581,9 @@ body, html {
     text-align: center;
     margin-bottom: 3rem;
 }
+
 .btn-full-width {
-    background-color: #b71c1c; 
+    background-color: #b71c1c;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -483,19 +596,22 @@ body, html {
     transition: background-color 0.3s ease;
     margin-bottom: 1rem;
 }
+
 .btn-full-width:hover {
     background-color: #9a1616;
 }
+
 #mapa-desplegable {
     width: 100%;
     height: 0;
     overflow: hidden;
     transition: height 0.5s ease;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
 #mapa-desplegable.activo {
-    height: 500px; 
+    height: 500px;
 }
 
 
@@ -505,10 +621,11 @@ body, html {
     padding: 4rem 2rem;
     background-size: cover;
     background-position: center center;
-    background-attachment: scroll; 
+    background-attachment: scroll;
     color: #ffffff;
     text-align: center;
 }
+
 .nivel-section::before {
     content: '';
     position: absolute;
@@ -516,19 +633,34 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
-.section-divider { height: 1px; width: 100%; }
 
-/* AJUSTE DE SCROLL: Margen para el menú fijo */
-#seccion-colibri, #seccion-ajolote, #seccion-lobo {
-    scroll-margin-top: 100px; 
+.section-divider {
+    height: 1px;
+    width: 100%;
 }
 
-#seccion-colibri { background-image: url('img/colibri.jpg'); }
-#seccion-ajolote { background-image: url('img/ajolote.jpg'); }
-#seccion-lobo { background-image: url('img/lobo.jpg'); background-position: center 25%; }
+/* AJUSTE DE SCROLL: Margen para el menú fijo */
+#seccion-colibri,
+#seccion-ajolote,
+#seccion-lobo {
+    scroll-margin-top: 100px;
+}
+
+#seccion-colibri {
+    background-image: url('../img/colibri.jpg');
+}
+
+#seccion-ajolote {
+    background-image: url('../img/ajolote.jpg');
+}
+
+#seccion-lobo {
+    background-image: url('../img/lobo.jpg');
+    background-position: center 25%;
+}
 
 .nivel-content {
     position: relative;
@@ -536,12 +668,14 @@ body, html {
     max-width: 1000px;
     margin: 0 auto;
 }
+
 .nivel-section h2 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 1rem;
 }
+
 .nivel-description {
     font-size: 1.2rem;
     font-weight: 300;
@@ -550,11 +684,13 @@ body, html {
     margin-left: auto;
     margin-right: auto;
 }
+
 .nivel-btn-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
+
 .nivel-btn-item {
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -568,15 +704,18 @@ body, html {
     flex-direction: column;
     gap: 0.5rem;
 }
+
 .nivel-btn-item:hover {
     background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-5px);
 }
+
 .nivel-btn-title {
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0;
 }
+
 .nivel-btn-desc {
     font-size: 0.9rem;
     font-weight: 300;
@@ -584,6 +723,7 @@ body, html {
     margin: 0;
     line-height: 1.4;
 }
+
 .btn-back-to-top {
     margin-top: 3rem;
     background-color: transparent;
@@ -595,6 +735,7 @@ body, html {
     font-size: 0.9rem;
     transition: all 0.3s ease;
 }
+
 .btn-back-to-top:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-color: white;
@@ -607,6 +748,7 @@ footer {
     padding: 3rem 2rem 1rem 2rem;
     margin-top: 0;
 }
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -617,22 +759,29 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 2rem;
 }
+
 .footer-section h4 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: #D4AF37;
 }
+
 .footer-section p {
     font-size: 0.9rem;
     color: #ccc;
 }
+
 .social-icons a {
     color: white;
     font-size: 1.5rem;
     margin-right: 1rem;
     transition: color 0.3s ease;
 }
-.social-icons a:hover { color: #D4AF37; }
+
+.social-icons a:hover {
+    color: #D4AF37;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 1rem;
@@ -647,8 +796,11 @@ footer {
     .card-grid-container {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .hamburger-menu { display: block; }
+
+    .hamburger-menu {
+        display: block;
+    }
+
     .nav-menu {
         position: absolute;
         top: 80px;
@@ -657,48 +809,85 @@ footer {
         background-color: white;
         flex-direction: column;
         align-items: center;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        display: none; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none;
         padding: 1rem 0;
         z-index: 1001;
     }
-    .nav-menu.active { display: flex; animation: slideDown 0.3s ease; }
-    .nav-menu li { margin: 10px 0; }
+
+    .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+    }
+
     /* NOTA: El botón "Cómo Usar" ya NO está dentro del menú en desktop/tablet */
 
     /* AJUSTE IMAGEN HERO EN TABLET */
     .hero-logo {
-        max-width: 550px; /* Reducimos el ancho máximo para tablet */
+        max-width: 550px;
+        /* Reducimos el ancho máximo para tablet */
     }
-    
-    .mobile-info-toggle { display: flex; } 
-    .level-btn-link { justify-content: flex-start; }
-    
-    .footer-content { flex-direction: column; text-align: center; }
-    .social-icons { justify-content: center; display: flex; }
+
+    .mobile-info-toggle {
+        display: flex;
+    }
+
+    .level-btn-link {
+        justify-content: flex-start;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+        display: flex;
+    }
 }
 
 /* Móvil (Menos de 768px): 1 Columna y Tarjetas Verticales */
 @media (max-width: 768px) {
-    .hero-section#particles-js { padding: 2rem 1rem; min-height: 90vh; }
-    .hero-logo { max-height: 180px; max-width: 90%; /* Ajuste también para móvil */ }
-    
-    .search-bar-container input { font-size: 1rem; padding: 0.8rem 0.8rem 0.8rem 3rem; }
-    .search-bar-container .fa-magnifying-glass { left: 1.2rem; }
-    
-    .card-grid-container {
-        grid-template-columns: 1fr; 
+    .hero-section#particles-js {
+        padding: 2rem 1rem;
+        min-height: 90vh;
     }
-    
+
+    .hero-logo {
+        max-height: 180px;
+        max-width: 90%;
+        /* Ajuste también para móvil */
+    }
+
+    .search-bar-container input {
+        font-size: 1rem;
+        padding: 0.8rem 0.8rem 0.8rem 3rem;
+    }
+
+    .search-bar-container .fa-magnifying-glass {
+        left: 1.2rem;
+    }
+
+    .card-grid-container {
+        grid-template-columns: 1fr;
+    }
+
     /* En móvil, la tarjeta vuelve a ser vertical */
     .card {
-        flex-direction: column; 
-        height: auto; 
+        flex-direction: column;
+        height: auto;
     }
+
     .card-image {
         width: 100%;
-        height: 180px; 
+        height: 180px;
     }
+
     .card-content {
         padding: 1.2rem;
         width: 100%;
@@ -706,22 +895,41 @@ footer {
 
     /* Ajuste para el botón "Cómo usar" siempre visible en móvil */
     .nav-how-to-always-visible.nav-btn-how-to {
-        padding: 6px 10px; /* Reduce el padding para hacerlo más compacto */
-        font-size: 0.85rem; /* Reduce el tamaño de la fuente */
+        padding: 6px 10px;
+        /* Reduce el padding para hacerlo más compacto */
+        font-size: 0.85rem;
+        /* Reduce el tamaño de la fuente */
     }
 
-    .action-buttons, .level-buttons-container {
+    .action-buttons,
+    .level-buttons-container {
         flex-direction: column;
         width: 100%;
         gap: 1rem;
         align-items: stretch;
     }
-    .btn-wrapper { width: 100%; }
-    
-    .nivel-btn-grid { grid-template-columns: 1fr; }
-    .nivel-section { padding: 3rem 1rem; }
-    .nivel-section h2 { font-size: 2rem; }
-    #seccion-colibri, #seccion-ajolote, #seccion-lobo { background-position: 80% center; }
+
+    .btn-wrapper {
+        width: 100%;
+    }
+
+    .nivel-btn-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nivel-section {
+        padding: 3rem 1rem;
+    }
+
+    .nivel-section h2 {
+        font-size: 2rem;
+    }
+
+    #seccion-colibri,
+    #seccion-ajolote,
+    #seccion-lobo {
+        background-position: 80% center;
+    }
 }
 
 /* Estilos para la nueva página de "Cómo Usar" */
@@ -731,27 +939,32 @@ footer {
     margin: 2rem auto;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 .how-to-section h1 {
     color: #2a3d34;
     font-size: 2.8rem;
     margin-bottom: 1.5rem;
 }
+
 .how-to-section p {
     color: #555;
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
 }
+
 .how-to-video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
     height: 0;
     margin-bottom: 2rem;
 }
+
 .how-to-video-container iframe {
     position: absolute;
     top: 0;
@@ -760,36 +973,43 @@ footer {
     height: 100%;
     border-radius: 8px;
 }
+
 .manual-content {
     text-align: left;
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid #eee;
 }
+
 .manual-content h2 {
     color: #2c9a4d;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
+
 .manual-content h3 {
     color: #0056b3;
     font-size: 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: 0.8rem;
 }
+
 .manual-content ul {
     list-style: none;
     padding: 0;
     margin-left: 1.5rem;
 }
+
 .manual-content ul li {
     margin-bottom: 0.5rem;
     color: #666;
     position: relative;
     padding-left: 1.5rem;
 }
+
 .manual-content ul li::before {
-    content: "\f058"; /* Icono de checkmark */
+    content: "\f058";
+    /* Icono de checkmark */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     color: #2c9a4d;

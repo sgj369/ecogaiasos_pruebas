@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO GAIA SOS - Pruebas</title>
-    <link rel="icon" href="gif/EGSlg.gif" type="image/gif">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="ECO GAIA SOS - Plataforma tecnológica para la acción climática en México. Directorio de proyectos sustentables.">
+    <link rel="icon" href="assets/gif/EGSlg.gif" type="image/gif">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
     <!-- PANTALLA DE CARGA -->
     <div id="loader">
-        <img src="gif/EGSBOOK.gif" alt="Cargando ECO GAIA SOS...">
+        <img src="assets/gif/EGSBOOK.gif" alt="Cargando ECO GAIA SOS...">
     </div>
 
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-    <nav class="main-nav">
+    <nav class="main-nav glass-effect flat-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
-                <img src="gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo">
+                <img src="assets/gif/EGSlg.gif" alt="Logo ECO GAIA SOS" class="nav-brand-logo" loading="lazy">
             </a>
 
             <a href="como-usar.html" class="nav-btn-how-to nav-how-to-always-visible">Cómo usar ECOGUIA SOS</a>
@@ -31,7 +36,7 @@
             <!-- Menú de Opciones -->
             <ul class="nav-menu" id="nav-menu-list">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="Nosotros/nosotros.html">Nosotros</a></li>
+                <li><a href="pages/nosotros.html">Nosotros</a></li>
                 <li><a href="#">Directorio</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#" class="nav-btn-highlight">Súmate</a></li>
@@ -42,7 +47,7 @@
     <!-- HERO PRINCIPAL -->
     <header class="hero-section" id="particles-js">
         <div class="hero-content">
-            <img src="gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo">
+            <img src="assets/gif/EGSlg+2.gif" alt="Logo animado de ECO GAIA SOS" class="hero-logo" loading="lazy">
 
             <!-- Barra de Búsqueda -->
             <div class="search-bar-container">
@@ -57,15 +62,15 @@
                     Eventos cerca de mí
                 </button>
             </div>
-            
+
             <!-- 
               BOTONES DE NIVELES (HÍBRIDOS)
             -->
             <div class="level-buttons-container">
-                
+
                 <!-- COLIBRÍ -->
                 <div class="btn-wrapper">
-                    <div class="level-btn-group level-btn-colibri">
+                    <div class="level-btn-group level-btn-colibri glass-effect pill-radius">
                         <a href="#seccion-colibri" class="level-btn-link">
                             <i class="fa-solid fa-dove"></i> Colibrí (Polinización)
                         </a>
@@ -87,7 +92,7 @@
 
                 <!-- AJOLOTE -->
                 <div class="btn-wrapper">
-                    <div class="level-btn-group level-btn-ajolote">
+                    <div class="level-btn-group level-btn-ajolote glass-effect pill-radius">
                         <a href="#seccion-ajolote" class="level-btn-link">
                             <i class="fa-solid fa-frog"></i> Ajolote (Regeneración)
                         </a>
@@ -106,7 +111,7 @@
 
                 <!-- LOBO -->
                 <div class="btn-wrapper">
-                    <div class="level-btn-group level-btn-lobo">
+                    <div class="level-btn-group level-btn-lobo glass-effect pill-radius">
                         <a href="#seccion-lobo" class="level-btn-link">
                             <i class="fa-solid fa-dog"></i> Lobo (Estrategia)
                         </a>
@@ -128,7 +133,7 @@
 
     <!-- PARTE B: CONSOLA DE DATOS -->
     <main class="content-section">
-        
+
         <!-- Toggle Eventos/Lugares -->
         <div class="toggle-container">
             <span class="toggle-label active" data-filter="evento">Eventos</span>
@@ -141,7 +146,7 @@
         <!-- CONTENEDOR DE TARJETAS -->
         <div class="card-grid-container" id="contenedor-tarjetas">
             <!-- Las tarjetas se insertan aquí con JavaScript -->
-            <p style="color: white; text-align: center; width: 100%;">Cargando proyectos...</p>
+            <p class="txt-loading">Cargando proyectos...</p>
         </div>
 
         <!-- SECCIÓN DE MAPA DESPLEGABLE -->
@@ -149,17 +154,18 @@
             <button id="btn-toggle-mapa" class="btn-full-width">
                 <i class="fa-solid fa-map-location-dot"></i> Mostrar Mapa de Actores
             </button>
-            
+
             <div id="mapa-desplegable" class="mapa-oculto">
                 <!-- IFRAME A TU MAPA REAL -->
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ucypWovpoEYMy6hrTsYjBGLT_NDP-TY&ehbc=2E312F" width="640" height="480"></iframe>
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ucypWovpoEYMy6hrTsYjBGLT_NDP-TY&ehbc=2E312F"
+                    width="640" height="480"></iframe>
             </div>
         </div>
 
     </main>
 
     <!-- PARTE C: SECCIONES DE NIVELES -->
-    
+
     <!-- SECCIÓN COLIBRÍ -->
     <section id="seccion-colibri" class="nivel-section">
         <div class="section-divider"></div>
@@ -167,23 +173,25 @@
             <h2><i class="fa-solid fa-dove"></i> Colibrí (Polinización)</h2>
             <p class="nivel-description">Poliniza tu mente con conocimiento y pequeñas acciones que generan vida.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">🎓 Cursos</span>
-                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.</p>
+                    <p class="nivel-btn-desc">Explora cursos y talleres para aprender nuevas habilidades sostenibles.
+                    </p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">💡 Ecotecnias</span>
-                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.</p>
+                    <p class="nivel-btn-desc">Descubre tecnologías que puedes aplicar en casa para ayudar al planeta.
+                    </p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">✍️ Firmas</span>
                     <p class="nivel-btn-desc">Apoya causas y peticiones importantes con tu firma.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">📚 Lecturas y bibliografía</span>
                     <p class="nivel-btn-desc">Encuentra artículos, guías y libros recomendados por la comunidad.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">🎬 Vídeos y documentales</span>
                     <p class="nivel-btn-desc">Inspírate con documentales y videos educativos seleccionados.</p>
                 </a>
@@ -201,21 +209,22 @@
             <h2><i class="fa-solid fa-frog"></i> Ajolote (Regeneración)</h2>
             <p class="nivel-description">Regenera el tejido social y ambiental actuando en comunidad.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">👥 Agentes de cambio</span>
                     <p class="nivel-btn-desc">Conoce a las personas y organizaciones que están liderando el cambio.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">📣 Convocatorias</span>
                     <p class="nivel-btn-desc">Encuentra oportunidades para presentar tus proyectos o unirte a otros.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">🤝 Eventos y voluntariados</span>
                     <p class="nivel-btn-desc">Únete a eventos y jornadas de voluntariado cerca de ti.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">🗓️ Voluntariados convocatoria larga</span>
-                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.</p>
+                    <p class="nivel-btn-desc">Comprométete con voluntariados a largo plazo y genera un impacto duradero.
+                    </p>
                 </a>
             </div>
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="btn-back-to-top">
@@ -231,11 +240,11 @@
             <h2><i class="fa-solid fa-dog"></i> Lobo (Estrategia)</h2>
             <p class="nivel-description">Lidera con estructura, fondos y legalidad para proyectos de alto impacto.</p>
             <div class="nivel-btn-grid">
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">💰 Fondos</span>
                     <p class="nivel-btn-desc">Descubre fuentes de financiamiento y fondos para tus proyectos.</p>
                 </a>
-                <a href="#" class="nivel-btn-item">
+                <a href="#" class="nivel-btn-item glass-effect">
                     <span class="nivel-btn-title">⚖️ Normativa</span>
                     <p class="nivel-btn-desc">Consulta las leyes y normativas vigentes en materia ambiental.</p>
                 </a>
@@ -260,8 +269,8 @@
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -272,7 +281,8 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>
