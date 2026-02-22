@@ -7,6 +7,8 @@
     <title>Nosotros | EcoGuía SOS</title>
     <meta name="description" content="Conoce a los fundadores y la historia de EcoGuía SOS.">
     <link rel="icon" href="../assets/gif/EGSlg.webp" type="image/gif">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#72B04D">
 
     <!-- CSS Global unificado -->
     <link rel="stylesheet" href="../assets/css/global.css">
@@ -282,6 +284,15 @@
         });
     </script>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../sw.js')
+                    .then(reg => console.log('Service Worker registrado:', reg.scope))
+                    .catch(err => console.log('Error al registrar Service Worker:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
