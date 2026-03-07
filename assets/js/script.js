@@ -1,9 +1,9 @@
-﻿// ==========================================
+// ==========================================
 // 1. CONFIGURACIÓN Y DATOS
 // ==========================================
 
-const SHEET_ID = '1lM4o-nEUk-uDmdTymrqv9N0HDbnJDAvdw_dDfgRTA6c';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const SHEET_ID = '1D1eDZ89Jd71SyHQNX2fns8CoQlcCUrqAMprwjaOisCs';
+const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 let todosLosProyectos = [];
 let filtroActual = 'evento';
@@ -30,26 +30,46 @@ window.addEventListener('load', () => {
 // 3. LÓGICA DE DATOS
 // ==========================================
 
-async function cargarDatosDeGoogleSheets() {
+async function fetchSheetData(sheetName, tipo) {
+    const url = `${BASE_URL}&sheet=${sheetName}`;
     try {
-        const respuesta = await fetch(SHEET_URL);
+        const respuesta = await fetch(url);
         const texto = await respuesta.text();
         const jsonTexto = texto.substring(47).slice(0, -2);
         const json = JSON.parse(jsonTexto);
 
-        todosLosProyectos = json.table.rows.map((fila, index) => {
+        let data = [];
+        json.table.rows.forEach(fila => {
             const c = fila.c;
-            const tipoAsignado = index % 2 === 0 ? 'evento' : 'lugar';
+            const nombre = c[0] && c[0].v ? c[0].v : '';
+            if (nombre.toLowerCase() === 'nombre' || nombre === '') return;
 
-            return {
-                nombre: c[0] ? c[0].v : 'Sin Nombre',
-                categoria: c[1] ? c[1].v : 'General',
-                ubicacion: c[2] ? c[2].v : 'CDMX',
-                imagen: c[3] ? c[3].v : 'assets/img/kpop.webp',
-                descripcion: c[4] ? c[4].v : 'Sin descripción.',
-                tipo: tipoAsignado
-            };
+            data.push({
+                nombre: nombre,
+                categoria: c[1] && c[1].v ? c[1].v : 'General',
+                ubicacion: c[2] && c[2].v ? c[2].v : 'CDMX',
+                imagen: c[3] && c[3].v ? c[3].v : 'assets/img/kpop.webp',
+                descripcion: c[4] && c[4].v ? c[4].v : 'Sin descripción.',
+                tipo: tipo
+            });
         });
+        return data;
+    } catch (error) {
+        console.error(`Error procesando la pestaña ${sheetName}:`, error);
+        return [];
+    }
+}
+
+async function cargarDatosDeGoogleSheets() {
+    try {
+        const eventos = await fetchSheetData('Eventos', 'evento');
+        const lugares = await fetchSheetData('Lugares', 'lugar');
+
+        todosLosProyectos = [...eventos, ...lugares];
+
+        if (todosLosProyectos.length === 0) {
+            throw new Error("No hay datos nuevos en las hojas o faltan rellenar.");
+        }
 
         filtrarYRenderizar();
 
