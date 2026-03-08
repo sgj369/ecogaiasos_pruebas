@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ecoguiasos-v1';
+const CACHE_NAME = 'ecoguiasos-v2';
 const urlsToCache = [
     './',
     './index.html',
@@ -22,15 +22,23 @@ self.addEventListener('install', event => {
     );
 });
 
-// Interceptar las peticiones y responder con caché si hay conexión offline
+// Interceptar las peticiones usando "Network First, falling back to cache"
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
+        fetch(event.request)
             .then(response => {
-                if (response) {
-                    return response; // Devolver valor desde la caché
+                // Si hay red, actualizamos el caché de la petición y devolvemos la respuesta de red
+                if (response && response.status === 200 && response.type === 'basic') {
+                    const responseToCache = response.clone();
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, responseToCache);
+                    });
                 }
-                return fetch(event.request); // Si no está en caché, hacer petición de red
+                return response;
+            })
+            .catch(() => {
+                // Fallback: Si no hay red (offline), buscar en el caché
+                return caches.match(event.request);
             })
     );
 });
