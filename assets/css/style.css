@@ -371,22 +371,18 @@ html {
 }
 
 @media (min-width: 1025px) {
-    .btn-wrapper:hover .tooltip-list {
-        display: block;
+
+    /* TOOLTIP Y FLECHA EN DESKTOP (Basado en clics, igual que móvil) */
+    .tooltip-list {
         position: absolute;
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
         width: max-content;
+        margin-top: 10px;
     }
 
-    .mobile-info-toggle {
-        display: none;
-    }
-
-    .level-btn-link {
-        padding-right: 1.5rem;
-    }
+    /* Eliminado .mobile-info-toggle { display: none; } para que la flecha sea visible en PC */
 }
 
 @keyframes slideDown {

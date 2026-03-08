@@ -157,9 +157,8 @@ function setupMapaToggle() {
 
 function setupMobileTooltips() {
     const toggles = document.querySelectorAll('.mobile-info-toggle');
-    const categoryLinks = document.querySelectorAll('.level-btn-link');
 
-    // Función genérica para alternar tooltip
+    // Función genérica para alternar tooltip con las flechas
     const toggleTooltip = (targetElement) => {
         const parentWrapper = targetElement.closest('.btn-wrapper');
         const tooltip = parentWrapper.querySelector('.tooltip-list');
@@ -174,17 +173,6 @@ function setupMobileTooltips() {
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleTooltip(toggle);
-        });
-    });
-
-    // En móviles, permitir que el link principal también abra el menú
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1200) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleTooltip(link);
-            }
         });
     });
 
